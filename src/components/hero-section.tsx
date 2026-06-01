@@ -2,7 +2,6 @@ import type { CSSProperties, ReactNode } from "react";
 import Link from "next/link";
 import { LINKS } from "@/lib/content";
 import { BeamButton, Container } from "@/components/ui";
-import { Icon } from "@/components/icons";
 import { RegisterMockup } from "@/components/visuals";
 import { HeroBeams } from "@/components/hero/hero-beams";
 
@@ -104,23 +103,6 @@ export function HeroSection() {
           </div>
 
           <div className="hero-enter-visual relative mx-auto w-full max-w-lg lg:mx-0 lg:max-w-none">
-            <div className="relative pb-12 sm:pb-14 lg:pb-0">
-            {/* Glass stat chip — beside mockup (lg) or corner (sm/md) */}
-            <div className="absolute -bottom-4 -right-2 z-20 hidden sm:block lg:bottom-auto lg:right-full lg:top-[56%] lg:mr-5 lg:-translate-y-1/2">
-              <div className="rounded-2xl border border-white/20 bg-white/10 px-4 py-3 shadow-[0_12px_40px_-12px_rgba(0,0,0,0.55)] backdrop-blur-xl backdrop-saturate-150 ring-1 ring-inset ring-white/15">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-ink-300">
-                  Compliance posture
-                </p>
-                <p className="mt-1 font-display text-2xl font-extrabold leading-none text-white">
-                  98%
-                </p>
-                <p className="mt-1 flex items-center gap-1.5 text-xs text-accent-300">
-                  <Icon.chart className="size-3.5" aria-hidden />
-                  On track today
-                </p>
-              </div>
-            </div>
-
             <div
               aria-hidden
               className="absolute -right-6 -top-6 hidden h-40 w-40 overflow-hidden rounded-2xl opacity-40 lg:block"
@@ -134,7 +116,6 @@ export function HeroSection() {
 
             <div className="border-beam relative overflow-hidden rounded-2xl shadow-[0_24px_80px_-24px_rgba(0,0,0,0.65)]">
               <RegisterMockup />
-            </div>
             </div>
           </div>
         </div>
