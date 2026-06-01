@@ -1,26 +1,562 @@
 @import "tailwindcss";
 
+@theme {
+  /* Brand palette - sourced from the Skefto logo:
+     purple #8d3d97 · teal #0091ae · slate #2d323e */
+
+  /* Ink - neutral slate built around the logo's #2d323e */
+  --color-ink-950: #0e1014;
+  --color-ink-900: #15181f;
+  --color-ink-800: #2d323e;
+  --color-ink-700: #3a4150;
+  --color-ink-600: #4e5667;
+  --color-ink-500: #6a7283;
+  --color-ink-400: #939aa9;
+  --color-ink-300: #bcc1cb;
+  --color-ink-200: #dadde3;
+  --color-ink-100: #eceef2;
+  --color-ink-50: #f5f6f9;
+
+  /* Brand - Skefto purple #8d3d97 */
+  --color-brand-50: #faf4fb;
+  --color-brand-100: #f3e6f5;
+  --color-brand-200: #e7cdeb;
+  --color-brand-300: #d4a9da;
+  --color-brand-400: #ba7cc4;
+  --color-brand-500: #a052ac;
+  --color-brand-600: #8d3d97;
+  --color-brand-700: #75317e;
+  --color-brand-800: #5f2a67;
+  --color-brand-900: #4e2455;
+  --color-brand-950: #321338;
+
+  /* Accent - Skefto teal #0091ae */
+  --color-accent-50: #ecfbff;
+  --color-accent-100: #cff5fd;
+  --color-accent-200: #a4ecfa;
+  --color-accent-300: #67dcf3;
+  --color-accent-400: #28c5e6;
+  --color-accent-500: #0aa7cc;
+  --color-accent-600: #0091ae;
+  --color-accent-700: #04748d;
+  --color-accent-800: #0a5e73;
+  --color-accent-900: #0e4f61;
+
+  --color-sand-50: #f8f8fb;
+  --color-sand-100: #eef0f5;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-jakarta), var(--font-inter), ui-sans-serif, sans-serif;
+
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
+  --radius-3xl: 1.75rem;
+
+  --shadow-soft: 0 1px 2px rgba(20, 24, 31, 0.04), 0 8px 24px -8px rgba(20, 24, 31, 0.12);
+  --shadow-card: 0 1px 3px rgba(20, 24, 31, 0.06), 0 18px 40px -20px rgba(20, 24, 31, 0.22);
+  --shadow-glow: 0 30px 80px -30px rgba(141, 61, 151, 0.45);
+}
+
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #15181f;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  border-color: rgba(45, 50, 62, 0.08);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-brand-200);
+  color: var(--color-ink-900);
+}
+
+/* Utility helpers */
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(45, 50, 62, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(45, 50, 62, 0.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+/* Blueprint grid: fine minor lines + stronger major lines (spec-sheet feel) */
+.bg-blueprint {
+  background-image:
+    linear-gradient(to right, rgba(45, 50, 62, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(45, 50, 62, 0.035) 1px, transparent 1px),
+    linear-gradient(to right, rgba(141, 61, 151, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(141, 61, 151, 0.07) 1px, transparent 1px);
+  background-size:
+    28px 28px,
+    28px 28px,
+    140px 140px,
+    140px 140px;
+}
+
+.bg-grid-dark {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.mask-fade-b {
+  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+}
+
+@keyframes float-soft {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 32s linear infinite;
+}
+
+/* Full-page entrance on first paint */
+@keyframes page-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-page-in {
+  animation: page-in 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ---------- Hero mount (initial page render) ---------- */
+@keyframes hero-enter-up {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes hero-enter-visual {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes hero-enter-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.hero-enter-item {
+  opacity: 0;
+  animation: hero-enter-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(0.07s + var(--hero-i, 0) * 0.09s);
+}
+.hero-enter-visual {
+  opacity: 0;
+  animation: hero-enter-visual 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.28s;
+}
+.hero-enter-beams {
+  opacity: 0;
+  animation: hero-enter-fade 1.4s ease both;
+}
+.hero-enter-ticker {
+  opacity: 0;
+  animation: hero-enter-up 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.72s;
+}
+
+/* ---------- Scroll reveal (sections on enter viewport) ---------- */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.scroll-reveal--in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-reveal-stagger--in > * {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: scroll-reveal-child 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.scroll-reveal-stagger--in > *:nth-child(1) { animation-delay: calc(var(--stagger-step, 80ms) * 0); }
+.scroll-reveal-stagger--in > *:nth-child(2) { animation-delay: calc(var(--stagger-step, 80ms) * 1); }
+.scroll-reveal-stagger--in > *:nth-child(3) { animation-delay: calc(var(--stagger-step, 80ms) * 2); }
+.scroll-reveal-stagger--in > *:nth-child(4) { animation-delay: calc(var(--stagger-step, 80ms) * 3); }
+.scroll-reveal-stagger--in > *:nth-child(5) { animation-delay: calc(var(--stagger-step, 80ms) * 4); }
+.scroll-reveal-stagger--in > *:nth-child(6) { animation-delay: calc(var(--stagger-step, 80ms) * 5); }
+.scroll-reveal-stagger--in > *:nth-child(7) { animation-delay: calc(var(--stagger-step, 80ms) * 6); }
+.scroll-reveal-stagger--in > *:nth-child(8) { animation-delay: calc(var(--stagger-step, 80ms) * 7); }
+
+@keyframes scroll-reveal-child {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-rise {
+  animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-rise-delay-1 { animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.08s both; }
+.animate-rise-delay-2 { animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.16s both; }
+.animate-rise-delay-3 { animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.24s both; }
+
+/* ---------- Animated gradient text (Magic UI) ---------- */
+@keyframes gradient-x {
+  to { background-position: var(--bg-size, 200%) center; }
+}
+.animate-gradient-text {
+  background-size: var(--bg-size, 200%) auto;
+  animation: gradient-x 6s linear infinite;
+}
+
+/* ---------- Animated shiny text (Magic UI) ---------- */
+@keyframes shiny-text {
+  0%, 90%, 100% { background-position: calc(-100% - var(--shiny-w, 100px)) 0; }
+  30%, 60% { background-position: calc(100% + var(--shiny-w, 100px)) 0; }
+}
+.animate-shiny-text {
+  --shiny-w: 90px;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-image: linear-gradient(
+    110deg,
+    transparent 40%,
+    rgba(141, 61, 151, 0.85) 50%,
+    transparent 60%
+  );
+  animation: shiny-text 5s ease-in-out infinite;
+}
+
+/* ---------- Shimmer button (Magic UI) ---------- */
+@keyframes shimmer-slide {
+  to { transform: translate(calc(100cqw - 100%), 0); }
+}
+@keyframes spin-around {
+  0% { transform: translateZ(0) rotate(0); }
+  15%, 35% { transform: translateZ(0) rotate(90deg); }
+  65%, 85% { transform: translateZ(0) rotate(270deg); }
+  100% { transform: translateZ(0) rotate(360deg); }
+}
+.animate-shimmer-slide { animation: shimmer-slide 2.6s ease-in-out infinite alternate; }
+.animate-spin-around { animation: spin-around 5s linear infinite; }
+
+/* ---------- Orbiting circles (Magic UI) ---------- */
+@keyframes orbit {
+  from {
+    transform: translate(-50%, -50%) rotate(var(--orbit-angle, 0deg))
+      translateX(var(--orbit-r, 140px)) rotate(calc(-1 * var(--orbit-angle, 0deg)));
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(calc(var(--orbit-angle, 0deg) + 360deg))
+      translateX(var(--orbit-r, 140px))
+      rotate(calc(-1 * (var(--orbit-angle, 0deg) + 360deg)));
+  }
+}
+.orbit-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* static fallback position (also used under reduced motion) */
+  transform: translate(-50%, -50%) rotate(var(--orbit-angle, 0deg))
+    translateX(var(--orbit-r, 140px)) rotate(calc(-1 * var(--orbit-angle, 0deg)));
+  animation: orbit var(--orbit-duration, 28s) linear infinite;
+  will-change: transform;
+}
+.orbit-item--rev {
+  animation-direction: reverse;
+}
+
+/* ---------- Hero beams (Aceternity Background Beams inspired) ---------- */
+@keyframes hero-beam-dash {
+  0% { stroke-dashoffset: 1200; opacity: 0.15; }
+  50% { opacity: 0.65; }
+  100% { stroke-dashoffset: 0; opacity: 0.15; }
+}
+.hero-beam-path {
+  stroke-dasharray: 80 1200;
+  animation: hero-beam-dash 14s ease-in-out infinite;
+}
+
+/* Editorial highlight - Aceternity Hero Highlight inspired (static marker) */
+.hero-wordmark {
+  position: relative;
+  white-space: nowrap;
+}
+.hero-wordmark::after {
+  content: "";
+  position: absolute;
+  left: -0.05em;
+  right: -0.05em;
+  bottom: 0.08em;
+  height: 0.35em;
+  border-radius: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 145, 174, 0.45),
+    rgba(141, 61, 151, 0.35)
+  );
+  z-index: -1;
+}
+
+/* hero product screenshot 3D reveal (Aceternity container-scroll inspired) */
+.perspective-stage { perspective: 1800px; }
+@keyframes hero-screen-in {
+  from { opacity: 0; transform: translateY(48px) rotateX(20deg) scale(0.93); }
+  to { opacity: 1; transform: translateY(0) rotateX(0deg) scale(1); }
+}
+.animate-hero-screen {
+  transform-origin: center top;
+  animation: hero-screen-in 1.15s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+}
+
+/* badge light sweep */
+@keyframes badge-sweep {
+  0% { transform: translateX(0); }
+  55%, 100% { transform: translateX(420%); }
+}
+.animate-badge-sweep { animation: badge-sweep 4.5s ease-in-out infinite; }
+
+/* ---------- Border beam (conic, Magic UI inspired) ---------- */
+@property --beam-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes beam-spin { to { --beam-angle: 360deg; } }
+.border-beam {
+  position: relative;
+}
+.border-beam::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.6px;
+  background: conic-gradient(
+    from var(--beam-angle),
+    transparent 0%,
+    var(--color-brand-500) 8%,
+    var(--color-accent-500) 18%,
+    transparent 30%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: beam-spin 6s linear infinite;
+  pointer-events: none;
+}
+
+/* Pill CTAs - slightly stronger beam for visibility on white/dark fills */
+.border-beam--cta::after {
+  padding: 2px;
+  background: conic-gradient(
+    from var(--beam-angle),
+    transparent 0%,
+    var(--color-brand-400) 7%,
+    var(--color-accent-400) 16%,
+    var(--color-brand-300) 24%,
+    transparent 34%
+  );
+  animation-duration: 4.5s;
+}
+
+/* Hero primary CTA on dark - brighter beam + outer glow */
+.border-beam--hero-cta {
+  border-radius: 9999px;
+  box-shadow:
+    0 0 28px -6px rgba(141, 61, 151, 0.45),
+    0 0 40px -12px rgba(0, 145, 174, 0.35);
+  transition: box-shadow 0.35s ease;
+}
+.border-beam--hero-cta:hover {
+  box-shadow:
+    0 0 36px -4px rgba(141, 61, 151, 0.55),
+    0 0 56px -8px rgba(0, 145, 174, 0.45),
+    0 12px 40px -16px rgba(0, 0, 0, 0.5);
+}
+.border-beam--hero-cta::after {
+  padding: 2.5px;
+  background: conic-gradient(
+    from var(--beam-angle),
+    transparent 0%,
+    rgba(255, 255, 255, 0.95) 6%,
+    var(--color-accent-300) 14%,
+    var(--color-brand-300) 22%,
+    rgba(255, 255, 255, 0.85) 30%,
+    transparent 40%
+  );
+  animation-duration: 3.2s;
+}
+.beam-btn-hero {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.25s ease,
+    background-color 0.2s ease;
+}
+.beam-btn-hero:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 36px -12px rgba(255, 255, 255, 0.35);
+}
+.beam-btn-hero:active {
+  transform: translateY(0);
+}
+.beam-btn-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    105deg,
+    transparent 42%,
+    rgba(255, 255, 255, 0.55) 50%,
+    transparent 58%
+  );
+  transform: translateX(-130%);
+  transition: none;
+  pointer-events: none;
+}
+.beam-btn-hero:hover::before {
+  animation: hero-cta-shine 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes hero-cta-shine {
+  to {
+    transform: translateX(130%);
+  }
+}
+
+/* ---------- Retro grid (Magic UI) ---------- */
+/* Scroll by exactly one cell so the loop is seamless (no line "jump"). */
+@keyframes grid-move {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 64px; }
+}
+.retro-grid {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  perspective: 220px;
+  opacity: 0.45;
+  mask-image: linear-gradient(to bottom, transparent, black 35%, black 60%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 35%, black 60%, transparent);
+}
+.retro-grid__plane {
+  position: absolute;
+  inset: -100% 0 0;
+  transform: rotateX(58deg);
+  transform-origin: 50% 100%;
+}
+.retro-grid__lines {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(141, 61, 151, 0.35) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(141, 61, 151, 0.35) 1px, transparent 1px);
+  background-size: 64px 64px;
+  background-repeat: repeat;
+  will-change: background-position;
+  animation: grid-move 4.5s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-page-in {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  .scroll-reveal,
+  .scroll-reveal--in {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .scroll-reveal-stagger--in > * {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+  .animate-marquee,
+  .animate-rise,
+  .animate-rise-delay-1,
+  .animate-rise-delay-2,
+  .animate-rise-delay-3,
+  .animate-gradient-text,
+  .animate-shiny-text,
+  .animate-shimmer-slide,
+  .animate-spin-around,
+  .animate-badge-sweep,
+  .animate-hero-screen,
+  .orbit-item,
+  .retro-grid__lines,
+  .border-beam::after,
+  .hero-beam-path,
+  .beam-btn-hero::before,
+  .hero-enter-item,
+  .hero-enter-visual,
+  .hero-enter-beams,
+  .hero-enter-ticker,
+  html { animation: none !important; scroll-behavior: auto; }
+  .beam-btn-hero:hover {
+    transform: none;
+  }
+  .hero-enter-item,
+  .hero-enter-visual,
+  .hero-enter-beams,
+  .hero-enter-ticker {
+    opacity: 1;
+    transform: none;
+  }
 }
