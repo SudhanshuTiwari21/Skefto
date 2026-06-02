@@ -3,7 +3,6 @@ import Link from "next/link";
 import { LINKS, SECTOR_PRELOADS } from "@/lib/content";
 import { BeamButton } from "@/components/ui";
 import { SkeftoGeoMark } from "@/components/skefto-geo-icons";
-import { Icon } from "@/components/icons";
 
 function CopyBlock({
   index,
@@ -25,8 +24,6 @@ function CopyBlock({
 }
 
 export function HeroCopy() {
-  const CheckIcon = Icon.check;
-
   return (
     <div className="relative flex flex-col justify-center lg:py-4 xl:max-w-[32rem]">
       <CopyBlock index={0}>
@@ -51,25 +48,7 @@ export function HeroCopy() {
         </p>
       </CopyBlock>
 
-      <CopyBlock index={3} className="mt-6">
-        <ul className="grid gap-2.5 text-sm text-ink-700 sm:grid-cols-2">
-          {[
-            "Obligations mapped to controls and evidence",
-            "Regulatory change assessed with clear impact",
-            "Audit prep in hours, not weeks",
-            "Board-ready reporting for executives",
-          ].map((b) => (
-            <li key={b} className="flex items-start gap-2.5">
-              <span className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-accent-50 ring-1 ring-accent-100">
-                <CheckIcon className="size-3 text-accent-700" aria-hidden />
-              </span>
-              <span className="leading-snug">{b}</span>
-            </li>
-          ))}
-        </ul>
-      </CopyBlock>
-
-      <CopyBlock index={4} className="mt-7">
+      <CopyBlock index={3} className="mt-7">
         <div className="flex flex-wrap gap-2">
           {SECTOR_PRELOADS.map((s) => (
             <Link
@@ -84,7 +63,7 @@ export function HeroCopy() {
         </div>
       </CopyBlock>
 
-      <CopyBlock index={5} className="mt-8">
+      <CopyBlock index={4} className="mt-8">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
           <BeamButton href={LINKS.demo} fill="brand" size="lg">
             Book a demo
