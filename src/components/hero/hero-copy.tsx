@@ -35,7 +35,7 @@ export function HeroCopy() {
 
       <CopyBlock index={1} className="mt-4">
         <h1 className="font-display text-[2.05rem] font-extrabold leading-[1.08] tracking-[-0.035em] text-ink-900 sm:text-[2.75rem] lg:text-[3.05rem]">
-          Governance, risk, and compliance software for regulated Australian organisations
+          Compliance management software for regulated Australian organisations
         </h1>
       </CopyBlock>
 
