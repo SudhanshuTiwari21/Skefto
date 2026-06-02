@@ -21,7 +21,7 @@ function cx(...parts: Array<string | false | null | undefined>) {
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
-  const [overLight, setOverLight] = useState(false);
+  const [overLight, setOverLight] = useState(true);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -31,7 +31,14 @@ export function SiteHeader() {
       const threshold = hero
         ? hero.getBoundingClientRect().bottom - 88
         : window.innerHeight * 0.72;
-      setOverLight(threshold < 0);
+      const heroIsLight = hero?.classList.contains("hero--light");
+      const inHero = threshold > 0;
+
+      if (heroIsLight && inHero) {
+        setOverLight(true);
+      } else {
+        setOverLight(threshold < 0);
+      }
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });

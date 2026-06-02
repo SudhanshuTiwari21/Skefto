@@ -41,6 +41,35 @@ export const TRUST_TOKENS = [
   "Built to ISO 37301",
 ];
 
+/** Sector preloads - key Skefto differentiator vs generic GRC vendors */
+export const SECTOR_PRELOADS = [
+  { name: "CouncilCloud", href: LINKS.industries.localGov, shape: "hexagon" as const },
+  { name: "CareCloud", href: LINKS.industries.agedCare, shape: "circle" as const },
+  { name: "EducationCloud", href: LINKS.industries.education, shape: "triangle" as const },
+];
+
+/** Customer logos sorted by sector (local government → education → care) */
+export const CUSTOMER_LOGOS: {
+  name: string;
+  src: string;
+  sector: "local-government" | "education" | "care";
+}[] = [
+  { name: "City of Boroondara", src: "/logos/customers/City-of-Boroondara.svg", sector: "local-government" },
+  { name: "City of Cockburn", src: "/logos/customers/Logo_of_the_City_of_Cockburn.svg", sector: "local-government" },
+  { name: "City of Ballarat", src: "/logos/customers/City-of-Ballarat.png", sector: "local-government" },
+  { name: "City of Belmont", src: "/logos/customers/City-of-Belmont-1-e1778156628772.png", sector: "local-government" },
+  { name: "Surf Coast Shire", src: "/logos/customers/Surf-Coast-Shire.png", sector: "local-government" },
+  { name: "Cardinia Shire Council", src: "/logos/customers/Cardinia-Shire-Council.png", sector: "local-government" },
+  { name: "Mitchell Shire Council", src: "/logos/customers/Mitchell-Shire-Council.png", sector: "local-government" },
+  { name: "Macedon Ranges Shire", src: "/logos/customers/Macedon-Rangers-Shire-Council.png", sector: "local-government" },
+  { name: "Shire of West Arthur", src: "/logos/customers/Shire-of-West-Arthur.png", sector: "local-government" },
+  { name: "LG Pro Victoria", src: "/logos/customers/LG-Pro-Victoria-e1778156890544.png", sector: "local-government" },
+  { name: "Bacchus Marsh Grammar", src: "/logos/customers/Bacchus-Marsh-Grammar.png", sector: "education" },
+  { name: "The Gordon", src: "/logos/customers/The-Gordon.png", sector: "education" },
+  { name: "Timboon P-12 School", src: "/logos/customers/Timboon-Heath.png", sector: "education" },
+  { name: "Merymead Catholic Care", src: "/logos/customers/header__logo_mcc_stacked.svg", sector: "care" },
+];
+
 /* --------------------------- Capabilities --------------------------- */
 export const CAPABILITIES: { title: string; body: string; icon: IconName }[] = [
   {

@@ -5,7 +5,7 @@ import { Container, InlineLink, SectionHeading, ShimmerButton } from "@/componen
 
 type Capability = (typeof CAPABILITIES)[number];
 
-/** Grid: row1 = obligations | calendar | policy — row2 = reporting | audit | attestations */
+/** Grid: row1 = obligations | calendar | policy - row2 = reporting | audit | attestations */
 const LAYOUT: {
   className: string;
   variant: "featured" | "default" | "dark";

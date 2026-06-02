@@ -86,12 +86,14 @@ export function Button({
 }
 
 /* ------------------------- BeamButton (moving border) ---------------- */
-type BeamFill = "white" | "ink";
+type BeamFill = "white" | "ink" | "brand";
 type BeamSize = "md" | "lg";
 
 const BEAM_FILL: Record<BeamFill, string> = {
   white: "bg-white text-ink-900 hover:bg-ink-100",
   ink: "bg-ink-900 text-white hover:bg-ink-800",
+  brand:
+    "bg-brand-600 text-white shadow-[0_8px_28px_-8px_rgba(141,61,151,0.55)] hover:bg-brand-500",
 };
 
 const BEAM_SIZE: Record<BeamSize, string> = {
@@ -277,16 +279,26 @@ export function SectionHeading({
       {eyebrow ? (
         <span
           className={cx(
-            "inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em]",
+            "inline-flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.16em]",
             invert ? "text-brand-300" : "text-brand-600",
           )}
         >
           <span
             className={cx(
-              "h-px w-5",
-              invert ? "bg-brand-300/60" : "bg-brand-400/70",
+              "grid size-[1.125rem] place-items-center rounded-[4px] border-2",
+              invert
+                ? "border-brand-300/60 bg-brand-500/10"
+                : "border-brand-500/50 bg-brand-50",
             )}
-          />
+            aria-hidden
+          >
+            <span
+              className={cx(
+                "block size-1.5 rotate-45",
+                invert ? "bg-brand-300" : "bg-brand-600",
+              )}
+            />
+          </span>
           {eyebrow}
         </span>
       ) : null}
