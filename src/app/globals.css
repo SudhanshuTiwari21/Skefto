@@ -294,9 +294,6 @@ body {
 /* Orbiting accent dots (replaces text chips) */
 .hero-sparkle-ring {
   pointer-events: none;
-}
-
-.hero-sparkle-ring {
   animation: hero-orbit-spin 22s linear infinite;
 }
 
@@ -579,6 +576,21 @@ body {
     transparent 40%
   );
   animation-duration: 3.2s;
+}
+
+/* Product panel beam (rectangular, not pill) */
+.border-beam--panel::after {
+  padding: 2.2px;
+  background: conic-gradient(
+    from var(--beam-angle),
+    transparent 0%,
+    rgba(255, 255, 255, 0.75) 7%,
+    var(--color-accent-400) 14%,
+    var(--color-brand-400) 22%,
+    rgba(255, 255, 255, 0.6) 30%,
+    transparent 42%
+  );
+  animation-duration: 4.2s;
 }
 .beam-btn-hero {
   position: relative;

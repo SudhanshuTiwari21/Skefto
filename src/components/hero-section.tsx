@@ -3,7 +3,6 @@ import Image from "next/image";
 import { CUSTOMER_LOGOS } from "@/lib/content";
 import { Container } from "@/components/ui";
 import { HeroCopy } from "@/components/hero/hero-copy";
-import { HeroDecor } from "@/components/hero/hero-decor";
 import { HeroProductShowcase } from "@/components/hero/hero-product-showcase";
 
 const TICKER = [
@@ -19,11 +18,11 @@ function HeroEnter({
   index,
   children,
   className = "",
-}: {
+}: Readonly<{
   index: number;
   children: ReactNode;
   className?: string;
-}) {
+}>) {
   return (
     <div
       className={`hero-enter-item ${className}`}
@@ -47,7 +46,7 @@ function HeroLogoStrip() {
           {logos.map((logo, i) => (
             <div
               key={`${logo.name}-${i}`}
-              className="flex h-10 w-28 shrink-0 items-center justify-center opacity-60 grayscale transition-opacity hover:opacity-100 sm:h-11 sm:w-32"
+              className="flex h-10 w-28 shrink-0 items-center justify-center opacity-70 grayscale transition-opacity hover:opacity-100 sm:h-11 sm:w-32"
             >
               <Image
                 src={logo.src}
@@ -73,7 +72,20 @@ export function HeroSection() {
       data-theme="light"
       className="hero--light relative isolate overflow-hidden bg-white text-ink-900"
     >
-      <HeroDecor />
+      {/* Light enterprise background: sand + subtle brand wash (no spacey effects) */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 bg-sand-50" />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-blueprint opacity-[0.32]"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -left-32 top-24 size-[28rem] rounded-full bg-[radial-gradient(circle,rgba(141,61,151,0.10),transparent_65%)]"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -right-40 top-10 size-[34rem] rounded-full bg-[radial-gradient(circle,rgba(0,145,174,0.10),transparent_65%)]"
+      />
 
       <Container className="relative pt-[5.5rem] sm:pt-32 lg:pt-36">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-12 xl:gap-16">
@@ -89,7 +101,7 @@ export function HeroSection() {
         </HeroEnter>
       </Container>
 
-      <div className="hero-enter-ticker relative mt-10 border-t border-ink-900/6 bg-sand-50 sm:mt-12">
+      <div className="hero-enter-ticker relative mt-10 border-t border-ink-900/6 bg-white/70 sm:mt-12">
         <div className="overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
           <div className="flex w-max animate-marquee items-center py-3.5">
             {marquee.map((label, i) => (
