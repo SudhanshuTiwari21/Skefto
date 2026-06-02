@@ -35,16 +35,13 @@ export function HeroCopy() {
 
       <CopyBlock index={1} className="mt-4">
         <h1 className="font-display text-[2.05rem] font-extrabold leading-[1.08] tracking-[-0.035em] text-ink-900 sm:text-[2.75rem] lg:text-[3.05rem]">
-          Enterprise compliance for{" "}
-          <span className="text-brand-600">Australian</span> councils,
-          hospitals &amp; government agencies
+          Governance, risk, and compliance software for regulated Australian organisations
         </h1>
       </CopyBlock>
 
       <CopyBlock index={2} className="mt-5">
         <p className="max-w-[32rem] text-pretty text-base leading-7 text-ink-600 sm:text-[1.0625rem] sm:leading-8">
-          Replace spreadsheets with an auditable system for obligations, regulatory
-          change, audits and evidence - plus board-ready reporting.
+          One platform for obligations, regulatory change, audits, and evidence — built for councils, hospitals, government, and regulated industries across Australia.
         </p>
       </CopyBlock>
 
