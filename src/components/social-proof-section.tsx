@@ -44,7 +44,7 @@ export function SocialProofSection() {
         <SectionHeading
           eyebrow="Proof & outcomes"
           title="Trusted by organisations that take compliance seriously"
-          subtitle="Real outcomes from regulated teams — not generic marketing claims."
+          subtitle="Real outcomes from regulated teams - not generic marketing claims."
         />
 
         <LogoStrip />
@@ -146,7 +146,7 @@ export function SocialProofSection() {
               </p>
               <p className="mt-2 text-sm leading-6 text-ink-600">
                 Get a walkthrough mapped to your sector, frameworks, and reporting
-                needs — with time for your questions.
+                needs - with time for your questions.
               </p>
               <div className="mt-5">
                 <BeamButton href={LINKS.demo} fill="brand" size="lg">

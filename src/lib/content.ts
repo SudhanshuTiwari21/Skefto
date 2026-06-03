@@ -41,7 +41,7 @@ export const TRUST_TOKENS = [
   "Built to ISO 37301",
 ];
 
-/** Hero — minimal trust row under CTAs (3 items max) */
+/** Hero - minimal trust row under CTAs (3 items max) */
 export const HERO_TRUST_TOKENS = [
   "Australian-hosted data",
   "Government-certified centres",

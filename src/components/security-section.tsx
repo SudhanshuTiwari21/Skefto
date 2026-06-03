@@ -15,7 +15,7 @@ export function SecuritySection() {
         <SectionHeading
           eyebrow="Data sovereignty & security"
           title="Your compliance data stays in Australia"
-          subtitle="Government-certified hosting and enterprise-grade security by default — because trust is non-negotiable for regulated teams."
+          subtitle="Government-certified hosting and enterprise-grade security by default - because trust is non-negotiable for regulated teams."
         />
 
         <div className="mt-14 grid gap-6 lg:grid-cols-[0.92fr_1.08fr] lg:gap-8">

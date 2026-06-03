@@ -141,8 +141,8 @@ export function WhySkeftoSection() {
       <Container className="relative">
         <SectionHeading
           eyebrow="Why Skefto"
-          title="More than software — a compliance partner"
-          subtitle="Software, advisory, and training from one Australian team — so you implement faster, stay audit-ready, and build capability that lasts."
+          title="More than software - a compliance partner"
+          subtitle="Software, advisory, and training from one Australian team - so you implement faster, stay audit-ready, and build capability that lasts."
         />
 
         <div className="mt-10 sm:mt-12">
@@ -199,7 +199,7 @@ export function WhySkeftoSection() {
                 <span className="font-semibold text-ink-900">
                   One partner, end to end.
                 </span>{" "}
-                Platform, expert guidance, and training — without juggling vendors.
+                Platform, expert guidance, and training - without juggling vendors.
               </p>
               <div className="flex shrink-0 flex-col gap-2.5 sm:flex-row sm:items-center">
                 <BeamButton href={LINKS.demo} fill="brand" size="lg">
