@@ -250,6 +250,8 @@ export const WHY_SKEFTO: {
   title: string;
   body: string;
   icon: IconName;
+  proof: string;
+  featured?: boolean;
   href?: string;
   linkLabel?: string;
 }[] = [
@@ -257,11 +259,14 @@ export const WHY_SKEFTO: {
     title: "All-in-one software",
     body: "A single compliance platform that is quick to implement and easy to scale, with ready-made templates for Australian sectors.",
     icon: "sliders",
+    proof: "Live in weeks",
   },
   {
     title: "Expert advisory",
     body: "Independent guidance from specialists with 20+ years strengthening compliance frameworks for the public sector.",
     icon: "users",
+    proof: "20+ years in GRC",
+    featured: true,
     href: LINKS.services.advisory,
     linkLabel: "Explore risk advisory",
   },
@@ -269,10 +274,24 @@ export const WHY_SKEFTO: {
     title: "Practical training",
     body: "Role-based programs that build compliance capability at every level - from frontline staff to boards.",
     icon: "cap",
+    proof: "85+ training NPS",
     href: LINKS.services.training,
     linkLabel: "Explore training",
   },
 ];
+
+export const WHY_PROOF = [
+  { value: "20+", label: "Years in Australian GRC" },
+  { value: "85+", label: "Average training NPS" },
+  { value: "1,000s", label: "Public sector staff trained" },
+] as const;
+
+export const DEMO_HIGHLIGHTS = [
+  "Walkthrough tailored to your obligations and sector",
+  "See obligations register, calendar, and audit workflows",
+  "Discuss implementation timeline and data residency",
+  "No obligation — speak with a specialist, not a script",
+] as const;
 
 /* --------------------------- Social proof --------------------------- */
 export const TESTIMONIALS = [
