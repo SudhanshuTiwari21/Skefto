@@ -1,5 +1,4 @@
-import { DEMO_HIGHLIGHTS, LINKS } from "@/lib/content";
-import { BeamButton, Container, SectionHeading } from "@/components/ui";
+import { Container, SectionHeading } from "@/components/ui";
 import { Icon } from "@/components/icons";
 import { Faq } from "@/components/faq";
 
@@ -19,7 +18,7 @@ export function DemoFaqSection() {
         <SectionHeading
           eyebrow="See it in action"
           title="See Skefto compliance software in action"
-          subtitle="Watch a short overview, then explore common questions — or book a tailored walkthrough."
+          subtitle="Watch a short overview, then explore common questions."
         />
 
         <div className="mt-14 grid gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-12">
@@ -49,37 +48,6 @@ export function DemoFaqSection() {
                   Skefto Compliance
                 </span>
               </div>
-            </div>
-
-            <div className="mt-6 rounded-2xl border border-ink-900/8 bg-white p-5 shadow-soft sm:p-6">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-600">
-                In your demo
-              </p>
-              <ul className="mt-4 space-y-3">
-                {DEMO_HIGHLIGHTS.map((item) => (
-                  <li
-                    key={item}
-                    className="flex items-start gap-3 text-sm leading-6 text-ink-700"
-                  >
-                    <span className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-brand-50 text-brand-700">
-                      <Icon.check className="size-3.5" />
-                    </span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <BeamButton href={LINKS.demo} fill="brand" size="lg">
-                Book a demo
-              </BeamButton>
-              <a
-                href={LINKS.contact}
-                className="inline-flex h-12 items-center justify-center rounded-full border border-ink-200 bg-white px-6 text-sm font-semibold text-ink-800 shadow-sm transition-colors hover:border-brand-300 hover:text-brand-700"
-              >
-                Speak with a specialist
-              </a>
             </div>
           </div>
 

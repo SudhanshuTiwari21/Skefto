@@ -41,6 +41,13 @@ export const TRUST_TOKENS = [
   "Built to ISO 37301",
 ];
 
+/** Hero — minimal trust row under CTAs (3 items max) */
+export const HERO_TRUST_TOKENS = [
+  "Australian-hosted data",
+  "Government-certified centres",
+  "Built to ISO 37301",
+] as const;
+
 /** Sector preloads - key Skefto differentiator vs generic GRC vendors */
 export const SECTOR_PRELOADS = [
   { name: "CouncilCloud", href: LINKS.industries.localGov, shape: "hexagon" as const },
@@ -284,13 +291,6 @@ export const WHY_PROOF = [
   { value: "20+", label: "Years in Australian GRC" },
   { value: "85+", label: "Average training NPS" },
   { value: "1,000s", label: "Public sector staff trained" },
-] as const;
-
-export const DEMO_HIGHLIGHTS = [
-  "Walkthrough tailored to your obligations and sector",
-  "See obligations register, calendar, and audit workflows",
-  "Discuss implementation timeline and data residency",
-  "No obligation — speak with a specialist, not a script",
 ] as const;
 
 /* --------------------------- Social proof --------------------------- */

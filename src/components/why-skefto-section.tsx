@@ -1,186 +1,218 @@
 import Link from "next/link";
 import { LINKS, WHY_PROOF, WHY_SKEFTO } from "@/lib/content";
-import {
-  BeamButton,
-  Container,
-  InlineLink,
-  SectionHeading,
-} from "@/components/ui";
+import { BeamButton, Container, InlineLink, SectionHeading } from "@/components/ui";
 import { Icon, type IconName } from "@/components/icons";
 
-function WhyCard({
-  title,
-  body,
-  icon,
-  proof,
-  featured,
-  href,
-  linkLabel,
-  index,
-  className = "",
-}: (typeof WHY_SKEFTO)[number] & { index: string; className?: string }) {
-  const I = Icon[icon as IconName];
+const PILLAR_ACCENT = [
+  {
+    ring: "from-brand-500/20 via-brand-400/10 to-transparent",
+    icon: "bg-gradient-to-br from-brand-600 to-brand-500 text-white shadow-[0_8px_24px_-8px_rgba(141,61,151,0.45)]",
+    tag: "text-brand-700 bg-brand-50 ring-brand-100",
+  },
+  {
+    ring: "from-accent-500/25 via-brand-500/10 to-transparent",
+    icon: "bg-gradient-to-br from-accent-600 to-brand-600 text-white shadow-[0_8px_24px_-8px_rgba(0,145,174,0.4)]",
+    tag: "text-accent-800 bg-accent-50 ring-accent-100",
+  },
+  {
+    ring: "from-ink-400/15 via-brand-400/8 to-transparent",
+    icon: "bg-gradient-to-br from-ink-800 to-ink-700 text-white shadow-[0_8px_24px_-8px_rgba(20,24,31,0.35)]",
+    tag: "text-ink-700 bg-ink-50 ring-ink-100",
+  },
+] as const;
 
-  if (featured) {
-    return (
-      <article className={`group relative overflow-hidden rounded-3xl border border-ink-800 bg-ink-950 p-6 text-white shadow-[0_24px_60px_-28px_rgba(20,24,31,0.55)] sm:p-7 lg:flex lg:flex-col lg:justify-between ${className}`}>
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 bg-blueprint opacity-[0.14]"
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -right-10 -top-10 size-44 rounded-full bg-[radial-gradient(circle,rgba(141,61,151,0.35),transparent_68%)]"
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -bottom-16 -left-8 size-40 rounded-full bg-[radial-gradient(circle,rgba(0,145,174,0.28),transparent_70%)]"
-        />
-        <div className="border-beam absolute inset-0 rounded-3xl opacity-70" />
-
-        <div className="relative">
-          <div className="flex items-start justify-between gap-4">
-            <span className="font-mono text-[11px] font-medium tracking-[0.2em] text-ink-400">
-              {index}
-            </span>
-            <span className="inline-flex size-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-accent-300">
-              <I className="size-5" />
-            </span>
-          </div>
-          <p className="mt-5 inline-flex rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-accent-200">
-            {proof}
-          </p>
-          <h3 className="mt-4 font-display text-2xl font-bold tracking-tight text-white">
-            {title}
-          </h3>
-          <p className="mt-3 max-w-sm text-pretty text-sm leading-7 text-ink-300">
-            {body}
-          </p>
-        </div>
-
-        {href && linkLabel ? (
-          <p className="relative mt-6 border-t border-white/10 pt-5">
-            <Link
-              href={href}
-              className="group/link inline-flex items-center gap-1.5 text-sm font-semibold text-white transition-colors hover:text-accent-200"
-            >
-              {linkLabel}
-              <Icon.arrow className="size-4 transition-transform group-hover/link:translate-x-0.5" />
-            </Link>
-          </p>
-        ) : null}
-      </article>
-    );
-  }
-
+function ProofRibbon() {
   return (
-    <article className={`group relative flex flex-col overflow-hidden rounded-3xl border border-ink-900/8 bg-white p-6 shadow-soft transition-[border-color,box-shadow] duration-300 hover:border-brand-200/80 hover:shadow-card sm:p-7 ${className}`}>
+    <div className="relative overflow-hidden rounded-2xl border border-ink-900/8 bg-white/80 shadow-soft backdrop-blur-md">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-400/45 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-400/60 to-transparent"
       />
-      <div className="border-beam absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+      <ul className="grid divide-y divide-ink-100 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+        {WHY_PROOF.map((item, i) => (
+          <li
+            key={item.label}
+            className="flex flex-col items-center px-6 py-5 text-center sm:py-6"
+          >
+            <p className="font-display text-3xl font-extrabold tracking-tight sm:text-[2rem]">
+              <span
+                className={
+                  i === 0
+                    ? "bg-gradient-to-r from-brand-600 to-brand-500 bg-clip-text text-transparent"
+                    : i === 1
+                      ? "bg-gradient-to-r from-accent-600 to-accent-500 bg-clip-text text-transparent"
+                      : "bg-gradient-to-r from-ink-800 to-ink-600 bg-clip-text text-transparent"
+                }
+              >
+                {item.value}
+              </span>
+            </p>
+            <p className="mt-1 max-w-[11rem] text-xs font-medium leading-5 text-ink-500">
+              {item.label}
+            </p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
-      <div className="relative flex items-start justify-between gap-4">
-        <span className="font-mono text-[11px] font-medium tracking-[0.2em] text-ink-400">
-          {index}
-        </span>
-        <span className="inline-flex size-10 items-center justify-center rounded-xl border border-ink-900/10 bg-white text-brand-700 shadow-[inset_0_1px_0_rgba(255,255,255,0.9)]">
-          <I className="size-[1.15rem]" />
-        </span>
-      </div>
-      <p className="relative mt-5 inline-flex w-fit rounded-full bg-brand-50 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-brand-700">
-        {proof}
-      </p>
-      <h3 className="relative mt-3 font-display text-xl font-bold tracking-tight text-ink-900">
-        {title}
-      </h3>
-      <p className="relative mt-2 flex-1 text-pretty text-sm leading-7 text-ink-600">
-        {body}
-      </p>
-      {href && linkLabel ? (
-        <p className="relative mt-5 border-t border-ink-900/6 pt-4">
-          <InlineLink href={href}>
-            {linkLabel}
-            <Icon.arrow className="size-4" />
-          </InlineLink>
-        </p>
+function PartnerPillar({
+  item,
+  index,
+}: Readonly<{
+  item: (typeof WHY_SKEFTO)[number];
+  index: number;
+}>) {
+  const I = Icon[item.icon as IconName];
+  const accent = PILLAR_ACCENT[index] ?? PILLAR_ACCENT[0];
+  const isCenter = index === 1;
+
+  return (
+    <article
+      className={`group relative flex flex-col px-6 py-8 sm:px-8 sm:py-10 lg:px-10 ${
+        isCenter
+          ? "bg-gradient-to-b from-brand-50/90 via-white to-accent-50/40 lg:py-12"
+          : "bg-white"
+      }`}
+    >
+      {isCenter ? (
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-6 top-0 h-px bg-gradient-to-r from-brand-300/0 via-brand-400/70 to-brand-300/0 sm:inset-x-8"
+        />
       ) : null}
+
+      <div
+        aria-hidden
+        className={`pointer-events-none absolute -right-8 -top-8 size-32 rounded-full bg-gradient-to-br ${accent.ring} opacity-80 transition-opacity duration-500 group-hover:opacity-100`}
+      />
+
+      <div className="relative">
+        <div
+          className={`inline-flex size-14 items-center justify-center rounded-2xl ${accent.icon} transition-transform duration-300 group-hover:scale-[1.03]`}
+        >
+          <I className="size-6" />
+        </div>
+
+        <p
+          className={`mt-6 inline-flex rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] ring-1 ring-inset ${accent.tag}`}
+        >
+          {item.proof}
+        </p>
+
+        <h3 className="mt-4 font-display text-xl font-bold tracking-tight text-ink-900 sm:text-[1.35rem]">
+          {item.title}
+        </h3>
+        <p className="mt-3 text-pretty text-sm leading-7 text-ink-600">
+          {item.body}
+        </p>
+
+        {item.href && item.linkLabel ? (
+          <p className="mt-6">
+            <InlineLink href={item.href}>
+              {item.linkLabel}
+              <Icon.arrow className="size-4" />
+            </InlineLink>
+          </p>
+        ) : (
+          <p className="mt-6 text-sm font-medium text-ink-400">
+            Included with your Skefto platform
+          </p>
+        )}
+      </div>
     </article>
   );
 }
 
 export function WhySkeftoSection() {
-  const cardOrder = ["01", "02", "03"] as const;
-
   return (
     <section className="relative overflow-hidden py-20 sm:py-28">
-      <div aria-hidden className="pointer-events-none absolute inset-0 bg-sand-50" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 bg-white" />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 bg-blueprint opacity-[0.38]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(141,61,151,0.09),transparent_55%),radial-gradient(ellipse_60%_40%_at_100%_50%,rgba(0,145,174,0.06),transparent_50%)]"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute right-0 top-0 h-[480px] w-[min(640px,70vw)] rounded-full bg-[radial-gradient(closest-side,rgba(141,61,151,0.08),transparent)]"
+        className="pointer-events-none absolute inset-0 bg-blueprint opacity-[0.22]"
       />
 
       <Container className="relative">
-        <div className="grid items-start gap-12 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-16 xl:gap-20">
-          <div className="lg:sticky lg:top-28">
-            <SectionHeading
-              eyebrow="Why Skefto"
-              title="More than software — a compliance partner"
-              subtitle="Software, advisory, and training from a team with 20+ years in Australian governance, risk, and compliance."
-              align="left"
-            />
+        <SectionHeading
+          eyebrow="Why Skefto"
+          title="More than software — a compliance partner"
+          subtitle="Software, advisory, and training from one Australian team — so you implement faster, stay audit-ready, and build capability that lasts."
+        />
 
-            <div className="mt-8 grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
-              {WHY_PROOF.map((item) => (
-                <div
-                  key={item.label}
-                  className="rounded-2xl border border-ink-900/8 bg-white/90 px-4 py-4 shadow-soft backdrop-blur-sm"
-                >
-                  <p className="font-display text-2xl font-extrabold tracking-tight text-ink-900">
-                    <span className="bg-gradient-to-r from-brand-600 to-accent-600 bg-clip-text text-transparent">
-                      {item.value}
+        <div className="mt-10 sm:mt-12">
+          <ProofRibbon />
+        </div>
+
+        <div className="relative mt-8 sm:mt-10">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -inset-px rounded-[1.75rem] bg-gradient-to-br from-brand-400/35 via-ink-200/40 to-accent-400/35 opacity-80"
+          />
+          <div className="relative overflow-hidden rounded-[1.65rem] border border-ink-900/8 bg-white shadow-[0_32px_80px_-40px_rgba(20,24,31,0.18)]">
+            <div
+              aria-hidden
+              className="flex items-center justify-center gap-0 border-b border-ink-100 bg-sand-50/80 px-4 py-5 sm:px-8"
+            >
+              {WHY_SKEFTO.map((item, i) => {
+                const I = Icon[item.icon as IconName];
+                return (
+                  <div key={item.title} className="flex flex-1 items-center justify-center">
+                    {i > 0 ? (
+                      <span
+                        aria-hidden
+                        className="mx-2 hidden h-px flex-1 max-w-[4rem] bg-gradient-to-r from-ink-200 to-brand-300/50 sm:mx-4 sm:block lg:max-w-[6rem]"
+                      />
+                    ) : null}
+                    <span className="flex flex-col items-center gap-2 text-center">
+                      <span className="grid size-9 place-items-center rounded-full border border-brand-200/80 bg-white text-brand-600 shadow-sm">
+                        <I className="size-4" />
+                      </span>
+                      <span className="hidden text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-500 sm:block">
+                        {item.title.split(" ")[0]}
+                      </span>
                     </span>
-                  </p>
-                  <p className="mt-1 text-xs font-medium leading-5 text-ink-500">
-                    {item.label}
-                  </p>
-                </div>
+                    {i < WHY_SKEFTO.length - 1 ? (
+                      <span
+                        aria-hidden
+                        className="mx-2 hidden h-px flex-1 max-w-[4rem] bg-gradient-to-l from-ink-200 to-brand-300/50 sm:mx-4 sm:block lg:max-w-[6rem]"
+                      />
+                    ) : null}
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="grid lg:grid-cols-3 lg:divide-x lg:divide-ink-100">
+              {WHY_SKEFTO.map((item, i) => (
+                <PartnerPillar key={item.title} item={item} index={i} />
               ))}
             </div>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <BeamButton href={LINKS.demo} fill="brand" size="lg">
-                Book a demo
-              </BeamButton>
-              <Link
-                href={LINKS.contact}
-                className="inline-flex h-12 items-center justify-center rounded-full border border-ink-200 bg-white px-6 text-sm font-semibold text-ink-800 shadow-sm transition-colors hover:border-brand-300 hover:text-brand-700"
-              >
-                Talk to our team
-              </Link>
+            <div className="flex flex-col items-center justify-between gap-4 border-t border-ink-100 bg-gradient-to-r from-sand-50/90 via-white to-brand-50/30 px-6 py-6 sm:flex-row sm:px-8 sm:py-7">
+              <p className="text-center text-sm text-ink-600 sm:text-left">
+                <span className="font-semibold text-ink-900">
+                  One partner, end to end.
+                </span>{" "}
+                Platform, expert guidance, and training — without juggling vendors.
+              </p>
+              <div className="flex shrink-0 flex-col gap-2.5 sm:flex-row sm:items-center">
+                <BeamButton href={LINKS.demo} fill="brand" size="lg">
+                  Book a demo
+                </BeamButton>
+                <Link
+                  href={LINKS.contact}
+                  className="inline-flex h-12 items-center justify-center rounded-full border border-ink-200 bg-white px-6 text-sm font-semibold text-ink-800 shadow-sm transition-colors hover:border-brand-300 hover:text-brand-700"
+                >
+                  Talk to our team
+                </Link>
+              </div>
             </div>
-          </div>
-
-          <div className="grid gap-5 lg:grid-cols-[1fr_1.05fr] lg:grid-rows-2">
-            {WHY_SKEFTO.map((item, i) => (
-              <WhyCard
-                key={item.title}
-                {...item}
-                index={cardOrder[i]}
-                className={
-                  item.featured
-                    ? "lg:col-start-2 lg:row-start-1 lg:row-span-2"
-                    : i === 0
-                      ? "lg:col-start-1 lg:row-start-1"
-                      : "lg:col-start-1 lg:row-start-2"
-                }
-              />
-            ))}
           </div>
         </div>
       </Container>

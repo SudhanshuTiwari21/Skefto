@@ -1,7 +1,8 @@
 import type { CSSProperties, ReactNode } from "react";
 import Link from "next/link";
-import { LINKS, SECTOR_PRELOADS } from "@/lib/content";
+import { HERO_TRUST_TOKENS, LINKS, SECTOR_PRELOADS } from "@/lib/content";
 import { BeamButton } from "@/components/ui";
+import { Icon } from "@/components/icons";
 import { SkeftoGeoMark } from "@/components/skefto-geo-icons";
 
 function CopyBlock({
@@ -74,7 +75,21 @@ export function HeroCopy() {
         </div>
       </CopyBlock>
 
-      {/* Trust & standards list removed per request */}
+      <CopyBlock index={5} className="mt-6">
+        <ul className="flex flex-wrap gap-x-5 gap-y-2.5">
+          {HERO_TRUST_TOKENS.map((token) => (
+            <li
+              key={token}
+              className="inline-flex items-center gap-2 text-sm font-medium text-ink-600"
+            >
+              <span className="grid size-5 shrink-0 place-items-center rounded-full bg-brand-50 text-brand-700">
+                <Icon.check className="size-3.5" />
+              </span>
+              {token}
+            </li>
+          ))}
+        </ul>
+      </CopyBlock>
     </div>
   );
 }
