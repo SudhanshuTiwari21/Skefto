@@ -8,8 +8,8 @@ import { BeamButton } from "@/components/ui";
 import { Icon } from "@/components/icons";
 
 const NAV = [
-  { label: "Security", href: "#security" },
   { label: "Capabilities", href: "#capabilities" },
+  { label: "Security", href: "#security" },
   { label: "Obligations", href: "#obligations" },
   { label: "Industries", href: "#industries" },
   { label: "FAQ", href: "#faq" },

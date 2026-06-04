@@ -79,10 +79,10 @@ export default function Page() {
           <TrustBar />
         </Reveal>
         <Reveal>
-          <SecuritySection />
+          <CapabilitiesBento />
         </Reveal>
         <Reveal>
-          <CapabilitiesBento />
+          <SecuritySection />
         </Reveal>
         <Reveal>
           <ComplianceDeepDiveSection />
