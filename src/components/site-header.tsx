@@ -11,7 +11,6 @@ const NAV = [
   { label: "Security", href: "#security" },
   { label: "Capabilities", href: "#capabilities" },
   { label: "Obligations", href: "#obligations" },
-  { label: "Standards", href: "#standards" },
   { label: "Industries", href: "#industries" },
   { label: "FAQ", href: "#faq" },
 ];
@@ -63,14 +62,14 @@ export function SiteHeader() {
     <header className="pointer-events-none fixed inset-x-0 top-0 z-[100] isolate px-4 pt-4 sm:px-6 sm:pt-5">
       <div
         className={cx(
-          "pointer-events-auto relative mx-auto max-w-5xl transition-all duration-300",
+          "pointer-events-auto relative mx-auto max-w-6xl transition-all duration-300",
           open && "z-50",
         )}
       >
         {/* Glass pill */}
         <div
           className={cx(
-            "relative flex h-14 items-center justify-between gap-3 rounded-full border px-3 pl-4 sm:h-[3.75rem] sm:px-4 sm:pl-5",
+            "relative flex h-14 items-center gap-2 rounded-full border px-3 pl-4 sm:h-[3.75rem] sm:gap-3 sm:px-4 sm:pl-5",
             "backdrop-blur-xl backdrop-saturate-150",
             /* Even fill - no gradient overlay (that caused the “faded” right side on dark hero) */
             onDark
@@ -112,49 +111,53 @@ export function SiteHeader() {
           </Link>
 
           <nav
-            className="absolute left-1/2 top-1/2 z-10 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-1 lg:flex"
+            className="hidden min-w-0 flex-1 justify-center lg:flex"
             aria-label="Primary"
           >
-            {NAV.map((n) => (
-              <a
-                key={n.href}
-                href={n.href}
-                className={cx(
-                  "group relative rounded-full px-3.5 py-2 text-sm font-medium transition-colors",
-                  onDark
-                    ? "text-ink-200 hover:text-white"
-                    : "text-ink-700 hover:text-ink-900",
-                )}
-              >
-                {n.label}
-                <span
-                  aria-hidden
-                  className="absolute bottom-1 left-1/2 h-0.5 w-0 -translate-x-1/2 rounded-full bg-accent-600 transition-all duration-200 group-hover:w-5 group-focus-visible:w-5"
-                />
-              </a>
-            ))}
+            <ul className="flex max-w-full items-center gap-0.5 xl:gap-1">
+              {NAV.map((n) => (
+                <li key={n.href} className="shrink-0">
+                  <a
+                    href={n.href}
+                    className={cx(
+                      "group relative block whitespace-nowrap rounded-full px-2.5 py-2 text-[13px] font-medium transition-colors xl:px-3 xl:text-sm",
+                      onDark
+                        ? "text-ink-200 hover:text-white"
+                        : "text-ink-700 hover:text-ink-900",
+                    )}
+                  >
+                    {n.label}
+                    <span
+                      aria-hidden
+                      className="absolute bottom-1 left-1/2 h-0.5 w-0 -translate-x-1/2 rounded-full bg-accent-600 transition-all duration-200 group-hover:w-5 group-focus-visible:w-5"
+                    />
+                  </a>
+                </li>
+              ))}
+            </ul>
           </nav>
 
-          <div className="relative z-10 hidden items-center gap-2 lg:flex">
-            <Link
-              href={LINKS.contact}
-              className={cx(
-                "inline-flex h-9 items-center justify-center rounded-full border px-4 text-sm font-semibold transition-colors",
-                onDark
-                  ? "border-white/25 bg-white/10 text-white hover:bg-white/15"
-                  : "border-ink-200 bg-white text-ink-800 hover:border-brand-200 hover:text-brand-800",
-              )}
-            >
-              Contact
-            </Link>
-            <BeamButton
-              href={LINKS.demo}
-              fill={onDark ? "white" : "ink"}
-              size="md"
-            >
-              Book a demo
-            </BeamButton>
-          </div>
+          <div className="relative z-10 ml-auto flex shrink-0 items-center gap-1.5 sm:gap-2">
+            <div className="hidden items-center gap-1.5 sm:gap-2 lg:flex">
+              <Link
+                href={LINKS.contact}
+                className={cx(
+                  "inline-flex h-9 shrink-0 items-center justify-center rounded-full border px-3.5 text-sm font-semibold transition-colors xl:px-4",
+                  onDark
+                    ? "border-white/25 bg-white/10 text-white hover:bg-white/15"
+                    : "border-ink-200 bg-white text-ink-800 hover:border-brand-200 hover:text-brand-800",
+                )}
+              >
+                Contact
+              </Link>
+              <BeamButton
+                href={LINKS.demo}
+                fill={onDark ? "white" : "ink"}
+                size="md"
+              >
+                Book a demo
+              </BeamButton>
+            </div>
 
           <button
             type="button"
@@ -192,6 +195,7 @@ export function SiteHeader() {
               </svg>
             )}
           </button>
+          </div>
         </div>
 
         {/* Mobile menu - glass panel */}

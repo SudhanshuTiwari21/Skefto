@@ -120,8 +120,8 @@ export function TrustPartnerSection() {
       <Container className="relative">
         <SectionHeading
           eyebrow="Why Skefto"
-          title="More than software — a compliance partner"
-          subtitle="Software, advisory, and training from one Australian team — then proof from organisations already on Skefto."
+          title="More than software - a compliance partner"
+          subtitle="Software, advisory, and training from one Australian team - then proof from organisations already on Skefto."
         />
 
         <div className="mt-8 sm:mt-10">

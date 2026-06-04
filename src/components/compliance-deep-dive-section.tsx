@@ -48,7 +48,7 @@ function ObligationsPanel() {
         </h3>
         <p className="mt-3 text-pretty text-sm leading-7 text-ink-600">
           Centralise federal, state and sector obligations. Assign owners, track
-          deadlines, and link evidence — from privacy attestations to WHS audits.
+          deadlines, and link evidence - from privacy attestations to WHS audits.
         </p>
         <ul className="mt-5 grid gap-2.5">
           {OBLIGATION_BULLETS.map((b) => (
@@ -75,7 +75,7 @@ function RegulatoryPanel() {
   return (
     <div className="space-y-8">
       <p className="max-w-2xl text-pretty text-sm leading-7 text-ink-600">
-        Built around the obligations Australian regulators actually hold you to —
+        Built around the obligations Australian regulators actually hold you to -
         not a generic offshore template.
       </p>
       <div className="grid gap-4 sm:grid-cols-3">
@@ -129,7 +129,7 @@ export function ComplianceDeepDiveSection() {
         <SectionHeading
           eyebrow="How it works"
           title="Track obligations and stay ahead of regulatory change"
-          subtitle="Everything you need to manage deadlines and Australian regulatory requirements — in one place."
+          subtitle="Everything you need to manage deadlines and Australian regulatory requirements - in one place."
         />
 
         <div className="mt-8 flex flex-wrap gap-2 rounded-2xl border border-ink-900/8 bg-white p-1.5 shadow-soft sm:mt-10">
