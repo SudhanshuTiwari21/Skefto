@@ -20,7 +20,7 @@ export function ProductOverviewSection() {
         <SectionHeading
           eyebrow="See it in action"
           title="See Skefto compliance software in action"
-          subtitle="A two-minute overview of obligations tracking, regulatory change, and audit-ready evidence — before you dive into the details."
+          subtitle="A two-minute overview of obligations tracking, regulatory change, and audit-ready evidence - before you dive into the details."
         />
 
         <div className="mx-auto mt-12 max-w-4xl">

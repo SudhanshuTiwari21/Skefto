@@ -104,7 +104,7 @@ export function RegulatorySection() {
         <SectionHeading
           eyebrow="Regulatory change"
           title="Stay ahead of regulatory change, aligned to Australian standards"
-          subtitle="Built around the obligations Australian regulators actually hold you to — not a generic offshore template."
+          subtitle="Built around the obligations Australian regulators actually hold you to - not a generic offshore template."
         />
 
         <div className="relative mt-12 sm:mt-14">

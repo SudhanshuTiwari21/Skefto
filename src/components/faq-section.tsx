@@ -12,8 +12,8 @@ export function FaqSection() {
       <Container className="relative">
         <SectionHeading
           eyebrow="Common questions"
-          title="Compliance management software — FAQs"
-          subtitle="Answers for Australian regulated organisations evaluating Skefto — from data residency to implementation timelines."
+          title="Compliance management software - FAQs"
+          subtitle="Answers for Australian regulated organisations evaluating Skefto - from data residency to implementation timelines."
         />
 
         <div className="mx-auto mt-12 max-w-3xl">

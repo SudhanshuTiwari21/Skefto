@@ -59,7 +59,7 @@ export function HeroSection() {
     <section
       id="hero"
       data-theme="light"
-      className="hero--light relative isolate overflow-hidden bg-white text-ink-900"
+      className="hero--light relative isolate overflow-hidden bg-white pb-6 text-ink-900 sm:pb-8"
     >
       {/* Light enterprise background: sand + subtle brand wash (no spacey effects) */}
       <div aria-hidden className="pointer-events-none absolute inset-0 bg-sand-50" />
