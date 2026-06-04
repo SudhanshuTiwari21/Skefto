@@ -16,7 +16,7 @@ function LogoStrip() {
         {featured.map((logo) => (
           <div
             key={logo.name}
-            className="flex h-10 items-center justify-center opacity-65 grayscale transition-opacity hover:opacity-100 sm:h-11"
+            className="flex h-10 items-center justify-center opacity-90 transition-opacity hover:opacity-100 sm:h-11"
           >
             <Image
               src={logo.src}

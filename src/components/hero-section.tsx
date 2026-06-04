@@ -37,7 +37,7 @@ function HeroLogoStrip() {
           {logos.map((logo, i) => (
             <div
               key={`${logo.name}-${i}`}
-              className="flex h-10 w-28 shrink-0 items-center justify-center opacity-70 grayscale transition-opacity hover:opacity-100 sm:h-11 sm:w-32"
+              className="flex h-10 w-28 shrink-0 items-center justify-center opacity-90 transition-opacity hover:opacity-100 sm:h-11 sm:w-32"
             >
               <Image
                 src={logo.src}
