@@ -28,7 +28,8 @@ import { ClosingCta } from "@/components/closing-cta";
 import { WhySkeftoSection } from "@/components/why-skefto-section";
 import { SocialProofSection } from "@/components/social-proof-section";
 import { SecuritySection } from "@/components/security-section";
-import { DemoFaqSection } from "@/components/demo-faq-section";
+import { ProductOverviewSection } from "@/components/product-overview-section";
+import { FaqSection } from "@/components/faq-section";
 import { Reveal, RevealStagger } from "@/components/scroll-reveal";
 
 const SITE = "https://skefto.com";
@@ -95,10 +96,16 @@ export default function Page() {
           <TrustBar />
         </Reveal>
         <Reveal>
+          <SecuritySection />
+        </Reveal>
+        <Reveal>
           <CapabilitiesBento />
         </Reveal>
         <Reveal>
           <ObligationsCalendar />
+        </Reveal>
+        <Reveal>
+          <ProductOverviewSection />
         </Reveal>
         <Reveal>
           <RegulatorySection />
@@ -116,10 +123,7 @@ export default function Page() {
           <SocialProofSection />
         </Reveal>
         <Reveal>
-          <SecuritySection />
-        </Reveal>
-        <Reveal>
-          <DemoFaqSection />
+          <FaqSection />
         </Reveal>
         <Reveal>
           <ClosingCta />

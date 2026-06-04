@@ -5,7 +5,10 @@ import { Icon, type IconName } from "@/components/icons";
 
 export function SecuritySection() {
   return (
-    <section className="relative overflow-hidden bg-sand-50 py-20 sm:py-28">
+    <section
+      id="security"
+      className="relative scroll-mt-20 overflow-hidden bg-sand-50 py-20 sm:py-28"
+    >
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-blueprint opacity-[0.28]"

@@ -5,15 +5,6 @@ import { Container } from "@/components/ui";
 import { HeroCopy } from "@/components/hero/hero-copy";
 import { HeroProductShowcase } from "@/components/hero/hero-product-showcase";
 
-const TICKER = [
-  "Obligations register",
-  "Regulatory change",
-  "Compliance calendar",
-  "Audit management",
-  "Board reporting",
-  "Australian-hosted",
-];
-
 function HeroEnter({
   index,
   children,
@@ -64,8 +55,6 @@ function HeroLogoStrip() {
 }
 
 export function HeroSection() {
-  const marquee = [...TICKER, ...TICKER];
-
   return (
     <section
       id="hero"
@@ -100,23 +89,6 @@ export function HeroSection() {
           <HeroLogoStrip />
         </HeroEnter>
       </Container>
-
-      <div className="hero-enter-ticker relative mt-10 border-t border-ink-900/6 bg-white/70 sm:mt-12">
-        <div className="overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
-          <div className="flex w-max animate-marquee items-center py-3.5">
-            {marquee.map((label, i) => (
-              <span key={`${label}-${i}`} className="flex items-center">
-                <span className="whitespace-nowrap px-8 font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-ink-500">
-                  {label}
-                </span>
-                <span className="text-brand-400/50" aria-hidden>
-                  ◆
-                </span>
-              </span>
-            ))}
-          </div>
-        </div>
-      </div>
     </section>
   );
 }
