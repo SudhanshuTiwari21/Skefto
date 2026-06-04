@@ -150,72 +150,59 @@ export const STANDARDS = [
   "Local Government Act",
 ];
 
-/* --------------------------- Industries ----------------------------- */
+/* --------------------------- Industries / sector clouds ----------------------------- */
 export const INDUSTRIES: {
   id: string;
-  label: string;
+  product: string;
+  sector: string;
   icon: IconName;
-  title: string;
+  geoShape: "hexagon" | "circle" | "triangle";
   body: string;
-  points: string[];
+  points: [string, string];
   href: string;
   linkLabel: string;
 }[] = [
   {
     id: "local-government",
-    label: "Local government",
+    product: "CouncilCloud",
+    sector: "Local government",
     icon: "building",
-    title: "Compliance for councils",
-    body: "Meet Local Government Act obligations and statutory reporting with council-ready registers, workflows and audit trails - across every directorate.",
+    geoShape: "hexagon",
+    body: "Preconfigured compliance registers, obligations, audits and reporting for local government.",
     points: [
-      "Statutory obligation and reporting registers",
-      "Policy review cycles and delegations",
-      "Audit, complaints and breach workflows",
+      "Local Government Act & statutory reporting templates",
+      "Council-ready workflows across directorates",
     ],
     href: LINKS.industries.localGov,
-    linkLabel: "Local government solutions",
+    linkLabel: "Explore CouncilCloud",
   },
   {
     id: "aged-care",
-    label: "Aged care & NDIS",
+    product: "CareCloud",
+    sector: "Aged care, disability & health",
     icon: "heart",
-    title: "Compliance for care providers",
-    body: "Stay aligned to the Aged Care Quality Standards and NDIS Practice Standards with sector templates, incident links and evidence built in.",
+    geoShape: "circle",
+    body: "Compliance management aligned to aged care, disability and healthcare requirements.",
     points: [
-      "Aged Care Quality Standards templates",
-      "NDIS Practice Standards obligations",
-      "Incident, complaint and evidence capture",
+      "Aged Care Quality & NDIS Practice Standards built in",
+      "Incident and evidence linked to obligations",
     ],
     href: LINKS.industries.agedCare,
-    linkLabel: "Aged care & disability solutions",
+    linkLabel: "Explore CareCloud",
   },
   {
     id: "education",
-    label: "Education",
+    product: "EducationCloud",
+    sector: "Schools & education providers",
     icon: "cap",
-    title: "Compliance for education",
-    body: "Manage compliance obligations across schools, TAFEs and universities in one place - from child safety to privacy and WHS.",
+    geoShape: "triangle",
+    body: "Governance, policy and compliance workflows designed for schools, colleges and education providers.",
     points: [
       "Child safe standards and policy controls",
-      "Privacy and data breach obligations",
-      "WHS and audit scheduling by campus",
+      "Privacy, WHS and campus audit scheduling",
     ],
     href: LINKS.industries.education,
-    linkLabel: "Education solutions",
-  },
-  {
-    id: "state-government",
-    label: "State government",
-    icon: "gov",
-    title: "Compliance for government agencies",
-    body: "Track statutory obligations and regulatory change across agencies, statutory authorities and departments with clear lines of accountability.",
-    points: [
-      "Statutory and legislative obligation tracking",
-      "Regulatory change impact assessments",
-      "Board and executive assurance reporting",
-    ],
-    href: LINKS.industries.stateGov,
-    linkLabel: "State government solutions",
+    linkLabel: "Explore EducationCloud",
   },
 ];
 

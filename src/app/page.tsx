@@ -234,18 +234,18 @@ function ObligationsCalendar() {
 /* ----------------------- 6 · Industry applications ----------------------- */
 function Industries() {
   return (
-    <section id="industries" className="scroll-mt-20 bg-ink-950 py-20 text-white sm:py-28">
+    <section id="industries" className="scroll-mt-20 bg-ink-950 py-16 text-white sm:py-20">
       <Container>
         <SectionHeading
-          eyebrow="Built for your sector"
-          title="Compliance built for your sector"
-          subtitle="Preconfigured for the obligations and standards that apply to councils, government, care providers, and education."
+          eyebrow="Sector clouds"
+          title="CouncilCloud, CareCloud & EducationCloud"
+          subtitle="Preconfigured compliance for the sectors Skefto knows best - not a one-size-fits-all offshore template."
           invert
         />
-        <div className="mt-14">
+        <div className="mt-8 sm:mt-10">
           <IndustryTabs />
         </div>
-        <div className="mt-12 flex justify-center">
+        <div className="mt-8 flex justify-center">
           <Button href={LINKS.demo} variant="white" size="lg" showArrow>
             Book a demo
           </Button>
