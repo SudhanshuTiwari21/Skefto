@@ -10,7 +10,7 @@ import { Icon } from "@/components/icons";
 const NAV = [
   { label: "Security", href: "#security" },
   { label: "Capabilities", href: "#capabilities" },
-  { label: "Overview", href: "#overview" },
+  { label: "Obligations", href: "#obligations" },
   { label: "Standards", href: "#standards" },
   { label: "Industries", href: "#industries" },
   { label: "FAQ", href: "#faq" },

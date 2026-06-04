@@ -1,34 +1,17 @@
 import Link from "next/link";
-import {
-  CAPABILITIES,
-  ECOSYSTEM,
-  FAQS,
-  LINKS,
-  OBLIGATION_BULLETS,
-} from "@/lib/content";
-import {
-  Button,
-  Container,
-  InlineLink,
-  SectionHeading,
-} from "@/components/ui";
+import { CAPABILITIES, ECOSYSTEM, FAQS, LINKS } from "@/lib/content";
+import { Button, Container, SectionHeading } from "@/components/ui";
 import { Icon, type IconName } from "@/components/icons";
-import {
-  CalendarMockup,
-  EcosystemDiagram,
-  RegisterMockup,
-} from "@/components/visuals";
+import { EcosystemDiagram } from "@/components/visuals";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { IndustryTabs } from "@/components/industry-tabs";
 import { CapabilitiesBento } from "@/components/capabilities-bento";
 import { HeroSection } from "@/components/hero-section";
-import { RegulatorySection } from "@/components/regulatory-section";
 import { ClosingCta } from "@/components/closing-cta";
-import { WhySkeftoSection } from "@/components/why-skefto-section";
-import { SocialProofSection } from "@/components/social-proof-section";
+import { TrustPartnerSection } from "@/components/trust-partner-section";
 import { SecuritySection } from "@/components/security-section";
-import { ProductOverviewSection } from "@/components/product-overview-section";
+import { ComplianceDeepDiveSection } from "@/components/compliance-deep-dive-section";
 import { FaqSection } from "@/components/faq-section";
 import { Reveal, RevealStagger } from "@/components/scroll-reveal";
 
@@ -102,13 +85,7 @@ export default function Page() {
           <CapabilitiesBento />
         </Reveal>
         <Reveal>
-          <ObligationsCalendar />
-        </Reveal>
-        <Reveal>
-          <ProductOverviewSection />
-        </Reveal>
-        <Reveal>
-          <RegulatorySection />
+          <ComplianceDeepDiveSection />
         </Reveal>
         <Reveal>
           <Industries />
@@ -117,10 +94,7 @@ export default function Page() {
           <Ecosystem />
         </Reveal>
         <Reveal>
-          <WhySkeftoSection />
-        </Reveal>
-        <Reveal>
-          <SocialProofSection />
+          <TrustPartnerSection />
         </Reveal>
         <Reveal>
           <FaqSection />
@@ -170,68 +144,7 @@ function TrustBar() {
   );
 }
 
-/* ------------------- 4 · Obligations & calendar ------------------- */
-function ObligationsCalendar() {
-  return (
-    <section id="obligations" className="scroll-mt-20 bg-sand-50 py-20 sm:py-28">
-      <Container>
-        <SectionHeading
-          eyebrow="Obligations & deadlines"
-          title="Track every obligation and deadline automatically"
-          subtitle="Know what is due, who owns it, and what evidence proves it - at any moment."
-        />
-
-        <div className="mt-14 grid items-center gap-10 lg:grid-cols-2">
-          <RegisterMockup />
-          <div>
-            <h3 className="font-display text-xl font-bold text-ink-900">
-              A single obligations register
-            </h3>
-            <p className="mt-3 text-pretty leading-7 text-ink-600">
-              Centralise federal, state, and sector obligations in one register.
-              Assign accountable owners and link each obligation to its supporting
-              controls and evidence.
-            </p>
-            <ul className="mt-6 grid gap-3">
-              {OBLIGATION_BULLETS.map((b) => (
-                <li key={b} className="flex items-start gap-3 text-ink-700">
-                  <span className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-brand-100 text-brand-700">
-                    <Icon.check className="size-3.5" />
-                  </span>
-                  {b}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        <div className="mt-14 grid items-center gap-10 lg:grid-cols-2">
-          <div className="lg:order-2">
-            <CalendarMockup />
-          </div>
-          <div className="lg:order-1">
-            <h3 className="font-display text-xl font-bold text-ink-900">
-              A live compliance calendar
-            </h3>
-            <p className="mt-3 text-pretty leading-7 text-ink-600">
-              Turn recurring obligations into a live calendar. Automated reminders
-              and escalations mean nothing slips through the cracks - from privacy
-              attestations to WHS audits and policy reviews.
-            </p>
-            <p className="mt-6">
-              <InlineLink href={LINKS.demo}>
-                See it in a live demo
-                <Icon.arrow className="size-4" />
-              </InlineLink>
-            </p>
-          </div>
-        </div>
-      </Container>
-    </section>
-  );
-}
-
-/* ----------------------- 6 · Industry applications ----------------------- */
+/* ----------------------- Industry applications ----------------------- */
 function Industries() {
   return (
     <section id="industries" className="scroll-mt-20 bg-ink-950 py-16 text-white sm:py-20">
