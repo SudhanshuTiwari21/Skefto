@@ -54,6 +54,7 @@ export const PRODUCT_OVERVIEW_POSTER = "/Compliance%20Dashboard.png";
 
 /** Product screenshots (public/) */
 export const PRODUCT_SCREENSHOTS = {
+  dashboard: "/Compliance%20Dashboard.png",
   register: "/Compliance%20Register.png",
   calendar: "/Compliance%20Calendar.png",
 } as const;
