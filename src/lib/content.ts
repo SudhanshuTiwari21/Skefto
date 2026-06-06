@@ -255,13 +255,13 @@ export const WHY_SKEFTO: {
     title: "All-in-one software",
     body: "A single compliance platform that is quick to implement and easy to scale, with ready-made templates for Australian sectors.",
     icon: "sliders",
-    proof: "Live in weeks",
+    proof: "Platform",
   },
   {
     title: "Expert advisory",
     body: "Independent guidance from specialists with 20+ years strengthening compliance frameworks for the public sector.",
     icon: "users",
-    proof: "20+ years in GRC",
+    proof: "Advisory",
     featured: true,
     href: LINKS.services.advisory,
     linkLabel: "Explore risk advisory",
@@ -270,17 +270,58 @@ export const WHY_SKEFTO: {
     title: "Practical training",
     body: "Role-based programs that build compliance capability at every level - from frontline staff to boards.",
     icon: "cap",
-    proof: "85+ training NPS",
+    proof: "Training",
     href: LINKS.services.training,
     linkLabel: "Explore training",
   },
 ];
 
-export const WHY_PROOF = [
-  { value: "20+", label: "Years in Australian GRC" },
-  { value: "85+", label: "Average training NPS" },
-  { value: "1,000s", label: "Public sector staff trained" },
-] as const;
+export const SECTOR_DIFFERENTIATOR =
+  "Start with industry-specific registers, obligations, controls and frameworks already mapped to your sector.";
+
+/** Top reasons customers choose Skefto over generic compliance vendors */
+export const WHY_CHOOSE_SKEFTO: {
+  title: string;
+  body: string;
+  icon: IconName;
+  featured?: boolean;
+}[] = [
+  {
+    title: "Sector-specific templates & registers",
+    body: "Industry-specific registers for local government, education, aged care and NDIS — obligations, controls and frameworks pre-mapped to your sector, not a blank offshore template.",
+    icon: "building",
+    featured: true,
+  },
+  {
+    title: "All-in-one GRC ecosystem",
+    body: "Compliance connects natively to risk management, incident & safety, business continuity and strategic planning — one Australian platform, not bolted-on modules.",
+    icon: "risk",
+  },
+  {
+    title: "Audit-ready automation & visibility",
+    body: "Automated workflows, role-based access and immutable change logs replace manual chasing — real-time visibility when boards and auditors ask.",
+    icon: "audit",
+  },
+];
+
+/** Recurring benefits customers report after go-live */
+export const CLIENT_OUTCOMES: { title: string; body: string; icon: IconName }[] = [
+  {
+    title: "End the spreadsheet nightmare",
+    body: "One centralised source of truth. Clear ownership of every task — no more emailing department heads for status updates.",
+    icon: "register",
+  },
+  {
+    title: "Reactive to proactive",
+    body: "Compliance becomes continuous and visible in daily operations — not a once-a-year scramble before attestation or external audit.",
+    icon: "chart",
+  },
+  {
+    title: "High adoption, gentle learning curve",
+    body: "A clean interface anyone can use — log in, see your obligations and complete tasks without extensive retraining.",
+    icon: "workflow",
+  },
+];
 
 /* --------------------------- Social proof --------------------------- */
 export const TESTIMONIALS = [
@@ -333,6 +374,10 @@ export const FAQS = [
   {
     q: "What is compliance management software?",
     a: "Compliance management software centralises your regulatory obligations, policies, deadlines and evidence so you can track, manage and prove compliance from a single source of truth instead of scattered spreadsheets and registers.",
+  },
+  {
+    q: "Why should I choose Skefto instead of other compliance software vendors?",
+    a: "Generic vendors give you empty registers and offshore templates. Skefto starts with sector-specific registers, obligations, controls and frameworks already mapped to local government, education, aged care and NDIS. Compliance connects natively to risk, incident & safety, business continuity and strategic planning — not disconnected modules. Automated workflows, role-based access and immutable audit logs replace spreadsheet chasing, giving boards and auditors real-time visibility. Customers consistently report one source of truth, a shift from reactive to proactive compliance, and high adoption because the interface is intuitive for non-specialists.",
   },
   {
     q: "Is Skefto built for Australian regulations?",

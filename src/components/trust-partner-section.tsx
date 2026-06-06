@@ -2,60 +2,85 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   CASE_STUDY,
+  CLIENT_OUTCOMES,
   CUSTOMER_LOGOS,
   LINKS,
+  SECTOR_DIFFERENTIATOR,
   TESTIMONIALS,
-  WHY_PROOF,
+  WHY_CHOOSE_SKEFTO,
   WHY_SKEFTO,
 } from "@/lib/content";
 import { BeamButton, Container, InlineLink, SectionHeading } from "@/components/ui";
 import { Icon, type IconName } from "@/components/icons";
+import { SkeftoGeoMark } from "@/components/skefto-geo-icons";
 
 const PILLAR_ACCENT = [
   {
-    ring: "from-brand-500/20 via-brand-400/10 to-transparent",
     icon: "bg-gradient-to-br from-brand-600 to-brand-500 text-white shadow-[0_8px_24px_-8px_rgba(141,61,151,0.45)]",
     tag: "text-brand-700 bg-brand-50 ring-brand-100",
   },
   {
-    ring: "from-accent-500/25 via-brand-500/10 to-transparent",
     icon: "bg-gradient-to-br from-accent-600 to-brand-600 text-white shadow-[0_8px_24px_-8px_rgba(0,145,174,0.4)]",
     tag: "text-accent-800 bg-accent-50 ring-accent-100",
   },
   {
-    ring: "from-ink-400/15 via-brand-400/8 to-transparent",
     icon: "bg-gradient-to-br from-ink-800 to-ink-700 text-white shadow-[0_8px_24px_-8px_rgba(20,24,31,0.35)]",
     tag: "text-ink-700 bg-ink-50 ring-ink-100",
   },
 ] as const;
 
-function ProofRibbon() {
+function WhyChooseCard({
+  item,
+}: Readonly<{ item: (typeof WHY_CHOOSE_SKEFTO)[number] }>) {
+  const I = Icon[item.icon as IconName];
+
+  if (item.featured) {
+    return (
+      <article className="relative overflow-hidden rounded-2xl border border-brand-300/60 bg-gradient-to-br from-brand-50/90 via-white to-accent-50/40 p-5 shadow-soft sm:p-6 lg:col-span-1">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-500 via-brand-400 to-accent-500"
+        />
+        <span className="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-white px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-brand-700">
+          <SkeftoGeoMark shape="hexagon" />
+          Key differentiator
+        </span>
+        <div className="mt-4 inline-flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-brand-600 to-brand-500 text-white">
+          <I className="size-5" />
+        </div>
+        <h3 className="mt-4 font-display text-lg font-bold text-ink-900">{item.title}</h3>
+        <p className="mt-2 text-sm leading-7 text-ink-600">{item.body}</p>
+      </article>
+    );
+  }
+
   return (
-    <ul className="grid divide-y divide-ink-100 overflow-hidden rounded-2xl border border-ink-900/8 bg-white shadow-soft sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-      {WHY_PROOF.map((item, i) => (
-        <li
-          key={item.label}
-          className="flex flex-col items-center px-6 py-5 text-center sm:py-6"
-        >
-          <p className="font-display text-2xl font-extrabold tracking-tight sm:text-3xl">
-            <span
-              className={
-                i === 0
-                  ? "bg-gradient-to-r from-brand-600 to-brand-500 bg-clip-text text-transparent"
-                  : i === 1
-                    ? "bg-gradient-to-r from-accent-600 to-accent-500 bg-clip-text text-transparent"
-                    : "bg-gradient-to-r from-ink-800 to-ink-600 bg-clip-text text-transparent"
-              }
-            >
-              {item.value}
-            </span>
-          </p>
-          <p className="mt-1 max-w-[11rem] text-xs font-medium leading-5 text-ink-500">
-            {item.label}
-          </p>
-        </li>
-      ))}
-    </ul>
+    <article className="rounded-2xl border border-ink-900/8 bg-white p-5 shadow-soft sm:p-6">
+      <div className="inline-flex size-10 items-center justify-center rounded-xl bg-brand-50 text-brand-700">
+        <I className="size-5" />
+      </div>
+      <h3 className="mt-4 font-display text-base font-bold text-ink-900">{item.title}</h3>
+      <p className="mt-2 text-sm leading-7 text-ink-600">{item.body}</p>
+    </article>
+  );
+}
+
+function OutcomeCard({
+  item,
+}: Readonly<{ item: (typeof CLIENT_OUTCOMES)[number] }>) {
+  const I = Icon[item.icon as IconName];
+  return (
+    <article className="rounded-xl border border-ink-900/8 bg-sand-50/60 p-4 sm:p-5">
+      <div className="flex items-start gap-3">
+        <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-white text-brand-700 shadow-sm">
+          <I className="size-4" />
+        </span>
+        <div>
+          <h4 className="font-display text-sm font-bold text-ink-900">{item.title}</h4>
+          <p className="mt-1.5 text-sm leading-6 text-ink-600">{item.body}</p>
+        </div>
+      </div>
+    </article>
   );
 }
 
@@ -76,9 +101,7 @@ function PartnerPillar({
         isCenter ? "bg-gradient-to-b from-brand-50/90 via-white to-accent-50/40" : "bg-white"
       }`}
     >
-      <div
-        className={`inline-flex size-12 items-center justify-center rounded-2xl ${accent.icon}`}
-      >
+      <div className={`inline-flex size-12 items-center justify-center rounded-2xl ${accent.icon}`}>
         <I className="size-5" />
       </div>
       <p
@@ -120,19 +143,53 @@ export function TrustPartnerSection() {
       <Container className="relative">
         <SectionHeading
           eyebrow="Why Skefto"
-          title="More than software - a compliance partner"
-          subtitle="Software, advisory, and training from one Australian team - then proof from organisations already on Skefto."
+          title="Why choose Skefto over other compliance software?"
+          subtitle="Sector-ready from day one — then proof from organisations already on Skefto."
         />
 
-        <div className="mt-8 sm:mt-10">
-          <ProofRibbon />
+        <blockquote className="relative mt-8 overflow-hidden rounded-2xl border border-brand-200/70 bg-gradient-to-r from-brand-50/80 via-white to-accent-50/50 px-6 py-5 shadow-soft sm:mt-10 sm:px-8 sm:py-6">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -right-8 -top-8 size-32 rounded-full bg-[radial-gradient(circle,rgba(141,61,151,0.12),transparent_70%)]"
+          />
+          <p className="relative font-display text-lg font-bold leading-snug tracking-tight text-ink-900 sm:text-xl">
+            {SECTOR_DIFFERENTIATOR}
+          </p>
+          <p className="relative mt-2 text-sm text-ink-600">
+            CouncilCloud, CareCloud and EducationCloud — not a generic register you configure from scratch.
+          </p>
+        </blockquote>
+
+        <div className="mt-6 grid gap-4 lg:grid-cols-3 lg:gap-5">
+          {WHY_CHOOSE_SKEFTO.map((item) => (
+            <WhyChooseCard key={item.title} item={item} />
+          ))}
         </div>
 
-        <div className="relative mt-8 overflow-hidden rounded-3xl border border-ink-900/8 bg-white shadow-soft">
-          <div className="grid lg:grid-cols-3 lg:divide-x lg:divide-ink-100">
-            {WHY_SKEFTO.map((item, i) => (
-              <PartnerPillar key={item.title} item={item} index={i} />
+        <div className="mt-10 border-t border-ink-100 pt-10">
+          <h3 className="font-display text-xl font-bold tracking-tight text-ink-900 sm:text-[1.35rem]">
+            What customers report after implementation
+          </h3>
+          <div className="mt-5 grid gap-3 sm:grid-cols-3 sm:gap-4">
+            {CLIENT_OUTCOMES.map((item) => (
+              <OutcomeCard key={item.title} item={item} />
             ))}
+          </div>
+        </div>
+
+        <div className="mt-10 border-t border-ink-100 pt-10">
+          <h3 className="text-center font-display text-xl font-bold tracking-tight text-ink-900">
+            More than software — a compliance partner
+          </h3>
+          <p className="mx-auto mt-2 max-w-xl text-center text-sm text-ink-600">
+            Platform, expert advisory, and training from one Australian team.
+          </p>
+          <div className="relative mt-6 overflow-hidden rounded-3xl border border-ink-900/8 bg-white shadow-soft">
+            <div className="grid lg:grid-cols-3 lg:divide-x lg:divide-ink-100">
+              {WHY_SKEFTO.map((item, i) => (
+                <PartnerPillar key={item.title} item={item} index={i} />
+              ))}
+            </div>
           </div>
         </div>
 
