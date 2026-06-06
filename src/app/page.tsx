@@ -12,6 +12,7 @@ import { ClosingCta } from "@/components/closing-cta";
 import { TrustPartnerSection } from "@/components/trust-partner-section";
 import { SecuritySection } from "@/components/security-section";
 import { ComplianceDeepDiveSection } from "@/components/compliance-deep-dive-section";
+import { ProductOverviewSection } from "@/components/product-overview-section";
 import { FaqSection } from "@/components/faq-section";
 import { Reveal, RevealStagger } from "@/components/scroll-reveal";
 
@@ -86,6 +87,9 @@ export default function Page() {
         </Reveal>
         <Reveal>
           <ComplianceDeepDiveSection />
+        </Reveal>
+        <Reveal>
+          <ProductOverviewSection />
         </Reveal>
         <Reveal>
           <Industries />

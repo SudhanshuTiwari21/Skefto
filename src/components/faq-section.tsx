@@ -1,6 +1,5 @@
 import { Container, SectionHeading } from "@/components/ui";
 import { Faq } from "@/components/faq";
-import { ProductVideoInline } from "@/components/product-video-inline";
 
 export function FaqSection() {
   return (
@@ -12,18 +11,12 @@ export function FaqSection() {
 
       <Container className="relative">
         <SectionHeading
-          eyebrow="Questions & overview"
-          title="See Skefto in action, then explore FAQs"
-          subtitle="Watch a short product overview, then find answers on Australian compliance, data residency, and implementation."
+          eyebrow="FAQ"
+          title="Common questions about Skefto Compliance"
+          subtitle="Answers on Australian compliance, data residency, implementation, and how Skefto compares to other platforms."
         />
 
-        <div className="mt-10 grid gap-8 lg:grid-cols-[minmax(0,340px)_1fr] lg:gap-10 lg:items-start">
-          <div className="lg:sticky lg:top-24">
-            <ProductVideoInline />
-            <p className="mt-3 text-center text-xs text-ink-500 lg:text-left">
-              Product overview · Skefto Compliance
-            </p>
-          </div>
+        <div className="mx-auto mt-10 max-w-3xl">
           <Faq />
         </div>
       </Container>
