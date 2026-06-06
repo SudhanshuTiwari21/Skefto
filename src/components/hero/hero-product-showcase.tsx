@@ -137,8 +137,8 @@ function CalendarPanel() {
         </div>
 
         <div className="mt-4 grid grid-cols-7 gap-1.5 text-center">
-          {"MTWTFSS".split("").map((d) => (
-            <span key={`day-${d}`} className="text-[9px] font-semibold uppercase text-ink-400">
+          {["M", "T", "W", "T", "F", "S", "S"].map((d, i) => (
+            <span key={`hdr-${i}`} className="text-[9px] font-semibold uppercase text-ink-400">
               {d}
             </span>
           ))}
