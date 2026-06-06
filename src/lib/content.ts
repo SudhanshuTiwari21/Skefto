@@ -48,7 +48,9 @@ export const HERO_TRUST_TOKENS = [
   "Built to ISO 37301",
 ] as const;
 
-/** Sector preloads - key Skefto differentiator vs generic GRC vendors */
+/** Product overview video (public/) */
+export const PRODUCT_OVERVIEW_VIDEO = "/Compliance%20Video.mp4";
+export const PRODUCT_OVERVIEW_POSTER = "/Compliance%20Dashboard.png";
 export const SECTOR_PRELOADS = [
   { name: "CouncilCloud", href: LINKS.industries.localGov, shape: "hexagon" as const },
   { name: "CareCloud", href: LINKS.industries.agedCare, shape: "circle" as const },
