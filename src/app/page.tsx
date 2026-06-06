@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CAPABILITIES, ECOSYSTEM, FAQS, LINKS } from "@/lib/content";
+import { CAPABILITIES, ECOSYSTEM, FAQS, INDUSTRIES_INTRO, LINKS } from "@/lib/content";
 import { Button, Container, SectionHeading } from "@/components/ui";
 import { Icon, type IconName } from "@/components/icons";
 import { EcosystemDiagram } from "@/components/visuals";
@@ -152,7 +152,7 @@ function Industries() {
         <SectionHeading
           eyebrow="Sector clouds"
           title="CouncilCloud, CareCloud & EducationCloud"
-          subtitle="Preconfigured compliance for the sectors Skefto knows best - not a one-size-fits-all offshore template."
+          subtitle={INDUSTRIES_INTRO}
           invert
         />
         <div className="mt-8 sm:mt-10">

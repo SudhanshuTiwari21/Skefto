@@ -1,14 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import {
   LINKS,
   OBLIGATION_BULLETS,
+  PRODUCT_SCREENSHOTS,
   REGULATORY_VALUES,
   STANDARDS,
 } from "@/lib/content";
 import { Icon, type IconName } from "@/components/icons";
-import { CalendarMockup, RegisterMockup } from "@/components/visuals";
 import { Container, InlineLink, SectionHeading } from "@/components/ui";
 
 const TABS = [
@@ -35,46 +36,71 @@ function RegulatoryCompact({
   );
 }
 
+function ObligationScreenshots() {
+  return (
+    <div className="grid gap-3 sm:grid-cols-2">
+      {(
+        [
+          { src: PRODUCT_SCREENSHOTS.register, alt: "Skefto obligations register" },
+          { src: PRODUCT_SCREENSHOTS.calendar, alt: "Skefto compliance calendar" },
+        ] as const
+      ).map((shot) => (
+        <div
+          key={shot.src}
+          className="overflow-hidden rounded-xl border border-ink-900/10 bg-ink-50 shadow-soft"
+        >
+          <Image
+            src={shot.src}
+            alt={shot.alt}
+            width={640}
+            height={420}
+            className="h-auto w-full object-cover object-top"
+          />
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function ObligationsPanel() {
   return (
-    <div className="grid gap-8 lg:grid-cols-2 lg:gap-10">
-      <div className="space-y-6">
-        <RegisterMockup />
-        <CalendarMockup />
-      </div>
-      <div className="flex flex-col justify-center">
-        <h3 className="font-display text-xl font-bold text-ink-900">
-          Register, calendar &amp; evidence in one place
-        </h3>
-        <p className="mt-3 text-pretty text-sm leading-7 text-ink-600">
-          Centralise federal, state and sector obligations. Assign owners, track
-          deadlines, and link evidence - from privacy attestations to WHS audits.
-        </p>
-        <ul className="mt-5 grid gap-2.5">
+    <div className="space-y-5">
+      <div className="grid gap-5 lg:grid-cols-2 lg:items-start lg:gap-8">
+        <div>
+          <h3 className="font-display text-lg font-bold text-ink-900 sm:text-xl">
+            Register, calendar &amp; evidence in one place
+          </h3>
+          <p className="mt-2 text-pretty text-sm leading-6 text-ink-600">
+            Centralise federal, state and sector obligations. Assign owners, track
+            deadlines, and link evidence — from privacy attestations to WHS audits.
+          </p>
+          <p className="mt-4">
+            <InlineLink href={LINKS.demo}>
+              See it in a live demo
+              <Icon.arrow className="size-4" />
+            </InlineLink>
+          </p>
+        </div>
+        <ul className="grid gap-2 sm:grid-cols-2 lg:grid-cols-1">
           {OBLIGATION_BULLETS.map((b) => (
-            <li key={b} className="flex items-start gap-2.5 text-sm text-ink-700">
-              <span className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-brand-100 text-brand-700">
-                <Icon.check className="size-3.5" />
+            <li key={b} className="flex items-start gap-2 text-sm leading-6 text-ink-700">
+              <span className="mt-0.5 grid size-4 shrink-0 place-items-center rounded-full bg-brand-100 text-brand-700">
+                <Icon.check className="size-3" />
               </span>
               {b}
             </li>
           ))}
         </ul>
-        <p className="mt-5">
-          <InlineLink href={LINKS.demo}>
-            See it in a live demo
-            <Icon.arrow className="size-4" />
-          </InlineLink>
-        </p>
       </div>
+      <ObligationScreenshots />
     </div>
   );
 }
 
 function RegulatoryPanel() {
   return (
-    <div className="space-y-8">
-      <p className="max-w-2xl text-pretty text-sm leading-7 text-ink-600">
+    <div className="space-y-5">
+      <p className="max-w-2xl text-pretty text-sm leading-6 text-ink-600">
         Built around the obligations Australian regulators actually hold you to -
         not a generic offshore template.
       </p>
@@ -83,7 +109,7 @@ function RegulatoryPanel() {
           <RegulatoryCompact key={item.title} item={item} />
         ))}
       </div>
-      <div className="rounded-2xl border border-ink-900/8 bg-sand-50/80 px-5 py-6 sm:px-7">
+      <div className="rounded-2xl border border-ink-900/8 bg-sand-50/80 px-4 py-5 sm:px-6">
         <p className="text-center text-xs font-semibold uppercase tracking-[0.16em] text-ink-500">
           Mapped to Australian standards &amp; regulations
         </p>
@@ -149,7 +175,7 @@ export function ComplianceDeepDiveSection() {
           ))}
         </div>
 
-        <div className="mt-6 rounded-3xl border border-ink-900/8 bg-white p-6 shadow-soft sm:p-8">
+        <div className="mt-5 rounded-2xl border border-ink-900/8 bg-white p-5 shadow-soft sm:p-6">
           <div className={active === "obligations" ? "block" : "hidden"}>
             <ObligationsPanel />
           </div>

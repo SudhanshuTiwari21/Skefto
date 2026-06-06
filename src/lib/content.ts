@@ -51,6 +51,14 @@ export const HERO_TRUST_TOKENS = [
 /** Product overview video (public/) */
 export const PRODUCT_OVERVIEW_VIDEO = "/Compliance%20Video.mp4";
 export const PRODUCT_OVERVIEW_POSTER = "/Compliance%20Dashboard.png";
+
+/** Product screenshots (public/) */
+export const PRODUCT_SCREENSHOTS = {
+  register: "/Compliance%20Register.png",
+  calendar: "/Compliance%20Calendar.png",
+} as const;
+
+/** Sector preloads - key Skefto differentiator vs generic GRC vendors */
 export const SECTOR_PRELOADS = [
   { name: "CouncilCloud", href: LINKS.industries.localGov, shape: "hexagon" as const },
   { name: "CareCloud", href: LINKS.industries.agedCare, shape: "circle" as const },
@@ -153,6 +161,9 @@ export const STANDARDS = [
 ];
 
 /* --------------------------- Industries / sector clouds ----------------------------- */
+export const INDUSTRIES_INTRO =
+  "Built for highly regulated industries in Australia — whether you're a council, care provider, or education institution, sector-specific configurations streamline compliance with local legislation, standards, and operational requirements.";
+
 export const INDUSTRIES: {
   id: string;
   product: string;
@@ -160,7 +171,7 @@ export const INDUSTRIES: {
   icon: IconName;
   geoShape: "hexagon" | "circle" | "triangle";
   body: string;
-  points: [string, string];
+  supports: string[];
   href: string;
   linkLabel: string;
 }[] = [
@@ -170,10 +181,15 @@ export const INDUSTRIES: {
     sector: "Local government",
     icon: "building",
     geoShape: "hexagon",
-    body: "Preconfigured compliance registers, obligations, audits and reporting for local government.",
-    points: [
-      "Local Government Act & statutory reporting templates",
-      "Council-ready workflows across directorates",
+    body: "Preconfigured compliance registers, obligations, audits and reporting for local government — mapped to the Local Government Act and council operational requirements.",
+    supports: [
+      "Compliance calendar",
+      "Contracts register",
+      "Internal & external audit",
+      "Delegations",
+      "Breaches",
+      "Primary & annual returns",
+      "Declarations (gifts, conflicts)",
     ],
     href: LINKS.industries.localGov,
     linkLabel: "Explore CouncilCloud",
@@ -184,10 +200,15 @@ export const INDUSTRIES: {
     sector: "Aged care, disability & health",
     icon: "heart",
     geoShape: "circle",
-    body: "Compliance management aligned to aged care, disability and healthcare requirements.",
-    points: [
-      "Aged Care Quality & NDIS Practice Standards built in",
-      "Incident and evidence linked to obligations",
+    body: "Compliance management aligned to aged care, disability and healthcare requirements — including Aged Care Quality Standards and NDIS Practice Standards.",
+    supports: [
+      "Regulatory & legislative compliance",
+      "Audit schedules",
+      "Contracts, accreditations & standards",
+      "Complaints & feedback",
+      "Restrictive practices / high-intensity care",
+      "Policy review register",
+      "Executive attestations & compliance statements",
     ],
     href: LINKS.industries.agedCare,
     linkLabel: "Explore CareCloud",
@@ -198,10 +219,14 @@ export const INDUSTRIES: {
     sector: "Schools & education providers",
     icon: "cap",
     geoShape: "triangle",
-    body: "Governance, policy and compliance workflows designed for schools, colleges and education providers.",
-    points: [
-      "Child safe standards and policy controls",
-      "Privacy, WHS and campus audit scheduling",
+    body: "Governance, policy and compliance workflows designed for schools, colleges and education providers across Australia.",
+    supports: [
+      "Policy reviews",
+      "Staff & student associations",
+      "Conflicts of interest",
+      "Privacy & data breaches",
+      "Self-assessment tools for regulatory audits",
+      "Breach of code of conduct",
     ],
     href: LINKS.industries.education,
     linkLabel: "Explore EducationCloud",
