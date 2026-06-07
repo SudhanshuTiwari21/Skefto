@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Icon } from "@/components/icons";
 
 function PanelChrome({ title }: Readonly<{ title: string }>) {
@@ -7,9 +8,17 @@ function PanelChrome({ title }: Readonly<{ title: string }>) {
       <span className="size-2.5 rounded-full bg-ink-300" />
       <span className="size-2.5 rounded-full bg-ink-300" />
       <span className="size-2.5 rounded-full bg-ink-300" />
-      <span className="ml-3 inline-flex items-center gap-1.5 rounded-md bg-white px-2.5 py-1 text-[11px] font-medium text-ink-500 ring-1 ring-ink-100">
-        <LockIcon className="size-3 text-brand-500" aria-hidden />
-        app.skefto.com
+      <Image
+        src="/skefto-logo.svg"
+        alt=""
+        width={88}
+        height={19}
+        className="ml-1 h-3.5 w-auto shrink-0"
+        aria-hidden
+      />
+      <span className="inline-flex min-w-0 items-center gap-1.5 rounded-md bg-white px-2.5 py-1 text-[11px] font-medium text-ink-500 ring-1 ring-ink-100">
+        <LockIcon className="size-3 shrink-0 text-brand-500" aria-hidden />
+        <span className="truncate">app.skefto.com</span>
       </span>
       <span className="ml-auto text-[11px] font-semibold text-ink-400">
         {title}
