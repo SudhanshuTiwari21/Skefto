@@ -15,6 +15,7 @@ export const LINKS = {
   grcGuide: `${SITE}/blog/what-is-grc/`,
   privacy: `${SITE}/privacy-policy/`,
   solutions: {
+    compliance: `${SITE}/solutions/compliance-management-software/`,
     risk: `${SITE}/solutions/risk-management-software/`,
     incident: `${SITE}/solutions/incident-management-software/`,
     safety: `${SITE}/solutions/safety-software/`,
@@ -35,15 +36,15 @@ export const LINKS = {
 
 /* ------------------------------ Hero -------------------------------- */
 export const TRUST_TOKENS = [
-  "Australian-hosted data",
+  "Sovereign cloud data hosting",
   "Government-certified centres",
-  "ISO 27001 aligned",
+  "ISO 27001 certified controls",
   "Built to ISO 37301",
 ];
 
 /** Hero - minimal trust row under CTAs (3 items max) */
 export const HERO_TRUST_TOKENS = [
-  "Australian-hosted data",
+  "Region-specific data residency options",
   "Government-certified centres",
   "Built to ISO 37301",
 ] as const;
@@ -60,7 +61,7 @@ export const PRODUCT_SCREENSHOTS = {
 
 /** Sector preloads - key Skefto differentiator vs generic GRC vendors */
 export const SECTOR_PRELOADS = [
-  { name: "CouncilCloud", href: LINKS.industries.localGov, shape: "hexagon" as const },
+  { name: "GovCloud", href: LINKS.industries.localGov, shape: "hexagon" as const },
   { name: "CareCloud", href: LINKS.industries.agedCare, shape: "circle" as const },
   { name: "EducationCloud", href: LINKS.industries.education, shape: "triangle" as const },
 ];
@@ -130,6 +131,22 @@ export const OBLIGATION_BULLETS = [
   "Live status monitoring across teams, sites and entities",
 ];
 
+export const POLICY_BULLETS = [
+  "Policy lifecycle tracking with owners, reviewers and approval stages",
+  "Version history and auditable change logs for every update",
+  "Direct links from policies to obligations, controls and evidence",
+  "Review reminders and escalation workflows before expiry dates",
+  "Cross-cloud policy governance for GovCloud, CareCloud and EducationCloud",
+];
+
+export const AUDIT_ACTION_BULLETS = [
+  "Audit planning, scheduling and scope templates by business unit",
+  "Finding capture with severity, owner and remediation due dates",
+  "Action tracking with status, evidence and executive escalation",
+  "Three-lines-of-defence reporting for boards and assurance committees",
+  "Traceability from audit findings to obligations, controls and policies",
+];
+
 /* ----------------------- Regulatory & standards --------------------- */
 export const REGULATORY_VALUES: { title: string; body: string; icon: IconName }[] =
   [
@@ -162,7 +179,7 @@ export const STANDARDS = [
 
 /* --------------------------- Industries / sector clouds ----------------------------- */
 export const INDUSTRIES_INTRO =
-  "Built for highly regulated industries in Australia — whether you're a council, care provider, or education institution, sector-specific configurations streamline compliance with local legislation, standards, and operational requirements.";
+  "Built for highly regulated industries in Australia — whether you're a Government organisation, council, care provider, or education institution, sector-specific configurations streamline compliance with local legislation, standards, and operational requirements.";
 
 export const INDUSTRIES: {
   id: string;
@@ -177,11 +194,11 @@ export const INDUSTRIES: {
 }[] = [
   {
     id: "local-government",
-    product: "CouncilCloud",
-    sector: "Local government",
+    product: "GovCloud",
+    sector: "Councils, state and federal government",
     icon: "building",
     geoShape: "hexagon",
-    body: "Preconfigured compliance registers, obligations, audits and reporting for local government — mapped to the Local Government Act and council operational requirements.",
+    body: "Preconfigured compliance registers, obligations, audits and reporting for councils, state and federal government — mapped to relevant legislation and operational requirements.",
     supports: [
       "Compliance calendar",
       "Contracts register",
@@ -190,9 +207,15 @@ export const INDUSTRIES: {
       "Breaches",
       "Primary & annual returns",
       "Declarations (gifts, conflicts)",
+      "Audit schedules",
+      "Audit actions",
+      "Conflicts of interest",
+      "Audit self-assessments",
+      "Whistleblower reporting",
+      "Legal and regulatory change management",
     ],
     href: LINKS.industries.localGov,
-    linkLabel: "Explore CouncilCloud",
+    linkLabel: "Explore GovCloud",
   },
   {
     id: "aged-care",
@@ -209,6 +232,15 @@ export const INDUSTRIES: {
       "Restrictive practices / high-intensity care",
       "Policy review register",
       "Executive attestations & compliance statements",
+      "Compliance calendar",
+      "Delegations",
+      "Breaches",
+      "Declarations (gifts, conflicts)",
+      "Audit actions",
+      "Conflicts of interest",
+      "Breach reporting",
+      "Audit self-assessments",
+      "Whistleblower reporting",
     ],
     href: LINKS.industries.agedCare,
     linkLabel: "Explore CareCloud",
@@ -227,11 +259,29 @@ export const INDUSTRIES: {
       "Privacy & data breaches",
       "Self-assessment tools for regulatory audits",
       "Breach of code of conduct",
+      "Compliance calendar",
+      "Declarations (gifts, conflicts)",
+      "Audit actions",
+      "Legal and regulatory change management",
     ],
     href: LINKS.industries.education,
     linkLabel: "Explore EducationCloud",
   },
 ];
+
+export const OTHER_COMPLIANCE_FUNCTIONS = [
+  "contracts accreditations & standards",
+  "delegations",
+  "breaches",
+  "primary & annual returns",
+  "declarations",
+  "audit schedules",
+  "conflicts of interest",
+  "breach reporting",
+  "audit self-assessments",
+  "whistleblower reporting",
+  "legal and regulatory change management",
+] as const;
 
 /* --------------------------- Ecosystem ------------------------------ */
 export const ECOSYSTEM: {
@@ -330,21 +380,33 @@ export const WHY_CHOOSE_SKEFTO: {
 ];
 
 /** Recurring benefits customers report after go-live */
-export const CLIENT_OUTCOMES: { title: string; body: string; icon: IconName }[] = [
+export const CLIENT_OUTCOMES: {
+  title: string;
+  body: string;
+  icon: IconName;
+  metric: string;
+  metricLabel: string;
+}[] = [
   {
     title: "End the spreadsheet nightmare",
     body: "One centralised source of truth. Clear ownership of every task — no more emailing department heads for status updates.",
     icon: "register",
+    metric: "1",
+    metricLabel: "source of truth",
   },
   {
     title: "Reactive to proactive",
     body: "Compliance becomes continuous and visible in daily operations — not a once-a-year scramble before attestation or external audit.",
     icon: "chart",
+    metric: "90%",
+    metricLabel: "less audit prep time reported",
   },
   {
     title: "High adoption, gentle learning curve",
     body: "A clean interface anyone can use — log in, see your obligations and complete tasks without extensive retraining.",
     icon: "workflow",
+    metric: "85+",
+    metricLabel: "average training NPS",
   },
 ];
 
@@ -378,18 +440,18 @@ export const CASE_STUDY = {
 /* ----------------------------- Security ----------------------------- */
 export const SECURITY: { title: string; body: string; icon: IconName }[] = [
   {
-    title: "Australian data residency",
-    body: "Your compliance data is hosted in government-certified Australian data centres - it never leaves the country.",
+    title: "Region-specific data residency",
+    body: "Choose region-specific data residency to meet local sovereignty requirements, including Australian-hosted environments in government-certified data centres.",
     icon: "globe",
   },
   {
-    title: "ISO 27001 aligned security",
-    body: "Information security controls aligned to ISO 27001, with role-based access, encryption and full audit logging.",
+    title: "ISO 27001 certified security",
+    body: "Information security controls certified to ISO 27001, with role-based access, encryption and full audit logging.",
     icon: "lock",
   },
   {
     title: "Privacy compliant by design",
-    body: "Built to meet Australian data sovereignty and privacy obligations, including the Privacy Act and breach notification.",
+    body: "Built to support evolving privacy obligations across jurisdictions, including Privacy Act requirements and GDPR-ready policy mapping workflows.",
     icon: "shield",
   },
 ];
@@ -402,11 +464,11 @@ export const FAQS = [
   },
   {
     q: "Why should I choose Skefto instead of other compliance software vendors?",
-    a: "Generic vendors give you empty registers and offshore templates. Skefto starts with sector-specific registers, obligations, controls and frameworks already mapped to local government, education, aged care and NDIS. Compliance connects natively to risk, incident & safety, business continuity and strategic planning — not disconnected modules. Automated workflows, role-based access and immutable audit logs replace spreadsheet chasing, giving boards and auditors real-time visibility. Customers consistently report one source of truth, a shift from reactive to proactive compliance, and high adoption because the interface is intuitive for non-specialists.",
+    a: "Generic vendors give you empty registers and offshore templates. Skefto starts with sector-specific registers, obligations, controls and frameworks already mapped to councils, state and federal government, education, aged care and NDIS. Compliance connects natively to risk, incident & safety, business continuity and strategic planning — not disconnected modules. Automated workflows, role-based access and immutable audit logs replace spreadsheet chasing, giving boards and auditors real-time visibility. Customers consistently report one source of truth, a shift from reactive to proactive compliance, and high adoption because the interface is intuitive for non-specialists.",
   },
   {
     q: "Is Skefto built for Australian regulations?",
-    a: "Yes. Skefto is an Australian platform aligned to ISO 37301 and built around Australian obligations including APRA CPS 230, the Privacy Act and Notifiable Data Breaches scheme, NDIS Practice Standards, Aged Care Quality Standards and Local Government Act requirements.",
+    a: "Yes. Skefto is an Australian platform aligned to ISO 37301 and built around Australian obligations including APRA CPS 230, the Privacy Act and Notifiable Data Breaches scheme, NDIS Practice Standards, Aged Care Quality Standards, and requirements relevant to councils, state and federal government organisations.",
   },
   {
     q: "Can it track compliance deadlines automatically?",
@@ -427,5 +489,51 @@ export const FAQS = [
   {
     q: "How long does implementation take?",
     a: "Skefto is quick to implement and easy to scale. Ready-made industry templates for councils, government, education and care providers accelerate time to value, with most organisations live in weeks rather than months.",
+  },
+];
+
+export const FUTURE_INITIATIVES: {
+  title: string;
+  body: string;
+  icon: IconName;
+  tag: string;
+  bullets: string[];
+  featured?: boolean;
+}[] = [
+  {
+    title: "Governance Portal partnership",
+    body: "Compliance and Governance Portal for councils, boards and committees — built with the City of Belmont to manage elected-member and director obligations in one place.",
+    icon: "building",
+    tag: "Australian first",
+    featured: true,
+    bullets: [
+      "Board and committee compliance in one portal",
+      "Councillor declarations, gifts and conflicts",
+      "Partnership with City of Belmont",
+      "First-of-its-kind for Australian local government",
+    ],
+  },
+  {
+    title: "LexisNexis regulatory integration",
+    body: "Connect authoritative regulatory content to Skefto workflows so horizon scanning and obligation updates stay traceable from source to action.",
+    icon: "refresh",
+    tag: "Integration",
+    bullets: [
+      "Regulatory horizon scanning and change alerts",
+      "Obligation traceability from source to register",
+      "Faster impact assessment on legislative updates",
+    ],
+  },
+  {
+    title: "Compliance AI roadmap",
+    body: "Practical AI automation with human-in-the-loop guardrails — built for compliance teams, not generic chatbot demos.",
+    icon: "sparkles",
+    tag: "AI · HITL",
+    bullets: [
+      "Automated regulatory impact analysis",
+      "Policy gap mapping and plain-language summaries",
+      "Smart audit questionnaire responses",
+      "Conversational policy guidance with citations",
+    ],
   },
 ];

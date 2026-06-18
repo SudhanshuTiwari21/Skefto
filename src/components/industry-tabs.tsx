@@ -2,12 +2,14 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { INDUSTRIES, LINKS } from "@/lib/content";
-import { Icon, type IconName } from "@/components/icons";
+import { INDUSTRIES, LINKS, OTHER_COMPLIANCE_FUNCTIONS } from "@/lib/content";
+import { Icon } from "@/components/icons";
 import { SkeftoGeoMark } from "@/components/skefto-geo-icons";
 
 function IndustryPanel({ current }: Readonly<{ current: (typeof INDUSTRIES)[number] }>) {
-  const I = Icon[current.icon as IconName];
+  const I = Icon[current.icon];
+  const CheckIcon = Icon.check;
+  const ArrowIcon = Icon.arrow;
 
   return (
     <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04]">
@@ -41,7 +43,7 @@ function IndustryPanel({ current }: Readonly<{ current: (typeof INDUSTRIES)[numb
               className="flex items-start gap-2.5 rounded-lg border border-white/10 bg-ink-900/40 px-3 py-2.5 text-sm leading-6 text-ink-200"
             >
               <span className="mt-0.5 grid size-4 shrink-0 place-items-center rounded-full bg-brand-600 text-white">
-                <Icon.check className="size-2.5" />
+                <CheckIcon className="size-2.5" />
               </span>
               {item}
             </li>
@@ -53,8 +55,13 @@ function IndustryPanel({ current }: Readonly<{ current: (typeof INDUSTRIES)[numb
           className="group mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-300 hover:text-white"
         >
           {current.linkLabel}
-          <Icon.arrow className="size-4 transition-transform group-hover:translate-x-0.5" />
+          <ArrowIcon className="size-4 transition-transform group-hover:translate-x-0.5" />
         </Link>
+
+        <p className="mt-4 text-sm leading-6 text-ink-300">
+          Plus many other compliance solutions including{" "}
+          {OTHER_COMPLIANCE_FUNCTIONS.join(", ")}.
+        </p>
       </div>
     </div>
   );
@@ -68,7 +75,7 @@ export function IndustryTabs() {
     <div>
       <div className="flex flex-wrap gap-2 rounded-2xl border border-white/10 bg-white/5 p-1.5">
         {INDUSTRIES.map((ind, i) => {
-          const I = Icon[ind.icon as IconName];
+          const I = Icon[ind.icon];
           const isActive = i === active;
           return (
             <button
@@ -107,7 +114,7 @@ export function IndustryTabs() {
           href={LINKS.industries.stateGov}
           className="font-semibold text-brand-300 underline decoration-brand-500/40 underline-offset-4 transition-colors hover:text-white"
         >
-          state government agencies
+          state and federal government agencies
         </Link>
         .
       </p>

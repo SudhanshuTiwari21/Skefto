@@ -13,13 +13,15 @@ const NAV = [
   { label: "Obligations", href: "#obligations" },
   { label: "Industries", href: "#industries" },
   { label: "FAQ", href: "#faq" },
-];
+] as const;
+
+export type NavItem = { label: string; href: string };
 
 function cx(...parts: Array<string | false | null | undefined>) {
   return parts.filter(Boolean).join(" ");
 }
 
-export function SiteHeader() {
+export function SiteHeader({ nav = [...NAV] }: Readonly<{ nav?: NavItem[] }>) {
   const [scrolled, setScrolled] = useState(false);
   const [overLight, setOverLight] = useState(true);
   const [open, setOpen] = useState(false);

@@ -30,7 +30,7 @@ function HeroLogoStrip() {
   return (
     <div className="mt-14 border-t border-ink-900/8 pt-8 sm:mt-16">
       <p className="text-center text-[11px] font-semibold uppercase tracking-[0.18em] text-ink-500">
-        Trusted by Australian councils, care providers &amp; educators
+        Trusted by Australian government, councils, care providers &amp; educators
       </p>
       <div className="mt-5 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
         <div className="flex w-max animate-marquee items-center gap-10 sm:gap-14">

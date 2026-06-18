@@ -42,7 +42,7 @@ export function HeroCopy() {
 
       <CopyBlock index={2} className="mt-5">
         <p className="max-w-[32rem] text-pretty text-base leading-7 text-ink-600 sm:text-[1.0625rem] sm:leading-8">
-          One platform for obligations, regulatory change, audits, and evidence - built for councils, hospitals, government, and regulated industries across Australia.
+          One platform for obligations, regulatory change, audits, and evidence - built for councils, state and federal government, education, care services, hospitals, and regulated industries across Australia.
         </p>
       </CopyBlock>
 

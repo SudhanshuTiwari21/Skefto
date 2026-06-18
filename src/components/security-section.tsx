@@ -1,9 +1,12 @@
 import Link from "next/link";
 import { LINKS, SECURITY, TRUST_TOKENS } from "@/lib/content";
 import { Container, InlineLink, SectionHeading } from "@/components/ui";
-import { Icon, type IconName } from "@/components/icons";
+import { Icon } from "@/components/icons";
 
 export function SecuritySection() {
+  const ShieldIcon = Icon.shield;
+  const CheckIcon = Icon.check;
+
   return (
     <section
       id="security"
@@ -17,8 +20,8 @@ export function SecuritySection() {
       <Container className="relative">
         <SectionHeading
           eyebrow="Data sovereignty & security"
-          title="Your compliance data stays in Australia"
-          subtitle="Government-certified hosting and enterprise-grade security by default - because trust is non-negotiable for regulated teams."
+          title="Sovereign data controls with global-ready governance"
+          subtitle="Region-specific data residency, certified security controls, and privacy-by-design workflows for regulated teams."
         />
 
         <div className="mt-14 grid gap-6 lg:grid-cols-[0.92fr_1.08fr] lg:gap-8">
@@ -34,17 +37,23 @@ export function SecuritySection() {
 
             <div className="relative">
               <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-accent-200">
-                <Icon.shield className="size-3.5" />
+                <ShieldIcon className="size-3.5" />
                 Enterprise trust
               </span>
               <h3 className="mt-4 font-display text-2xl font-bold tracking-tight">
                 Built for teams who cannot compromise on data sovereignty
               </h3>
               <p className="mt-3 text-sm leading-7 text-ink-300">
-                Skefto is Australian-hosted in government-certified data centres,
-                with security controls aligned to ISO 27001 and privacy obligations
-                under the Privacy Act.
+                Skefto provides region-specific hosting options, including
+                Australian sovereign environments, with ISO 27001 certified
+                controls and privacy workflows aligned to local regulatory
+                obligations.
               </p>
+
+              <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-accent-300/40 bg-accent-500/10 px-3 py-1.5 text-xs font-semibold text-accent-200">
+                <ShieldIcon className="size-3.5" />
+                ISO 27001 Certified Security Controls
+              </div>
 
               <ul className="mt-6 grid gap-2.5 sm:grid-cols-2">
                 {TRUST_TOKENS.map((token) => (
@@ -52,7 +61,7 @@ export function SecuritySection() {
                     key={token}
                     className="inline-flex items-center gap-2.5 rounded-xl border border-white/10 bg-white/5 px-3 py-2.5 text-sm text-ink-200"
                   >
-                    <Icon.check className="size-4 shrink-0 text-accent-400" />
+                    <CheckIcon className="size-4 shrink-0 text-accent-400" />
                     {token}
                   </li>
                 ))}
@@ -73,7 +82,7 @@ export function SecuritySection() {
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
             {SECURITY.map((s, i) => {
-              const I = Icon[s.icon as IconName];
+              const I = Icon[s.icon];
               return (
                 <article
                   key={s.title}

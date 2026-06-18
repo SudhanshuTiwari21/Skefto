@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { CAPABILITIES, ECOSYSTEM, FAQS, INDUSTRIES_INTRO, LINKS } from "@/lib/content";
 import { Button, Container, SectionHeading } from "@/components/ui";
-import { Icon, type IconName } from "@/components/icons";
+import { Icon } from "@/components/icons";
 import { EcosystemDiagram } from "@/components/visuals";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -155,7 +155,7 @@ function Industries() {
       <Container>
         <SectionHeading
           eyebrow="Sector clouds"
-          title="CouncilCloud, CareCloud & EducationCloud"
+          title="GovCloud, CareCloud & EducationCloud"
           subtitle={INDUSTRIES_INTRO}
           invert
         />
@@ -174,6 +174,8 @@ function Industries() {
 
 /* ----------------------- 7 · GRC ecosystem ----------------------- */
 function Ecosystem() {
+  const ArrowIcon = Icon.arrow;
+
   return (
     <section id="platform" className="scroll-mt-20 py-20 sm:py-28">
       <Container>
@@ -187,7 +189,7 @@ function Ecosystem() {
             />
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
               {ECOSYSTEM.map((e) => {
-                const I = Icon[e.icon as IconName];
+                const I = Icon[e.icon];
                 return (
                   <Link
                     key={e.title}
@@ -200,7 +202,7 @@ function Ecosystem() {
                     <span>
                       <span className="flex items-center gap-1 font-display text-base font-bold text-ink-900">
                         {e.title}
-                        <Icon.arrow className="size-4 text-ink-300 transition-transform group-hover:translate-x-0.5 group-hover:text-brand-600" />
+                        <ArrowIcon className="size-4 text-ink-300 transition-transform group-hover:translate-x-0.5 group-hover:text-brand-600" />
                       </span>
                       <span className="mt-0.5 block text-sm leading-6 text-ink-600">
                         {e.body}

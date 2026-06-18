@@ -4,12 +4,14 @@ import { useState } from "react";
 import { FAQS, LINKS } from "@/lib/content";
 import { InlineLink } from "@/components/ui";
 
-export function Faq() {
+type FaqItem = { q: string; a: string };
+
+export function Faq({ items = FAQS }: Readonly<{ items?: FaqItem[] }>) {
   const [open, setOpen] = useState(0);
 
   return (
     <div className="divide-y divide-ink-100 rounded-2xl border border-ink-100 bg-white">
-      {FAQS.map((f, i) => {
+      {items.map((f, i) => {
         const isOpen = i === open;
         return (
           <div key={f.q}>
@@ -19,9 +21,7 @@ export function Faq() {
               className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left sm:px-6"
               aria-expanded={isOpen}
             >
-              <span className="font-display text-base font-bold text-ink-900">
-                {f.q}
-              </span>
+              <span className="font-display text-base font-bold text-ink-900">{f.q}</span>
               <span
                 className={`grid size-7 shrink-0 place-items-center rounded-full border border-ink-200 text-ink-500 transition-all ${
                   isOpen ? "rotate-45 border-brand-300 bg-brand-50 text-brand-600" : ""
@@ -38,14 +38,21 @@ export function Faq() {
                 <p className="text-pretty leading-7 text-ink-600">
                   {f.q.startsWith("What is compliance") ? (
                     <>
-                      Compliance management software centralises your regulatory
-                      obligations, policies, deadlines and evidence so you can
-                      track, manage and prove compliance from a single source of
-                      truth. It is a core part of a wider{" "}
+                      Compliance management software centralises your regulatory obligations,
+                      policies, deadlines and evidence so you can track, manage and prove compliance
+                      from a single source of truth. It is a core part of a wider{" "}
                       <InlineLink href={LINKS.grcGuide}>
                         governance, risk &amp; compliance (GRC)
                       </InlineLink>{" "}
                       approach.
+                    </>
+                  ) : f.q.startsWith("What is risk management") ? (
+                    <>
+                      {f.a}{" "}
+                      <InlineLink href={LINKS.solutions.compliance}>
+                        Explore compliance management
+                      </InlineLink>
+                      .
                     </>
                   ) : (
                     f.a

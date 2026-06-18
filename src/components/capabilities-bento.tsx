@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { CAPABILITIES, LINKS } from "@/lib/content";
 import { Icon, type IconName } from "@/components/icons";
 import { Container, InlineLink, SectionHeading, ShimmerButton } from "@/components/ui";
@@ -393,13 +392,6 @@ export function CapabilitiesBento() {
           <ShimmerButton href={LINKS.demo} className="!h-11 !px-6 !text-sm">
             Book a demo
           </ShimmerButton>
-          <Link
-            href="#obligations"
-            className="group inline-flex items-center gap-2 text-sm font-semibold text-ink-600 transition-colors hover:text-brand-700"
-          >
-            See obligations tracking
-            <Icon.arrow className="size-4 transition-transform group-hover:translate-x-0.5" />
-          </Link>
         </div>
       </Container>
     </section>
