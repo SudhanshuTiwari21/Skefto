@@ -1,6 +1,6 @@
 import type { CSSProperties, ReactNode } from "react";
 import Image from "next/image";
-import { CUSTOMER_LOGOS } from "@/lib/content";
+import { CUSTOMER_LOGOS, MARKET_POSITIONING } from "@/lib/content";
 import { Container } from "@/components/ui";
 import { HeroCopy } from "@/components/hero/hero-copy";
 import { HeroProductShowcase } from "@/components/hero/hero-product-showcase";
@@ -31,6 +31,9 @@ function HeroLogoStrip() {
     <div className="mt-14 border-t border-ink-900/8 pt-8 sm:mt-16">
       <p className="text-center text-[11px] font-semibold uppercase tracking-[0.18em] text-ink-500">
         Trusted by Australian government, councils, care providers &amp; educators
+      </p>
+      <p className="mx-auto mt-2 max-w-2xl text-center text-sm text-ink-500">
+        {MARKET_POSITIONING.logoStripSecondary}
       </p>
       <div className="mt-5 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
         <div className="flex w-max animate-marquee items-center gap-10 sm:gap-14">

@@ -42,12 +42,41 @@ export const TRUST_TOKENS = [
   "Built to ISO 37301",
 ];
 
-/** Hero - minimal trust row under CTAs (3 items max) */
+/** Hero - Australia-first trust row (international note is separate below) */
 export const HERO_TRUST_TOKENS = [
-  "Region-specific data residency options",
+  "Australian sovereign hosting",
   "Government-certified centres",
   "Built to ISO 37301",
 ] as const;
+
+/** Australia-primary market positioning — international depth in security + footnotes only */
+export const MARKET_POSITIONING = {
+  heroInternationalNote:
+    "Also serving organisations with cross-border privacy, security and compliance obligations.",
+  logoStripSecondary:
+    "Global-ready security and governance for teams with international requirements.",
+  securityFootnote:
+    "Australian regulated sectors are our primary market. Region-specific residency, Privacy Act alignment and GDPR-ready workflows are available when your operating footprint requires it.",
+} as const;
+
+export const TRUST_BAR_STATS = [
+  { v: "20+", k: "years in Australian GRC" },
+  { v: "85+", k: "average training NPS" },
+  { v: "1,000s", k: "of public sector staff trained" },
+  { v: "100%", k: "Australian sovereign hosting" },
+] as const;
+
+export const CLOSING_CTA_TRUST = [
+  "Australian sovereign hosting by default",
+  "Government-certified centres",
+  "Live in weeks, not months",
+] as const;
+
+/** ISO certification marks (public/) */
+export const ISO_CERTIFICATION_ASSETS = {
+  iso27001: "/images.png",
+  iso37301: "/ISO%20317301%20Image.webp",
+} as const;
 
 /** Product overview video (public/) */
 export const PRODUCT_OVERVIEW_VIDEO = "/Compliance%20Video.mp4";
@@ -363,7 +392,7 @@ export const WHY_CHOOSE_SKEFTO: {
 }[] = [
   {
     title: "Sector-specific templates & registers",
-    body: "Industry-specific registers for local government, education, aged care and NDIS — obligations, controls and frameworks pre-mapped to your sector, not a blank offshore template.",
+    body: "Industry-specific registers for councils, state and federal government, education, aged care and NDIS — obligations, controls and frameworks pre-mapped to your sector, not a blank offshore template.",
     icon: "building",
     featured: true,
   },
@@ -427,7 +456,7 @@ export const TESTIMONIALS = [
 ];
 
 export const CASE_STUDY = {
-  eyebrow: "Local government",
+  eyebrow: "Councils & government",
   headline: "A regional council strengthens compliance with Skefto",
   challenge:
     "Obligations were scattered across spreadsheets with no clear owners or deadlines.",
@@ -484,7 +513,7 @@ export const FAQS = [
   },
   {
     q: "Where is our compliance data stored?",
-    a: "All data is stored in government-certified Australian data centres, with information security aligned to ISO 27001 and built to meet Australian data sovereignty and privacy obligations.",
+    a: "Australian customer data is hosted in government-certified Australian data centres by default, with information security aligned to ISO 27001 and built for Australian data sovereignty and privacy obligations. Region-specific residency options and GDPR-ready governance workflows are available for organisations with cross-border requirements.",
   },
   {
     q: "How long does implementation take?",

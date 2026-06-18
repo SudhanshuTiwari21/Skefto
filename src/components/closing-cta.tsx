@@ -1,14 +1,10 @@
 import Link from "next/link";
-import { LINKS } from "@/lib/content";
+import { CLOSING_CTA_TRUST, LINKS } from "@/lib/content";
 import { BeamButton, Container } from "@/components/ui";
 import { Icon } from "@/components/icons";
 import { HeroBeams } from "@/components/hero/hero-beams";
 
-const TRUST = [
-  "Australian-hosted data",
-  "Government-certified centres",
-  "Live in weeks, not months",
-];
+const TRUST = CLOSING_CTA_TRUST;
 
 export function ClosingCta() {
   return (

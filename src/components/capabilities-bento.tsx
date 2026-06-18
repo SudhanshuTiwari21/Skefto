@@ -108,7 +108,7 @@ function FeaturedObligationsPanel() {
     { name: "Privacy Act - annual attestation", status: "On track", tone: "brand" },
     { name: "WHS audit - regional depots", status: "Due 4d", tone: "accent" },
     { name: "NDIS evidence pack Q2", status: "In review", tone: "slate" },
-    { name: "Local Government annual report", status: "On track", tone: "brand" },
+    { name: "Annual report attestation", status: "On track", tone: "brand" },
   ];
 
   return (

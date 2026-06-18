@@ -1,6 +1,6 @@
 import type { CSSProperties, ReactNode } from "react";
 import Link from "next/link";
-import { HERO_TRUST_TOKENS, LINKS, SECTOR_PRELOADS } from "@/lib/content";
+import { HERO_TRUST_TOKENS, LINKS, MARKET_POSITIONING, SECTOR_PRELOADS } from "@/lib/content";
 import { BeamButton } from "@/components/ui";
 import { Icon } from "@/components/icons";
 import { SkeftoGeoMark } from "@/components/skefto-geo-icons";
@@ -89,6 +89,9 @@ export function HeroCopy() {
             </li>
           ))}
         </ul>
+        <p className="mt-4 max-w-[32rem] text-sm leading-6 text-ink-500">
+          {MARKET_POSITIONING.heroInternationalNote}
+        </p>
       </CopyBlock>
     </div>
   );

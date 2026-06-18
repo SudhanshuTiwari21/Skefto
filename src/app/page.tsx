@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CAPABILITIES, ECOSYSTEM, FAQS, INDUSTRIES_INTRO, LINKS } from "@/lib/content";
+import { CAPABILITIES, ECOSYSTEM, FAQS, INDUSTRIES_INTRO, LINKS, MARKET_POSITIONING, TRUST_BAR_STATS } from "@/lib/content";
 import { Button, Container, SectionHeading } from "@/components/ui";
 import { Icon } from "@/components/icons";
 import { EcosystemDiagram } from "@/components/visuals";
@@ -30,7 +30,7 @@ function jsonLd() {
         operatingSystem: "Web",
         url: PAGE,
         description:
-          "Compliance management software for regulated Australian organisations. Track obligations, manage regulatory change, and prove compliance in one Australian-hosted platform aligned to ISO 37301.",
+          "Compliance management software for regulated Australian organisations. Track obligations, manage regulatory change, and prove compliance on an Australian sovereign platform aligned to ISO 37301 — with region-specific residency and global-ready governance where required.",
         offers: { "@type": "Offer", price: "0", priceCurrency: "AUD", availability: "https://schema.org/InStock" },
         provider: {
           "@type": "Organization",
@@ -117,17 +117,11 @@ export default function Page() {
 
 /* --------------------------- 2 · Trust bar --------------------------- */
 function TrustBar() {
-  const stats = [
-    { v: "20+", k: "years in Australian GRC" },
-    { v: "85+", k: "average training NPS" },
-    { v: "1,000s", k: "of public sector staff trained" },
-    { v: "100%", k: "Australian-hosted & certified" },
-  ];
   return (
     <section className="border-y border-ink-900/6 bg-white">
       <Container className="py-10">
         <RevealStagger className="grid gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
-          {stats.map((s) => (
+          {TRUST_BAR_STATS.map((s) => (
             <div
               key={s.k}
               className="flex flex-col items-center text-center lg:border-r lg:border-ink-100 lg:last:border-r-0"
@@ -143,6 +137,9 @@ function TrustBar() {
             </div>
           ))}
         </RevealStagger>
+        <p className="mx-auto mt-8 max-w-2xl text-center text-sm text-ink-500">
+          {MARKET_POSITIONING.heroInternationalNote}
+        </p>
       </Container>
     </section>
   );

@@ -1,7 +1,33 @@
+import Image from "next/image";
 import Link from "next/link";
-import { LINKS, SECURITY, TRUST_TOKENS } from "@/lib/content";
+import { ISO_CERTIFICATION_ASSETS, LINKS, MARKET_POSITIONING, SECURITY, TRUST_TOKENS } from "@/lib/content";
 import { Container, InlineLink, SectionHeading } from "@/components/ui";
 import { Icon } from "@/components/icons";
+
+function CertificationMarks() {
+  return (
+    <div className="mt-5 flex flex-wrap items-stretch gap-3">
+      <div className="flex flex-col justify-center rounded-xl border border-white/10 bg-white px-4 py-3 shadow-sm">
+        <Image
+          src={ISO_CERTIFICATION_ASSETS.iso27001}
+          alt="ISO/IEC 27001 information security management certification"
+          width={128}
+          height={52}
+          className="h-9 w-auto object-contain sm:h-10"
+        />
+      </div>
+      <div className="flex flex-col justify-center rounded-xl border border-white/10 bg-white px-4 py-3 shadow-sm">
+        <Image
+          src={ISO_CERTIFICATION_ASSETS.iso37301}
+          alt="ISO 37301:2021 compliance management systems certification"
+          width={148}
+          height={52}
+          className="h-9 w-auto object-contain sm:h-10"
+        />
+      </div>
+    </div>
+  );
+}
 
 export function SecuritySection() {
   const ShieldIcon = Icon.shield;
@@ -50,10 +76,10 @@ export function SecuritySection() {
                 obligations.
               </p>
 
-              <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-accent-300/40 bg-accent-500/10 px-3 py-1.5 text-xs font-semibold text-accent-200">
-                <ShieldIcon className="size-3.5" />
-                ISO 27001 Certified Security Controls
-              </div>
+              <p className="mt-4 text-xs font-semibold uppercase tracking-[0.14em] text-ink-400">
+                Certified to international standards
+              </p>
+              <CertificationMarks />
 
               <ul className="mt-6 grid gap-2.5 sm:grid-cols-2">
                 {TRUST_TOKENS.map((token) => (
@@ -83,6 +109,10 @@ export function SecuritySection() {
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
             {SECURITY.map((s, i) => {
               const I = Icon[s.icon];
+              const isoMark =
+                s.title === "ISO 27001 certified security"
+                  ? ISO_CERTIFICATION_ASSETS.iso27001
+                  : null;
               return (
                 <article
                   key={s.title}
@@ -92,9 +122,22 @@ export function SecuritySection() {
                 >
                   <div className="border-beam absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   <div className="relative flex items-start gap-4">
-                    <span className="grid size-12 shrink-0 place-items-center rounded-xl border border-brand-100 bg-brand-50 text-brand-700">
-                      <I className="size-6" />
-                    </span>
+                    {isoMark ? (
+                      <span className="grid size-12 shrink-0 place-items-center rounded-xl border border-ink-100 bg-white p-1.5">
+                        <Image
+                          src={isoMark}
+                          alt=""
+                          width={40}
+                          height={40}
+                          aria-hidden
+                          className="h-8 w-auto object-contain"
+                        />
+                      </span>
+                    ) : (
+                      <span className="grid size-12 shrink-0 place-items-center rounded-xl border border-brand-100 bg-brand-50 text-brand-700">
+                        <I className="size-6" />
+                      </span>
+                    )}
                     <div>
                       <h3 className="font-display text-lg font-bold text-ink-900">
                         {s.title}
@@ -110,7 +153,11 @@ export function SecuritySection() {
           </div>
         </div>
 
-        <p className="mt-8 text-center text-sm text-ink-500 lg:hidden">
+        <p className="mt-8 text-center text-sm leading-6 text-ink-500">
+          {MARKET_POSITIONING.securityFootnote}
+        </p>
+
+        <p className="mt-4 text-center text-sm text-ink-500 lg:hidden">
           Read more in our{" "}
           <InlineLink href={LINKS.privacy}>data handling and privacy policy</InlineLink>.
         </p>
