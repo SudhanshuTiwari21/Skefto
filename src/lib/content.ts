@@ -539,7 +539,7 @@ export const FUTURE_INITIATIVES: {
       "Board and committee compliance in one portal",
       "Councillor declarations, gifts and conflicts",
       "Partnership with City of Belmont",
-      "First-of-its-kind for Australian local government",
+      "First-of-its-kind for Australian councils and government",
     ],
   },
   {
