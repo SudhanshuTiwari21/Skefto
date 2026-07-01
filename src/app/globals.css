@@ -504,6 +504,71 @@ body {
 }
 .animate-badge-sweep { animation: badge-sweep 4.5s ease-in-out infinite; }
 
+/* Site header — shell unfurls from center, then content cascades in */
+@keyframes site-header-shell-unfurl {
+  0% {
+    opacity: 0;
+    clip-path: inset(0 50% 0 50% round 9999px);
+    transform: scale3d(0.9, 0.94, 1);
+  }
+  18% {
+    opacity: 0.85;
+    clip-path: inset(0 38% 0 38% round 9999px);
+    transform: scale3d(0.94, 0.97, 1);
+  }
+  48% {
+    opacity: 1;
+    clip-path: inset(0 14% 0 14% round 9999px);
+    transform: scale3d(0.99, 0.995, 1);
+  }
+  78% {
+    clip-path: inset(0 2% 0 2% round 9999px);
+    transform: scale3d(1.008, 1.002, 1);
+  }
+  100% {
+    opacity: 1;
+    clip-path: inset(0 0 0 0 round 9999px);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes site-header-item-in {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 5px, 0);
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    filter: blur(0);
+  }
+}
+
+.site-header-shell {
+  transform-origin: center center;
+  backface-visibility: hidden;
+  animation: site-header-shell-unfurl 1.75s cubic-bezier(0.33, 1, 0.68, 1) 0.4s both;
+}
+
+.site-header-content > * {
+  opacity: 0;
+  backface-visibility: hidden;
+  animation: site-header-item-in 0.85s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.site-header-content > *:nth-child(1) {
+  animation-delay: 1.95s;
+}
+
+.site-header-content > *:nth-child(2) {
+  animation-delay: 2.12s;
+}
+
+.site-header-content > *:nth-child(3) {
+  animation-delay: 2.28s;
+}
+
 /* ---------- Border beam (conic, Magic UI inspired) ---------- */
 @property --beam-angle {
   syntax: "<angle>";
@@ -709,6 +774,8 @@ body {
   .hero-sparkle-ring,
   .hero-sparkle-dot,
   .hero-glow-pulse,
+  .site-header-shell,
+  .site-header-content > *,
   html { animation: none !important; scroll-behavior: auto; }
   .beam-btn-hero:hover {
     transform: none;
@@ -719,5 +786,15 @@ body {
   .hero-enter-ticker {
     opacity: 1;
     transform: none;
+  }
+  .site-header-shell {
+    opacity: 1;
+    transform: none;
+    clip-path: none;
+  }
+  .site-header-content > * {
+    opacity: 1;
+    transform: none;
+    filter: none;
   }
 }

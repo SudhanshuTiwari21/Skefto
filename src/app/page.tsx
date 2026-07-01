@@ -15,6 +15,7 @@ import { GettingStartedSection } from "@/components/getting-started-section";
 import { FaqSection } from "@/components/faq-section";
 import { Reveal, RevealStagger } from "@/components/scroll-reveal";
 import { TRUST_BAR_STATS } from "@/lib/content";
+import { IsoCertificationMarks } from "@/components/iso-certification-marks";
 
 const SITE = "https://skefto.com";
 const PAGE = `${SITE}/solutions/compliance-management-software/`;
@@ -119,20 +120,23 @@ function TrustBar() {
   return (
     <section className="border-y border-ink-900/6 bg-white">
       <Container className="py-8">
-        <RevealStagger className="grid gap-y-6 sm:grid-cols-2">
-          {TRUST_BAR_STATS.map((s) => (
-            <div
-              key={s.k}
-              className="flex flex-col items-center text-center sm:border-r sm:border-ink-100 sm:last:border-r-0"
-            >
-              <p className="font-display text-3xl font-extrabold tracking-tight text-ink-900 sm:text-4xl">
-                <span className="bg-gradient-to-r from-brand-600 to-accent-600 bg-clip-text text-transparent">
-                  {s.v}
-                </span>
-              </p>
-              <p className="mt-1.5 max-w-[14rem] text-sm font-medium text-ink-500">{s.k}</p>
-            </div>
-          ))}
+        <RevealStagger className="grid items-center gap-y-8 sm:grid-cols-2">
+          <div className="flex flex-col items-center text-center sm:border-r sm:border-ink-100">
+            <p className="font-display text-3xl font-extrabold tracking-tight text-ink-900 sm:text-4xl">
+              <span className="bg-gradient-to-r from-brand-600 to-accent-600 bg-clip-text text-transparent">
+                {TRUST_BAR_STATS[0]!.v}
+              </span>
+            </p>
+            <p className="mt-1.5 max-w-[14rem] text-sm font-medium text-ink-500">
+              {TRUST_BAR_STATS[0]!.k}
+            </p>
+          </div>
+          <div className="flex flex-col items-center text-center">
+            <IsoCertificationMarks size="sm" />
+            <p className="mt-3 text-sm font-medium text-ink-500">
+              {TRUST_BAR_STATS[1]!.k}
+            </p>
+          </div>
         </RevealStagger>
       </Container>
     </section>

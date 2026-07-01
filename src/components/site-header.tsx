@@ -68,12 +68,11 @@ export function SiteHeader({ nav = [...NAV] }: Readonly<{ nav?: NavItem[] }>) {
           open && "z-50",
         )}
       >
-        {/* Glass pill */}
+        {/* Glass pill — shell unfurls from center, then content appears */}
         <div
           className={cx(
-            "relative flex h-14 items-center gap-2 rounded-full border px-3 pl-4 sm:h-[3.75rem] sm:gap-3 sm:px-4 sm:pl-5",
+            "site-header-shell relative overflow-hidden rounded-full border",
             "backdrop-blur-xl backdrop-saturate-150",
-            /* Even fill - no gradient overlay (that caused the “faded” right side on dark hero) */
             onDark
               ? "border-white/20 bg-white/[0.12] shadow-[0_8px_32px_-8px_rgba(0,0,0,0.45)] ring-1 ring-inset ring-white/10"
               : "border-ink-200/70 bg-white/85 shadow-[0_4px_24px_-8px_rgba(20,24,31,0.1)] ring-1 ring-inset ring-white/80",
@@ -83,6 +82,11 @@ export function SiteHeader({ nav = [...NAV] }: Readonly<{ nav?: NavItem[] }>) {
                 : "border-ink-200/80 bg-white/95"),
           )}
         >
+          <div
+            className={cx(
+              "site-header-content relative flex h-14 items-center gap-2 px-3 pl-4 sm:h-[3.75rem] sm:gap-3 sm:px-4 sm:pl-5",
+            )}
+          >
           <Link
             href="/"
             className="relative z-10 flex h-7 w-[7.5rem] shrink-0 items-center sm:h-7"
@@ -197,6 +201,7 @@ export function SiteHeader({ nav = [...NAV] }: Readonly<{ nav?: NavItem[] }>) {
               </svg>
             )}
           </button>
+          </div>
           </div>
         </div>
 

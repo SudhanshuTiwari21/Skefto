@@ -131,10 +131,10 @@ export const GETTING_STARTED: { title: string; body: string }[] = [
   },
 ];
 
-/** ISO certification marks (public/) */
+/** ISO certification marks (public/certifications/) */
 export const ISO_CERTIFICATION_ASSETS = {
-  iso27001: "/images.png",
-  iso37301: "/ISO%20317301%20Image.webp",
+  iso27001: "/certifications/iso-27001.png",
+  iso37301: "/certifications/iso-37301.webp",
 } as const;
 
 /** Product overview video (public/) */
