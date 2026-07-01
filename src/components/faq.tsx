@@ -7,7 +7,7 @@ import { InlineLink } from "@/components/ui";
 type FaqItem = { q: string; a: string };
 
 export function Faq({ items = FAQS }: Readonly<{ items?: FaqItem[] }>) {
-  const [open, setOpen] = useState(0);
+  const [open, setOpen] = useState(1);
 
   return (
     <div className="divide-y divide-ink-100 rounded-2xl border border-ink-100 bg-white">

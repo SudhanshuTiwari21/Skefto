@@ -30,7 +30,7 @@ function HeroLogoStrip() {
   return (
     <div className="mt-14 border-t border-ink-900/8 pt-8 sm:mt-16">
       <p className="text-center text-[11px] font-semibold uppercase tracking-[0.18em] text-ink-500">
-        Trusted by Australian government, councils, care providers &amp; educators
+        Trusted by government, councils, care providers &amp; educators
       </p>
       <p className="mx-auto mt-2 max-w-2xl text-center text-sm text-ink-500">
         {MARKET_POSITIONING.logoStripSecondary}

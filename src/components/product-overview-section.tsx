@@ -8,7 +8,7 @@ export function ProductOverviewSection() {
         <SectionHeading
           eyebrow="Product overview"
           title="See Skefto Compliance in action"
-          subtitle="A short walkthrough of obligations, registers, and reporting — built for regulated Australian teams."
+          subtitle="A short walkthrough of obligations, registers, and reporting — for regulated teams evaluating Skefto."
         />
 
         <div className="mx-auto mt-10 max-w-4xl">

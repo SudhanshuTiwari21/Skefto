@@ -13,7 +13,7 @@ export function FaqSection() {
         <SectionHeading
           eyebrow="FAQ"
           title="Common questions about Skefto Compliance"
-          subtitle="Answers on Australian compliance, data residency, implementation, and how Skefto compares to other platforms."
+          subtitle="Answers on data residency, implementation, sector fit, and how Skefto compares to other platforms."
         />
 
         <div className="mx-auto mt-10 max-w-3xl">

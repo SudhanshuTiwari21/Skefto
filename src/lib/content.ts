@@ -42,35 +42,94 @@ export const TRUST_TOKENS = [
   "Built to ISO 37301",
 ];
 
-/** Hero - Australia-first trust row (international note is separate below) */
+/** Hero - trust row beside CTA (stated once; not repeated in security section body) */
 export const HERO_TRUST_TOKENS = [
-  "Australian sovereign hosting",
-  "Government-certified centres",
-  "Built to ISO 37301",
+  "Region-specific data residency",
+  "ISO 27001 & 37301 aligned",
+  "Sector-ready compliance clouds",
 ] as const;
 
-/** Australia-primary market positioning — international depth in security + footnotes only */
+export const SECONDARY_CTA_LABEL = "Talk to a specialist" as const;
+
+/** International evolution — Australian proof retained in sectors, logos, and case study */
 export const MARKET_POSITIONING = {
+  heroBadge: "Compliance management · Global",
   heroInternationalNote:
-    "Also serving organisations with cross-border privacy, security and compliance obligations.",
+    "Trusted by government, councils, education and care providers — with sovereign hosting options where regulations require it.",
   logoStripSecondary:
-    "Global-ready security and governance for teams with international requirements.",
+    "20+ years helping regulated organisations prove compliance with confidence.",
   securityFootnote:
-    "Australian regulated sectors are our primary market. Region-specific residency, Privacy Act alignment and GDPR-ready workflows are available when your operating footprint requires it.",
+    "Australian sovereign environments remain available for public sector buyers. Region-specific residency and GDPR-ready workflows support international operating footprints.",
 } as const;
 
 export const TRUST_BAR_STATS = [
-  { v: "20+", k: "years in Australian GRC" },
-  { v: "85+", k: "average training NPS" },
-  { v: "1,000s", k: "of public sector staff trained" },
-  { v: "100%", k: "Australian sovereign hosting" },
+  { v: "20+", k: "years in GRC & compliance" },
+  { v: "ISO", k: "27001 & 37301 aligned" },
 ] as const;
 
 export const CLOSING_CTA_TRUST = [
-  "Australian sovereign hosting by default",
-  "Government-certified centres",
+  "Region-specific sovereign hosting",
   "Live in weeks, not months",
+  "ISO-aligned security controls",
 ] as const;
+
+/** End-to-end compliance workflow — drives the How it works section */
+export const COMPLIANCE_WORKFLOW: {
+  step: string;
+  title: string;
+  body: string;
+  icon: IconName;
+}[] = [
+  {
+    step: "01",
+    title: "Map obligations",
+    body: "Configure sector registers, standards and regulatory sources in one library.",
+    icon: "map",
+  },
+  {
+    step: "02",
+    title: "Assign ownership",
+    body: "Set accountable officers, calendars, escalations and approval paths.",
+    icon: "users",
+  },
+  {
+    step: "03",
+    title: "Operate daily",
+    body: "Run tasks, policy reviews, attestations and regulatory change in one workflow.",
+    icon: "workflow",
+  },
+  {
+    step: "04",
+    title: "Capture evidence",
+    body: "Link documents, sign-offs and audit findings to every obligation.",
+    icon: "document",
+  },
+  {
+    step: "05",
+    title: "Report & assure",
+    body: "Give boards, auditors and regulators defensible, real-time visibility.",
+    icon: "chart",
+  },
+];
+
+export const GETTING_STARTED: { title: string; body: string }[] = [
+  {
+    title: "Discovery demo",
+    body: "Walkthrough mapped to your sector, frameworks and reporting needs.",
+  },
+  {
+    title: "Sector configuration",
+    body: "GovCloud, CareCloud or EducationCloud templates aligned to your legislation.",
+  },
+  {
+    title: "Rollout & training",
+    body: "Role-based enablement for compliance owners, business units and executives.",
+  },
+  {
+    title: "Go-live",
+    body: "Most organisations are live in weeks — not a multi-year GRC programme.",
+  },
+];
 
 /** ISO certification marks (public/) */
 export const ISO_CERTIFICATION_ASSETS = {
@@ -208,7 +267,7 @@ export const STANDARDS = [
 
 /* --------------------------- Industries / sector clouds ----------------------------- */
 export const INDUSTRIES_INTRO =
-  "Built for highly regulated industries in Australia — whether you're a Government organisation, council, care provider, or education institution, sector-specific configurations streamline compliance with local legislation, standards, and operational requirements.";
+  "Built for highly regulated organisations — whether you're a government agency, council, care provider, or education institution, sector-specific configurations streamline compliance with local legislation, standards, and operational requirements.";
 
 export const INDUSTRIES: {
   id: string;

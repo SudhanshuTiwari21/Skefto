@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CLOSING_CTA_TRUST, LINKS } from "@/lib/content";
+import { CLOSING_CTA_TRUST, LINKS, SECONDARY_CTA_LABEL } from "@/lib/content";
 import { BeamButton, Container } from "@/components/ui";
 import { Icon } from "@/components/icons";
 import { HeroBeams } from "@/components/hero/hero-beams";
@@ -52,7 +52,7 @@ export function ClosingCta() {
                 href={LINKS.contact}
                 className="inline-flex h-12 items-center justify-center rounded-full border border-white/20 px-6 text-center text-sm font-semibold text-white transition-colors hover:border-white/35 hover:bg-white/5"
               >
-                Speak with a specialist
+                {SECONDARY_CTA_LABEL}
               </Link>
             </div>
           </div>

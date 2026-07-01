@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { INDUSTRIES, LINKS, OTHER_COMPLIANCE_FUNCTIONS } from "@/lib/content";
+import { INDUSTRIES, LINKS } from "@/lib/content";
 import { Icon } from "@/components/icons";
 import { SkeftoGeoMark } from "@/components/skefto-geo-icons";
 
@@ -57,11 +57,6 @@ function IndustryPanel({ current }: Readonly<{ current: (typeof INDUSTRIES)[numb
           {current.linkLabel}
           <ArrowIcon className="size-4 transition-transform group-hover:translate-x-0.5" />
         </Link>
-
-        <p className="mt-4 text-sm leading-6 text-ink-300">
-          Plus many other compliance solutions including{" "}
-          {OTHER_COMPLIANCE_FUNCTIONS.join(", ")}.
-        </p>
       </div>
     </div>
   );

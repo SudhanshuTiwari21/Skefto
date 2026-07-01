@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ISO_CERTIFICATION_ASSETS, LINKS, MARKET_POSITIONING, SECURITY, TRUST_TOKENS } from "@/lib/content";
+import { ISO_CERTIFICATION_ASSETS, LINKS, SECURITY, TRUST_TOKENS } from "@/lib/content";
 import { Container, InlineLink, SectionHeading } from "@/components/ui";
 import { Icon } from "@/components/icons";
 
@@ -36,7 +36,7 @@ export function SecuritySection() {
   return (
     <section
       id="security"
-      className="relative scroll-mt-20 overflow-hidden bg-sand-50 py-20 sm:py-28"
+      className="relative scroll-mt-20 overflow-hidden bg-sand-50 py-16 sm:py-20"
     >
       <div
         aria-hidden
@@ -106,38 +106,19 @@ export function SecuritySection() {
             </div>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
-            {SECURITY.map((s, i) => {
+          <div className="grid gap-4 sm:grid-cols-2">
+            {SECURITY.filter((s) => s.title !== "ISO 27001 certified security").map((s) => {
               const I = Icon[s.icon];
-              const isoMark =
-                s.title === "ISO 27001 certified security"
-                  ? ISO_CERTIFICATION_ASSETS.iso27001
-                  : null;
               return (
                 <article
                   key={s.title}
-                  className={`group relative overflow-hidden rounded-3xl border border-ink-900/8 bg-white p-6 shadow-soft transition-[border-color,box-shadow] duration-300 hover:border-brand-200/70 hover:shadow-card ${
-                    i === 0 ? "xl:col-span-2" : ""
-                  }`}
+                  className="group relative overflow-hidden rounded-3xl border border-ink-900/8 bg-white p-6 shadow-soft transition-[border-color,box-shadow] duration-300 hover:border-brand-200/70 hover:shadow-card"
                 >
                   <div className="border-beam absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   <div className="relative flex items-start gap-4">
-                    {isoMark ? (
-                      <span className="grid size-12 shrink-0 place-items-center rounded-xl border border-ink-100 bg-white p-1.5">
-                        <Image
-                          src={isoMark}
-                          alt=""
-                          width={40}
-                          height={40}
-                          aria-hidden
-                          className="h-8 w-auto object-contain"
-                        />
-                      </span>
-                    ) : (
-                      <span className="grid size-12 shrink-0 place-items-center rounded-xl border border-brand-100 bg-brand-50 text-brand-700">
-                        <I className="size-6" />
-                      </span>
-                    )}
+                    <span className="grid size-12 shrink-0 place-items-center rounded-xl border border-brand-100 bg-brand-50 text-brand-700">
+                      <I className="size-6" />
+                    </span>
                     <div>
                       <h3 className="font-display text-lg font-bold text-ink-900">
                         {s.title}
@@ -153,13 +134,8 @@ export function SecuritySection() {
           </div>
         </div>
 
-        <p className="mt-8 text-center text-sm leading-6 text-ink-500">
-          {MARKET_POSITIONING.securityFootnote}
-        </p>
-
-        <p className="mt-4 text-center text-sm text-ink-500 lg:hidden">
-          Read more in our{" "}
-          <InlineLink href={LINKS.privacy}>data handling and privacy policy</InlineLink>.
+        <p className="mt-4 text-center text-sm text-ink-500">
+          <InlineLink href={LINKS.privacy}>Privacy policy</InlineLink>
         </p>
       </Container>
     </section>

@@ -1,6 +1,6 @@
 import type { CSSProperties, ReactNode } from "react";
 import Link from "next/link";
-import { HERO_TRUST_TOKENS, LINKS, MARKET_POSITIONING, SECTOR_PRELOADS } from "@/lib/content";
+import { HERO_TRUST_TOKENS, LINKS, MARKET_POSITIONING, SECONDARY_CTA_LABEL, SECTOR_PRELOADS } from "@/lib/content";
 import { BeamButton } from "@/components/ui";
 import { Icon } from "@/components/icons";
 import { SkeftoGeoMark } from "@/components/skefto-geo-icons";
@@ -30,19 +30,21 @@ export function HeroCopy() {
       <CopyBlock index={0}>
         <span className="inline-flex items-center gap-2 rounded-full border border-ink-200/80 bg-white px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-ink-700 shadow-soft">
           <SkeftoGeoMark shape="hexagon" />
-          Compliance management · Australia
+          {MARKET_POSITIONING.heroBadge}
         </span>
       </CopyBlock>
 
       <CopyBlock index={1} className="mt-4">
         <h1 className="font-display text-[2.05rem] font-extrabold leading-[1.08] tracking-[-0.035em] text-ink-900 sm:text-[2.75rem] lg:text-[3.05rem]">
-          Compliance management software for regulated Australian organisations
+          Compliance management software for regulated organisations
         </h1>
       </CopyBlock>
 
       <CopyBlock index={2} className="mt-5">
         <p className="max-w-[32rem] text-pretty text-base leading-7 text-ink-600 sm:text-[1.0625rem] sm:leading-8">
-          One platform for obligations, regulatory change, audits, and evidence - built for councils, state and federal government, education, care services, hospitals, and regulated industries across Australia.
+          One platform for obligations, regulatory change, audits, and evidence — for councils,
+          government, education, care, hospitals and regulated industries worldwide. Australian
+          sovereign hosting and sector clouds where your jurisdiction requires it.
         </p>
       </CopyBlock>
 
@@ -70,7 +72,7 @@ export function HeroCopy() {
             href={LINKS.contact}
             className="inline-flex h-12 items-center justify-center rounded-full border border-ink-200 bg-white px-7 text-sm font-semibold text-ink-800 shadow-sm transition-colors hover:border-brand-300 hover:text-brand-700"
           >
-            Talk to a specialist
+            {SECONDARY_CTA_LABEL}
           </Link>
         </div>
       </CopyBlock>

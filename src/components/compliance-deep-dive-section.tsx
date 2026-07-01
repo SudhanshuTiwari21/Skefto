@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import {
   AUDIT_ACTION_BULLETS,
+  COMPLIANCE_WORKFLOW,
   LINKS,
   OBLIGATION_BULLETS,
   POLICY_BULLETS,
@@ -12,7 +13,40 @@ import {
   STANDARDS,
 } from "@/lib/content";
 import { Icon } from "@/components/icons";
-import { Container, InlineLink, SectionHeading } from "@/components/ui";
+import { Container, InlineLink, SectionHeading, ShimmerButton } from "@/components/ui";
+
+function WorkflowStrip() {
+  return (
+    <ol className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-5 lg:gap-2">
+      {COMPLIANCE_WORKFLOW.map((step, i) => {
+        const I = Icon[step.icon];
+        return (
+          <li
+            key={step.title}
+            className="relative rounded-xl border border-ink-900/8 bg-white p-4 shadow-soft"
+          >
+            {i < COMPLIANCE_WORKFLOW.length - 1 ? (
+              <span
+                aria-hidden
+                className="pointer-events-none absolute -right-1 top-1/2 hidden h-px w-2 -translate-y-1/2 bg-brand-200 lg:block"
+              />
+            ) : null}
+            <div className="flex items-center gap-2">
+              <span className="grid size-8 place-items-center rounded-lg bg-brand-50 text-brand-700">
+                <I className="size-4" />
+              </span>
+              <span className="text-[10px] font-bold uppercase tracking-wider text-brand-600">
+                {step.step}
+              </span>
+            </div>
+            <h3 className="mt-3 font-display text-sm font-bold text-ink-900">{step.title}</h3>
+            <p className="mt-1.5 text-xs leading-5 text-ink-600">{step.body}</p>
+          </li>
+        );
+      })}
+    </ol>
+  );
+}
 
 const TABS = [
   { id: "obligations", label: "Obligations & deadlines" },
@@ -252,17 +286,23 @@ export function ComplianceDeepDiveSection() {
 
   return (
     <section
-      id="obligations"
+      id="capabilities"
       className="scroll-mt-20 bg-sand-50 py-16 sm:py-20"
     >
       <Container>
         <SectionHeading
           eyebrow="How it works"
-          title="Track obligations and stay ahead of regulatory change"
-          subtitle="Everything you need to manage deadlines and Australian regulatory requirements - in one place."
+          title="From obligation mapping to audit-ready evidence"
+          subtitle="Five connected workflow stages — then explore each capability area with screenshots and detail."
         />
 
-        <div className="mt-8 flex flex-wrap gap-2 rounded-2xl border border-ink-900/8 bg-white p-1.5 shadow-soft sm:mt-10">
+        <WorkflowStrip />
+
+        <p className="mt-8 text-center text-xs font-semibold uppercase tracking-[0.14em] text-ink-500">
+          Explore each capability area
+        </p>
+
+        <div className="mt-3 flex flex-wrap gap-2 rounded-2xl border border-ink-900/8 bg-white p-1.5 shadow-soft">
           {TABS.map((tab) => (
             <button
               key={tab.id}
@@ -301,6 +341,12 @@ export function ComplianceDeepDiveSection() {
           >
             <AuditActionPanel />
           </div>
+        </div>
+
+        <div className="mt-8 flex justify-center">
+          <ShimmerButton href={LINKS.demo} className="!h-11 !px-6 !text-sm">
+            Book a demo
+          </ShimmerButton>
         </div>
       </Container>
     </section>

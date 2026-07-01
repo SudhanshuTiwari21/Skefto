@@ -20,11 +20,11 @@ const SITE = "https://skefto.com";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
   title: {
-    default: "Compliance Management Software for Australian Organisations | Skefto",
+    default: "Compliance Management Software for Regulated Organisations | Skefto",
     template: "%s | Skefto",
   },
   description:
-    "Track obligations, manage regulatory change, and prove compliance in one Australian-hosted platform. Built for councils, government, healthcare and education. Aligned to ISO 37301.",
+    "Track obligations, manage regulatory change, and prove compliance on a sovereign-ready platform. Built for government, education, healthcare and regulated industries worldwide. ISO 37301 aligned.",
   applicationName: "Skefto",
   authors: [{ name: "Skefto" }],
   keywords: [
@@ -44,15 +44,15 @@ export const metadata: Metadata = {
     locale: "en_AU",
     siteName: "Skefto",
     url: "/solutions/compliance-management-software/",
-    title: "Compliance Management Software for Regulated Australian Organisations",
+    title: "Compliance Management Software for Regulated Organisations",
     description:
-      "One Australian-hosted platform to track obligations, manage regulatory change, and prove compliance. Built for councils, government, healthcare and education.",
+      "One sovereign-ready platform to track obligations, manage regulatory change, and prove compliance. Built for government, education, healthcare and regulated industries worldwide.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Compliance Management Software for Australian Organisations | Skefto",
+    title: "Compliance Management Software for Regulated Organisations | Skefto",
     description:
-      "Track obligations, manage regulatory change, and prove compliance in one Australian-hosted platform aligned to ISO 37301.",
+      "Track obligations, manage regulatory change, and prove compliance on a sovereign-ready platform aligned to ISO 37301.",
   },
   robots: {
     index: true,

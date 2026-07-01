@@ -8,10 +8,10 @@ import { BeamButton } from "@/components/ui";
 import { Icon } from "@/components/icons";
 
 const NAV = [
-  { label: "Capabilities", href: "#capabilities" },
+  { label: "How it works", href: "#capabilities" },
   { label: "Security", href: "#security" },
-  { label: "Obligations", href: "#obligations" },
   { label: "Industries", href: "#industries" },
+  { label: "Proof", href: "#proof" },
   { label: "FAQ", href: "#faq" },
 ] as const;
 
@@ -117,7 +117,7 @@ export function SiteHeader({ nav = [...NAV] }: Readonly<{ nav?: NavItem[] }>) {
             aria-label="Primary"
           >
             <ul className="flex max-w-full items-center gap-0.5 xl:gap-1">
-              {NAV.map((n) => (
+              {nav.map((n) => (
                 <li key={n.href} className="shrink-0">
                   <a
                     href={n.href}
@@ -209,7 +209,7 @@ export function SiteHeader({ nav = [...NAV] }: Readonly<{ nav?: NavItem[] }>) {
             )}
           >
             <div className="space-y-0.5">
-              {NAV.map((n) => (
+              {nav.map((n) => (
                 <a
                   key={n.href}
                   href={n.href}
