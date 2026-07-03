@@ -1,5 +1,6 @@
 import type { IconName } from "@/components/icons";
 import { LINKS } from "@/lib/content";
+import { COMPLIANCE_CANONICAL_PATH } from "@/lib/industries-content";
 
 export { CUSTOMER_LOGOS } from "@/lib/content";
 export { LINKS };
@@ -259,10 +260,10 @@ export const SECTORS: {
 
 export const ECOSYSTEM = [
   {
-    title: "Compliance management",
-    body: "Link risks to obligations, legislative change and compliance findings.",
+    title: "Compliance management software",
+    body: "Obligations registers, regulatory change, audits and evidence linked to your risk register.",
     icon: "register" as IconName,
-    href: LINKS.solutions.compliance,
+    href: COMPLIANCE_CANONICAL_PATH,
   },
   {
     title: "Incident management",

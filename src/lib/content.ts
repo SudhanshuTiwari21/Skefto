@@ -32,6 +32,7 @@ export const LINKS = {
     advisory: `${SITE}/services/risk-advisory/`,
     training: `${SITE}/services/risk-management-training/`,
   },
+  partners: `${SITE}/partners/`,
 } as const;
 
 /* ------------------------------ Hero -------------------------------- */
@@ -515,13 +516,13 @@ export const TESTIMONIALS = [
 ];
 
 export const CASE_STUDY = {
-  eyebrow: "Councils & government",
-  headline: "A regional council strengthens compliance with Skefto",
+  eyebrow: "City of Belmont",
+  headline: "City of Belmont centralises council compliance on Skefto",
   challenge:
-    "Obligations were scattered across spreadsheets with no clear owners or deadlines.",
+    "Compliance obligations and governance workflows were spread across registers and manual processes, limiting visibility for audit preparation and elected-member governance.",
   solution:
-    "A single obligations register and compliance calendar with automated reminders and board reporting.",
-  result: "90% less time preparing for audits",
+    "GovCloud registers, a single obligations library, and automated compliance calendar — alongside the Governance Portal programme co-built with City of Belmont for councillor obligations.",
+  result: "Clearer ownership and faster audit preparation",
   href: LINKS.industries.localGov,
 };
 

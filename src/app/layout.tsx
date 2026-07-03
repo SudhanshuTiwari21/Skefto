@@ -20,46 +20,22 @@ const SITE = "https://skefto.com";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
   title: {
-    default: "Compliance Management Software for Regulated Organisations | Skefto",
+    default: "Skefto | Governance, Risk & Compliance Software",
     template: "%s | Skefto",
   },
   description:
-    "Track obligations, manage regulatory change, and prove compliance on a sovereign-ready platform. Built for government, education, healthcare and regulated industries worldwide. ISO 37301 aligned.",
+    "Governance, risk and compliance software for regulated organisations. Australian-built platform for councils, government, education and care providers.",
   applicationName: "Skefto",
-  authors: [{ name: "Skefto" }],
-  keywords: [
-    "compliance management software",
-    "compliance management software australia",
-    "regulatory compliance software",
-    "compliance tracking software",
-    "obligations register",
-    "ISO 37301",
-    "GRC software australia",
-  ],
-  alternates: {
-    canonical: "/solutions/compliance-management-software/",
-  },
   openGraph: {
     type: "website",
     locale: "en_AU",
     siteName: "Skefto",
-    url: "/solutions/compliance-management-software/",
-    title: "Compliance Management Software for Regulated Organisations",
-    description:
-      "One sovereign-ready platform to track obligations, manage regulatory change, and prove compliance. Built for government, education, healthcare and regulated industries worldwide.",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Compliance Management Software for Regulated Organisations | Skefto",
-    description:
-      "Track obligations, manage regulatory change, and prove compliance on a sovereign-ready platform aligned to ISO 37301.",
+    url: "/",
   },
   robots: {
     index: true,
     follow: true,
-    googleBot: { index: true, follow: true, "max-image-preview": "large" },
   },
-  category: "Governance, Risk & Compliance Software",
 };
 
 export default function RootLayout({

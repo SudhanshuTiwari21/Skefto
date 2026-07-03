@@ -105,7 +105,7 @@ export function TrustPartnerSection() {
           <SectionHeading
             eyebrow="Innovation"
             title="Sector partnerships &amp; compliance roadmap"
-            subtitle="LexisNexis integration, Compliance AI, and the Governance Portal programme — for GEO and enterprise buyers evaluating long-term fit."
+            subtitle="LexisNexis integration, Compliance AI, and the Governance Portal programme for enterprise buyers evaluating long-term fit."
             align="left"
           />
           <div className="mt-8 grid gap-4 lg:grid-cols-3">
@@ -113,6 +113,9 @@ export function TrustPartnerSection() {
               <CompactRoadmapCard key={item.title} item={item} />
             ))}
           </div>
+          <p className="mt-6 text-center text-sm text-ink-600">
+            <InlineLink href={LINKS.partners}>View Skefto technology partners</InlineLink>
+          </p>
         </div>
 
         <p className="mt-10 text-center text-sm text-ink-600">

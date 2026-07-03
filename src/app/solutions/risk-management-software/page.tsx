@@ -11,6 +11,7 @@ import { RiskGenAiSection } from "@/components/risk/risk-genai-section";
 import { RiskProductOverviewSection } from "@/components/risk/risk-product-overview-section";
 import { RiskSectorTabs } from "@/components/risk/risk-sector-tabs";
 import { RiskEcosystemSection } from "@/components/risk/risk-ecosystem-section";
+import { RiskComplianceHandoff } from "@/components/risk/risk-compliance-handoff";
 import { RiskTrustSection } from "@/components/risk/risk-trust-section";
 import { RiskMatSection } from "@/components/risk/riskmat-section";
 import { RiskFaqSection } from "@/components/risk/risk-faq-section";
@@ -132,6 +133,9 @@ export default function RiskManagementPage() {
           </Reveal>
           <Reveal>
             <RiskEcosystemSection />
+          </Reveal>
+          <Reveal>
+            <RiskComplianceHandoff />
           </Reveal>
           <Reveal>
             <RiskTrustSection />
