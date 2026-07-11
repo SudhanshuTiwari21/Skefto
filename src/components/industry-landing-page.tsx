@@ -44,7 +44,7 @@ export function IndustryLandingPage({
               <SectionHeading
                 eyebrow={page.cloudName}
                 title="What regulated teams need from compliance software"
-                subtitle="Sector-specific configuration, not a generic offshore template."
+                subtitle="Sector-specific configuration, not a generic one-size-fits-all template."
                 align="left"
               />
               <ul className="mt-8 grid gap-3 sm:grid-cols-2">
@@ -74,7 +74,7 @@ export function IndustryLandingPage({
                 </h2>
                 <p className="mt-4 max-w-2xl text-sm leading-7 text-ink-300 sm:text-base">
                   The compliance management software page covers workflow, security,
-                  sector clouds, implementation and FAQs — everything your team needs
+                  sector clouds, implementation and FAQs: everything your team needs
                   to shortlist Skefto for {page.eyebrow.toLowerCase()}.
                 </p>
                 <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">

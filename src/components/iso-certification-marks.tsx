@@ -14,7 +14,7 @@ export function IsoCertificationMarks({
       >
         <Image
           src={ISO_CERTIFICATION_ASSETS.iso27001}
-          alt="ISO/IEC 27001 information security management certification"
+          alt="ISO/IEC 27001 information security management certified"
           width={size === "lg" ? 148 : 128}
           height={size === "lg" ? 56 : 52}
           className={`w-auto object-contain ${heights[size]}`}
@@ -25,7 +25,7 @@ export function IsoCertificationMarks({
       >
         <Image
           src={ISO_CERTIFICATION_ASSETS.iso37301}
-          alt="ISO 37301:2021 compliance management systems certification"
+          alt="ISO 37301:2021 compliance management systems certified"
           width={size === "lg" ? 168 : 148}
           height={size === "lg" ? 56 : 52}
           className={`w-auto object-contain ${heights[size]}`}

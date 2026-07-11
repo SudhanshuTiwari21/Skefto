@@ -9,38 +9,29 @@ import {
   OBLIGATION_BULLETS,
   POLICY_BULLETS,
   PRODUCT_SCREENSHOTS,
+  REGULATORY_EXTRA_BULLETS,
   REGULATORY_VALUES,
   STANDARDS,
 } from "@/lib/content";
 import { Icon } from "@/components/icons";
-import { Container, InlineLink, SectionHeading, ShimmerButton } from "@/components/ui";
+import { Container, InlineLink, ShimmerButton } from "@/components/ui";
 
 function WorkflowStrip() {
   return (
-    <ol className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-5 lg:gap-2">
-      {COMPLIANCE_WORKFLOW.map((step, i) => {
+    <ol className="mt-10 grid gap-3 border-y border-ink-900/6 py-5 sm:grid-cols-5 sm:gap-2 sm:py-4">
+      {COMPLIANCE_WORKFLOW.map((step) => {
         const I = Icon[step.icon];
         return (
-          <li
-            key={step.title}
-            className="relative rounded-xl border border-ink-900/8 bg-white p-4 shadow-soft"
-          >
-            {i < COMPLIANCE_WORKFLOW.length - 1 ? (
-              <span
-                aria-hidden
-                className="pointer-events-none absolute -right-1 top-1/2 hidden h-px w-2 -translate-y-1/2 bg-brand-200 lg:block"
-              />
-            ) : null}
-            <div className="flex items-center gap-2">
-              <span className="grid size-8 place-items-center rounded-lg bg-brand-50 text-brand-700">
-                <I className="size-4" />
-              </span>
-              <span className="text-[10px] font-bold uppercase tracking-wider text-brand-600">
-                {step.step}
-              </span>
+          <li key={step.title} className="flex items-start gap-2.5 sm:flex-col sm:items-center sm:text-center">
+            <span className="grid size-8 shrink-0 place-items-center rounded-full bg-brand-50 text-brand-700">
+              <I className="size-4" />
+            </span>
+            <div className="min-w-0">
+              <h3 className="text-xs font-bold text-ink-900">{step.title}</h3>
+              <p className="mt-0.5 text-[11px] leading-4 text-ink-500 sm:mt-1 sm:leading-4">
+                {step.body}
+              </p>
             </div>
-            <h3 className="mt-3 font-display text-sm font-bold text-ink-900">{step.title}</h3>
-            <p className="mt-1.5 text-xs leading-5 text-ink-600">{step.body}</p>
           </li>
         );
       })}
@@ -113,7 +104,7 @@ function ObligationsPanel() {
           </h3>
           <p className="mt-2 text-pretty text-sm leading-6 text-ink-600">
             Centralise federal, state and sector obligations. Assign owners, track
-            deadlines, and link evidence — from privacy attestations to WHS audits.
+            deadlines, and link evidence, from privacy attestations to WHS audits.
           </p>
           <p className="mt-4">
             <InlineLink href={LINKS.demo}>
@@ -139,17 +130,29 @@ function ObligationsPanel() {
 }
 
 function RegulatoryPanel() {
+  const CheckIcon = Icon.check;
+
   return (
     <div className="space-y-5">
       <p className="max-w-2xl text-pretty text-sm leading-6 text-ink-600">
-        Built around the obligations Australian regulators actually hold you to -
-        not a generic offshore template.
+        Built around the obligations Australian regulators actually hold you to,
+        not a generic imported template.
       </p>
       <div className="grid gap-4 sm:grid-cols-3">
         {REGULATORY_VALUES.map((item) => (
           <RegulatoryCompact key={item.title} item={item} />
         ))}
       </div>
+      <ul className="grid gap-2 rounded-2xl border border-ink-900/8 bg-sand-50/80 p-4 sm:p-5">
+        {REGULATORY_EXTRA_BULLETS.map((b) => (
+          <li key={b} className="flex items-start gap-2.5 text-sm leading-6 text-ink-700">
+            <span className="mt-0.5 grid size-4 shrink-0 place-items-center rounded-full bg-brand-100 text-brand-700">
+              <CheckIcon className="size-3" />
+            </span>
+            {b}
+          </li>
+        ))}
+      </ul>
       <div className="rounded-2xl border border-ink-900/8 bg-sand-50/80 px-4 py-5 sm:px-6">
         <p className="text-center text-xs font-semibold uppercase tracking-[0.16em] text-ink-500">
           Mapped to Australian standards &amp; regulations
@@ -285,24 +288,15 @@ export function ComplianceDeepDiveSection() {
   }, []);
 
   return (
-    <section
-      id="capabilities"
-      className="scroll-mt-20 bg-sand-50 py-16 sm:py-20"
-    >
+    <section id="explore" className="scroll-mt-20 bg-white py-14 sm:py-16">
       <Container>
-        <SectionHeading
-          eyebrow="How it works"
-          title="From obligation mapping to audit-ready evidence"
-          subtitle="Five connected workflow stages — then explore each capability area with screenshots and detail."
-        />
-
         <WorkflowStrip />
 
-        <p className="mt-8 text-center text-xs font-semibold uppercase tracking-[0.14em] text-ink-500">
+        <p className="mt-10 text-center text-xs font-semibold uppercase tracking-[0.14em] text-ink-500">
           Explore each capability area
         </p>
 
-        <div className="mt-3 flex flex-wrap gap-2 rounded-2xl border border-ink-900/8 bg-white p-1.5 shadow-soft">
+        <div className="mt-3 flex flex-wrap gap-2 rounded-2xl border border-ink-900/8 bg-sand-50 p-1.5 shadow-soft">
           {TABS.map((tab) => (
             <button
               key={tab.id}
@@ -311,7 +305,7 @@ export function ComplianceDeepDiveSection() {
               className={`flex-1 rounded-xl px-4 py-2.5 text-sm font-semibold transition-all sm:px-5 sm:py-3 ${
                 active === tab.id
                   ? "bg-brand-600 text-white shadow-soft"
-                  : "text-ink-600 hover:bg-ink-50 hover:text-ink-900"
+                  : "text-ink-600 hover:bg-white hover:text-ink-900"
               }`}
             >
               {tab.label}

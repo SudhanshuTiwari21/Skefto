@@ -1,57 +1,23 @@
 import Link from "next/link";
 import {
+  BELMONT_OUTCOME_CHIPS,
   CASE_STUDY,
-  CLIENT_OUTCOMES,
-  FUTURE_INITIATIVES,
   LINKS,
-  SECONDARY_CTA_LABEL,
   TESTIMONIALS,
-  WHY_SKEFTO,
 } from "@/lib/content";
-import { Container, InlineLink, SectionHeading } from "@/components/ui";
+import { Container, SectionHeading } from "@/components/ui";
 import { Icon } from "@/components/icons";
 
 const ArrowIcon = Icon.arrow;
 
-function CompactRoadmapCard({
-  item,
-}: Readonly<{ item: (typeof FUTURE_INITIATIVES)[number] }>) {
-  const I = Icon[item.icon];
-  return (
-    <article className="rounded-2xl border border-ink-900/8 bg-white p-5 shadow-soft">
-      <div className="flex items-start justify-between gap-2">
-        <span className="grid size-10 place-items-center rounded-xl bg-brand-50 text-brand-700">
-          <I className="size-5" />
-        </span>
-        <span className="rounded-full bg-sand-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-ink-600">
-          {item.tag}
-        </span>
-      </div>
-      <h3 className="mt-4 font-display text-base font-bold text-ink-900">{item.title}</h3>
-      <p className="mt-2 text-sm leading-6 text-ink-600">{item.body}</p>
-      <ul className="mt-3 space-y-1.5">
-        {item.bullets.slice(0, 2).map((bullet) => (
-          <li key={bullet} className="flex gap-2 text-xs leading-5 text-ink-700">
-            <span className="mt-1.5 size-1 shrink-0 rounded-full bg-brand-500" aria-hidden />
-            {bullet}
-          </li>
-        ))}
-      </ul>
-    </article>
-  );
-}
-
 export function TrustPartnerSection() {
-  const advisory = WHY_SKEFTO.find((item) => item.title === "Expert advisory");
-  const training = WHY_SKEFTO.find((item) => item.title === "Practical training");
-
   return (
     <section id="proof" className="relative scroll-mt-20 overflow-hidden bg-white py-16 sm:py-20">
       <Container className="relative">
         <SectionHeading
           eyebrow="Proof"
           title="Results from organisations on Skefto"
-          subtitle="Named outcomes, customer voices, and sector innovation — in one place."
+          subtitle="Named outcomes and customer voices from regulated teams."
         />
 
         <div className="mt-10 grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
@@ -65,9 +31,9 @@ export function TrustPartnerSection() {
               {CASE_STUDY.result}
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
-              {CLIENT_OUTCOMES.map((outcome) => (
+              {BELMONT_OUTCOME_CHIPS.map((outcome) => (
                 <span
-                  key={outcome.title}
+                  key={outcome.metricLabel}
                   className="rounded-full border border-white/15 bg-white/10 px-2.5 py-1 text-[11px] font-medium text-ink-200"
                 >
                   {outcome.metric} {outcome.metricLabel}
@@ -100,45 +66,6 @@ export function TrustPartnerSection() {
             ))}
           </div>
         </div>
-
-        <div className="mt-12 border-t border-ink-100 pt-12">
-          <SectionHeading
-            eyebrow="Innovation"
-            title="Sector partnerships &amp; compliance roadmap"
-            subtitle="LexisNexis integration, Compliance AI, and the Governance Portal programme for enterprise buyers evaluating long-term fit."
-            align="left"
-          />
-          <div className="mt-8 grid gap-4 lg:grid-cols-3">
-            {FUTURE_INITIATIVES.map((item) => (
-              <CompactRoadmapCard key={item.title} item={item} />
-            ))}
-          </div>
-          <p className="mt-6 text-center text-sm text-ink-600">
-            <InlineLink href={LINKS.partners}>View Skefto technology partners</InlineLink>
-          </p>
-        </div>
-
-        <p className="mt-10 text-center text-sm text-ink-600">
-          More than software — Skefto also offers{" "}
-          {advisory?.href ? (
-            <InlineLink href={advisory.href}>{advisory.title.toLowerCase()}</InlineLink>
-          ) : (
-            "expert advisory"
-          )}{" "}
-          and{" "}
-          {training?.href ? (
-            <InlineLink href={training.href}>{training.title.toLowerCase()}</InlineLink>
-          ) : (
-            "practical training"
-          )}
-          .{" "}
-          <Link
-            href={LINKS.contact}
-            className="font-semibold text-brand-700 hover:underline"
-          >
-            {SECONDARY_CTA_LABEL}
-          </Link>
-        </p>
       </Container>
     </section>
   );

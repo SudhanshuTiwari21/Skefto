@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { GETTING_STARTED, LINKS, SECONDARY_CTA_LABEL } from "@/lib/content";
+import { GETTING_STARTED, GO_LIVE_PULL_QUOTE, LINKS, SECONDARY_CTA_LABEL } from "@/lib/content";
 import { BeamButton, Container, SectionHeading } from "@/components/ui";
 
 export function GettingStartedSection() {
@@ -9,8 +9,13 @@ export function GettingStartedSection() {
         <SectionHeading
           eyebrow="Implementation"
           title="From demo to go-live in weeks"
-          subtitle="A clear path for procurement teams — no multi-year GRC programme required."
+          subtitle="A clear path for procurement teams: no multi-year GRC programme required."
         />
+
+        <p className="mx-auto mt-8 max-w-3xl rounded-2xl border border-brand-200/70 bg-brand-50/60 px-6 py-5 text-center font-display text-lg font-bold tracking-tight text-ink-900 sm:text-xl">
+          {GO_LIVE_PULL_QUOTE}
+        </p>
+
         <ol className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {GETTING_STARTED.map((step, i) => (
             <li

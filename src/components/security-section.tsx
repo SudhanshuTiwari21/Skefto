@@ -1,6 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
-import { ISO_CERTIFICATION_ASSETS, LINKS, SECURITY, TRUST_TOKENS } from "@/lib/content";
+import { LINKS, SECURITY, TRUST_TOKENS } from "@/lib/content";
 import { Container, InlineLink, SectionHeading } from "@/components/ui";
 import { Icon } from "@/components/icons";
 import { IsoCertificationMarks } from "@/components/iso-certification-marks";
@@ -23,7 +22,7 @@ export function SecuritySection() {
         <SectionHeading
           eyebrow="Data sovereignty & security"
           title="Sovereign data controls with global-ready governance"
-          subtitle="Region-specific data residency, certified security controls, and privacy-by-design workflows for regulated teams."
+          subtitle="Region-specific data residency, ISO 27001 & 37301 certified controls, and privacy-by-design workflows for regulated teams."
         />
 
         <div className="mt-14 grid gap-6 lg:grid-cols-[0.92fr_1.08fr] lg:gap-8">
@@ -47,13 +46,13 @@ export function SecuritySection() {
               </h3>
               <p className="mt-3 text-sm leading-7 text-ink-300">
                 Skefto provides region-specific hosting options, including
-                Australian sovereign environments, with ISO 27001 certified
-                controls and privacy workflows aligned to local regulatory
+                Australian sovereign environments, with ISO 27001 &amp; 37301
+                certified controls and privacy workflows mapped to local regulatory
                 obligations.
               </p>
 
               <p className="mt-5 text-xs font-semibold uppercase tracking-[0.14em] text-ink-400">
-                Certified to international standards
+                ISO 27001 &amp; 37301 certified
               </p>
               <div className="mt-3 [&_div]:border-white/15 [&_div]:bg-white">
                 <IsoCertificationMarks size="md" />
@@ -87,7 +86,6 @@ export function SecuritySection() {
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
             {SECURITY.map((s, i) => {
               const I = Icon[s.icon];
-              const isIsoCard = s.title === "ISO 27001 certified security";
               return (
                 <article
                   key={s.title}
@@ -97,32 +95,9 @@ export function SecuritySection() {
                 >
                   <div className="border-beam absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   <div className="relative flex items-start gap-4">
-                    {isIsoCard ? (
-                      <div className="flex shrink-0 flex-col gap-2">
-                        <span className="grid place-items-center rounded-xl border border-ink-100 bg-white p-1.5">
-                          <Image
-                            src={ISO_CERTIFICATION_ASSETS.iso27001}
-                            alt="ISO/IEC 27001 certification"
-                            width={44}
-                            height={44}
-                            className="h-8 w-auto object-contain"
-                          />
-                        </span>
-                        <span className="grid place-items-center rounded-xl border border-ink-100 bg-white p-1.5">
-                          <Image
-                            src={ISO_CERTIFICATION_ASSETS.iso37301}
-                            alt="ISO 37301:2021 certification"
-                            width={44}
-                            height={44}
-                            className="h-8 w-auto object-contain"
-                          />
-                        </span>
-                      </div>
-                    ) : (
-                      <span className="grid size-12 shrink-0 place-items-center rounded-xl border border-brand-100 bg-brand-50 text-brand-700">
-                        <I className="size-6" />
-                      </span>
-                    )}
+                    <span className="grid size-12 shrink-0 place-items-center rounded-xl border border-brand-100 bg-brand-50 text-brand-700">
+                      <I className="size-6" />
+                    </span>
                     <div>
                       <h3 className="font-display text-lg font-bold text-ink-900">
                         {s.title}

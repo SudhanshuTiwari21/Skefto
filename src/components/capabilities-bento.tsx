@@ -1,10 +1,10 @@
 import { CAPABILITIES, LINKS } from "@/lib/content";
 import { Icon, type IconName } from "@/components/icons";
-import { Container, InlineLink, SectionHeading, ShimmerButton } from "@/components/ui";
+import { Container, SectionHeading, ShimmerButton } from "@/components/ui";
 
 type Capability = (typeof CAPABILITIES)[number];
 
-/** Grid: row1 = obligations | calendar | policy - row2 = reporting | audit | attestations */
+/** Grid: row1 = obligations | calendar | policy · row2 = reporting | audit | attestations */
 const LAYOUT: {
   className: string;
   variant: "featured" | "default" | "dark";
@@ -90,59 +90,25 @@ function ObligationsList({ rows }: { rows: ObligationRow[] }) {
   );
 }
 
-function ObligationsPreview() {
-  const rows: ObligationRow[] = [
-    { name: "Privacy Act - annual attestation", status: "On track", tone: "brand" },
-    { name: "WHS audit - regional depots", status: "Due 4d", tone: "accent" },
-    { name: "NDIS evidence pack Q2", status: "In review", tone: "slate" },
-  ];
-  return (
-    <div className="mt-5 rounded-xl border border-ink-900/6 bg-ink-50/60 p-3">
-      <ObligationsList rows={rows} />
-    </div>
-  );
-}
-
+/** Lighter mini UI: compact status chips, not full register screenshot */
 function FeaturedObligationsPanel() {
   const rows: ObligationRow[] = [
-    { name: "Privacy Act - annual attestation", status: "On track", tone: "brand" },
-    { name: "WHS audit - regional depots", status: "Due 4d", tone: "accent" },
-    { name: "NDIS evidence pack Q2", status: "In review", tone: "slate" },
-    { name: "Annual report attestation", status: "On track", tone: "brand" },
+    { name: "Privacy Act attestation", status: "On track", tone: "brand" },
+    { name: "WHS depot audit", status: "Due 4d", tone: "accent" },
+    { name: "NDIS evidence pack", status: "In review", tone: "slate" },
   ];
 
   return (
-    <div className="mt-5 rounded-xl border border-ink-900/6 bg-ink-50/50">
-      <div className="flex items-center justify-between gap-3 border-b border-ink-900/6 px-4 py-3">
-        <p className="text-xs font-semibold text-ink-800">Live obligations register</p>
+    <div className="mt-5 rounded-xl border border-ink-900/6 bg-ink-50/50 p-3">
+      <div className="mb-2 flex items-center justify-between">
+        <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-500">
+          Status snapshot
+        </p>
         <span className="rounded-md bg-brand-50 px-2 py-0.5 text-[10px] font-semibold text-brand-700">
-          312 active
+          Live
         </span>
       </div>
-
-      <div className="grid grid-cols-3 gap-px border-b border-ink-900/6 bg-ink-100/80">
-        {[
-          { label: "On track", value: "248", tone: "text-brand-600" },
-          { label: "Due soon", value: "12", tone: "text-accent-600" },
-          { label: "Overdue", value: "0", tone: "text-ink-900" },
-        ].map((s) => (
-          <div key={s.label} className="bg-white px-3 py-2.5 text-center">
-            <p className={`font-display text-lg font-bold leading-none ${s.tone}`}>{s.value}</p>
-            <p className="mt-1 text-[10px] text-ink-500">{s.label}</p>
-          </div>
-        ))}
-      </div>
-
-      <div className="px-3 pt-3">
-        <div className="flex items-center gap-2 rounded-lg border border-ink-200/80 bg-white px-3 py-2">
-          <Icon.register className="size-3.5 shrink-0 text-ink-400" />
-          <span className="text-xs text-ink-400">Search obligations…</span>
-        </div>
-      </div>
-
-      <div className="space-y-2 p-3 pt-2">
-        <ObligationsList rows={rows} />
-      </div>
+      <ObligationsList rows={rows} />
     </div>
   );
 }
@@ -158,17 +124,13 @@ function PolicyDocumentsPreview() {
   const rows: PolicyRow[] = [
     { name: "WHS Policy", version: "v3.2", status: "Approved", tone: "brand" },
     { name: "Privacy Procedure", version: "v2.1", status: "Review 14d", tone: "accent" },
-    { name: "Code of Conduct", version: "v4.0", status: "In approval", tone: "slate" },
   ];
 
   return (
     <div className="mt-5 rounded-xl border border-ink-900/6 bg-ink-50/60 p-3">
-      <div className="flex items-center justify-between gap-2 border-b border-ink-900/6 pb-2.5">
-        <p className="text-[10px] font-semibold text-ink-700">Policy library</p>
-        <span className="rounded-md bg-brand-50 px-1.5 py-0.5 text-[9px] font-semibold text-brand-700">
-          86 docs
-        </span>
-      </div>
+      <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-500">
+        Policy versions
+      </p>
       <div className="mt-2 space-y-2">
         {rows.map((r) => (
           <div
@@ -195,32 +157,80 @@ function PolicyDocumentsPreview() {
 }
 
 function CalendarPreview() {
-  const days = ["M", "T", "W", "T", "F", "S", "S"];
-  const active = [2, 4, 9, 11, 16, 18, 23];
+  const days = ["M", "T", "W", "T", "F"];
+  const active = [1, 3, 4];
   return (
     <div className="mt-5 rounded-xl border border-ink-900/6 bg-ink-50/60 p-3">
-      <div className="grid grid-cols-7 gap-1 text-center text-[9px] font-semibold uppercase tracking-wider text-ink-400">
+      <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-500">
+        This week
+      </p>
+      <div className="grid grid-cols-5 gap-1.5 text-center">
         {days.map((d, i) => (
-          <span key={`${d}-${i}`}>{d}</span>
-        ))}
-      </div>
-      <div className="mt-2 grid grid-cols-7 gap-1">
-        {Array.from({ length: 28 }, (_, i) => {
-          const n = i + 1;
-          const on = active.includes(n);
-          return (
+          <div key={`${d}-${i}`} className="space-y-1">
+            <span className="text-[9px] font-semibold uppercase text-ink-400">{d}</span>
             <span
-              key={n}
               className={`grid aspect-square place-items-center rounded-md text-[10px] font-medium ${
-                on
+                active.includes(i)
                   ? "bg-brand-600 text-white shadow-sm"
-                  : "text-ink-500"
+                  : "bg-white text-ink-500 ring-1 ring-ink-900/5"
               }`}
             >
-              {n}
+              {i + 8}
             </span>
-          );
-        })}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function AuditPreview() {
+  return (
+    <div className="mt-5 rounded-xl border border-ink-900/6 bg-ink-50/60 p-3">
+      <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-500">
+        Findings queue
+      </p>
+      <div className="mt-2 space-y-1.5">
+        {[
+          { label: "Delegations exception", sev: "High" },
+          { label: "Vendor register gap", sev: "Med" },
+        ].map((row) => (
+          <div
+            key={row.label}
+            className="flex items-center justify-between rounded-lg bg-white/80 px-2.5 py-2 ring-1 ring-ink-900/5"
+          >
+            <span className="text-[11px] font-medium text-ink-800">{row.label}</span>
+            <span className="rounded-md bg-accent-100 px-1.5 py-0.5 text-[9px] font-semibold text-accent-800">
+              {row.sev}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function AttestationPreview() {
+  return (
+    <div className="mt-5 rounded-xl border border-ink-900/6 bg-ink-50/60 p-3">
+      <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-500">
+        Sign-off path
+      </p>
+      <div className="mt-2 flex items-center gap-1.5">
+        {["Owner", "Reviewer", "Exec"].map((step, i) => (
+          <div key={step} className="flex flex-1 items-center gap-1.5">
+            <span
+              className={`flex-1 rounded-lg px-2 py-2 text-center text-[10px] font-semibold ${
+                i < 2
+                  ? "bg-brand-100 text-brand-800"
+                  : "bg-white text-ink-500 ring-1 ring-ink-900/8"
+              }`}
+            >
+              {step}
+            </span>
+            {i < 2 ? <span className="text-ink-300">→</span> : null}
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -241,14 +251,26 @@ function ReportingPreview() {
   );
 }
 
+function CardCopy({ cap }: { cap: Capability }) {
+  return (
+    <>
+      <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-ink-500">
+        {cap.eyebrow}
+      </p>
+      <h3 className="mt-2 font-display text-base font-bold tracking-tight text-ink-900 sm:text-lg">
+        {cap.title}
+      </h3>
+      <p className="mt-2 text-sm leading-relaxed text-ink-600">{cap.body}</p>
+    </>
+  );
+}
+
 function CapabilityCard({
   cap,
   layout,
-  isAudit,
 }: {
   cap: Capability;
   layout: (typeof LAYOUT)[number];
-  isAudit: boolean;
 }) {
   const { variant, index, className } = layout;
 
@@ -261,24 +283,16 @@ function CapabilityCard({
           aria-hidden
           className="pointer-events-none absolute -right-16 -top-16 size-56 rounded-full bg-[radial-gradient(circle,rgba(141,61,151,0.14),transparent_68%)]"
         />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -bottom-20 -left-10 size-48 rounded-full bg-[radial-gradient(circle,rgba(0,145,174,0.12),transparent_70%)]"
-        />
         <div className="border-beam absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-
         <div className="relative flex items-start justify-between gap-4">
           <span className="font-mono text-[11px] font-medium tracking-[0.2em] text-ink-400">
             {index}
           </span>
           <CapabilityIcon name={cap.icon} />
         </div>
-        <h3 className="relative mt-5 font-display text-xl font-bold tracking-tight text-ink-900 sm:text-2xl">
-          {cap.title}
-        </h3>
-        <p className="relative mt-2 max-w-md text-sm leading-relaxed text-ink-600">
-          {cap.body}
-        </p>
+        <div className="relative mt-5">
+          <CardCopy cap={cap} />
+        </div>
         <FeaturedObligationsPanel />
       </article>
     );
@@ -293,10 +307,6 @@ function CapabilityCard({
           aria-hidden
           className="pointer-events-none absolute inset-0 bg-blueprint opacity-[0.12]"
         />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -right-8 top-0 size-40 rounded-full bg-[radial-gradient(circle,rgba(0,145,174,0.35),transparent_65%)]"
-        />
         <div className="relative flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-md">
             <div className="flex items-center gap-3">
@@ -307,7 +317,10 @@ function CapabilityCard({
                 <Icon.chart className="size-[1.15rem]" />
               </span>
             </div>
-            <h3 className="mt-4 font-display text-xl font-bold tracking-tight sm:text-2xl">
+            <p className="mt-4 text-[10px] font-semibold uppercase tracking-[0.16em] text-ink-400">
+              {cap.eyebrow}
+            </p>
+            <h3 className="mt-2 font-display text-xl font-bold tracking-tight sm:text-2xl">
               {cap.title}
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-ink-300">{cap.body}</p>
@@ -323,72 +336,57 @@ function CapabilityCard({
     );
   }
 
-  const showCalendar = cap.icon === "calendar";
-  const showPolicyDocs = cap.icon === "document";
-
   return (
     <article
       className={`group relative flex flex-col overflow-hidden rounded-3xl border border-ink-900/8 bg-white/90 p-5 backdrop-blur-sm transition-[box-shadow,border-color] duration-300 hover:border-brand-200/80 hover:shadow-card sm:p-6 ${className}`}
     >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-400/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-      />
       <div className="flex items-start justify-between gap-3">
         <span className="font-mono text-[11px] font-medium tracking-[0.2em] text-ink-400">
           {index}
         </span>
         <CapabilityIcon name={cap.icon} />
       </div>
-      <h3 className="mt-4 font-display text-base font-bold tracking-tight text-ink-900 sm:text-lg">
-        {cap.title}
-      </h3>
-      <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-600">{cap.body}</p>
-      {showCalendar ? <CalendarPreview /> : null}
-      {showPolicyDocs ? <PolicyDocumentsPreview /> : null}
-      {isAudit ? (
-        <p className="mt-4 border-t border-ink-900/6 pt-4 text-sm">
-          <InlineLink href={LINKS.solutions.incident}>
-            Connect incident workflows
-          </InlineLink>
-        </p>
-      ) : null}
+      <div className="mt-4 flex-1">
+        <CardCopy cap={cap} />
+      </div>
+      {cap.icon === "calendar" ? <CalendarPreview /> : null}
+      {cap.icon === "document" ? <PolicyDocumentsPreview /> : null}
+      {cap.icon === "audit" ? <AuditPreview /> : null}
+      {cap.icon === "workflow" ? <AttestationPreview /> : null}
     </article>
   );
 }
+
+/** Layout order: featured obligations, calendar, policy, audit, attestations, dark reporting */
+const CARD_ORDER = [0, 1, 2, 3, 4, 5] as const;
 
 export function CapabilitiesBento() {
   return (
     <section
       id="capabilities"
-      className="relative scroll-mt-20 overflow-hidden py-20 sm:py-28"
+      className="relative scroll-mt-20 overflow-hidden py-16 sm:py-20"
     >
       <div aria-hidden className="pointer-events-none absolute inset-0 bg-sand-50" />
       <div aria-hidden className="pointer-events-none absolute inset-0 bg-blueprint opacity-40" />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute left-1/2 top-0 h-[420px] w-[min(900px,90vw)] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(141,61,151,0.07),transparent)]"
-      />
 
       <Container className="relative">
         <SectionHeading
-          eyebrow="Core capabilities"
-          title="Everything you need to manage compliance in one place"
-          subtitle="Replace spreadsheets and scattered registers with a single, auditable source of truth."
+          eyebrow="How it works"
+          title="From obligation mapping to audit-ready evidence"
+          subtitle="Core capabilities that replace spreadsheets and scattered registers with one auditable source of truth."
         />
 
-        <div className="mt-14 grid auto-rows-min gap-4 sm:grid-cols-2 lg:grid-cols-12 lg:grid-rows-[auto_auto]">
-          {CAPABILITIES.map((cap, i) => (
+        <div className="mt-12 grid auto-rows-min gap-4 sm:grid-cols-2 lg:grid-cols-12 lg:grid-rows-[auto_auto]">
+          {CARD_ORDER.map((capIndex, layoutIndex) => (
             <CapabilityCard
-              key={cap.title}
-              cap={cap}
-              layout={LAYOUT[i]!}
-              isAudit={cap.title.startsWith("Audit")}
+              key={CAPABILITIES[capIndex]!.eyebrow}
+              cap={CAPABILITIES[capIndex]!}
+              layout={LAYOUT[layoutIndex]!}
             />
           ))}
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
+        <div className="mt-10 flex justify-center">
           <ShimmerButton href={LINKS.demo} className="!h-11 !px-6 !text-sm">
             Book a demo
           </ShimmerButton>

@@ -2,13 +2,24 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { INDUSTRIES, LINKS } from "@/lib/content";
+import { INDUSTRIES } from "@/lib/content";
 import { Icon } from "@/components/icons";
 import { SkeftoGeoMark } from "@/components/skefto-geo-icons";
 
+function SupportItem({ item }: Readonly<{ item: string }>) {
+  const CheckIcon = Icon.check;
+  return (
+    <li className="flex items-start gap-2.5 rounded-lg border border-white/10 bg-ink-900/40 px-3 py-2.5 text-sm leading-6 text-ink-200">
+      <span className="mt-0.5 grid size-4 shrink-0 place-items-center rounded-full bg-brand-600 text-white">
+        <CheckIcon className="size-2.5" />
+      </span>
+      {item}
+    </li>
+  );
+}
+
 function IndustryPanel({ current }: Readonly<{ current: (typeof INDUSTRIES)[number] }>) {
   const I = Icon[current.icon];
-  const CheckIcon = Icon.check;
   const ArrowIcon = Icon.arrow;
 
   return (
@@ -24,6 +35,14 @@ function IndustryPanel({ current }: Readonly<{ current: (typeof INDUSTRIES)[numb
         <p className="mt-3 max-w-3xl text-pretty text-sm leading-7 text-ink-300">
           {current.body}
         </p>
+        {current.highlight ? (
+          <div className="mt-4 rounded-xl border border-accent-400/30 bg-accent-500/10 px-4 py-3">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-accent-200">
+              Australian first
+            </p>
+            <p className="mt-1.5 text-sm leading-6 text-ink-100">{current.highlight}</p>
+          </div>
+        ) : null}
       </div>
 
       <div className="px-5 py-5 sm:px-6 sm:py-6">
@@ -36,19 +55,28 @@ function IndustryPanel({ current }: Readonly<{ current: (typeof INDUSTRIES)[numb
           </h4>
         </div>
 
-        <ul className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-          {current.supports.map((item) => (
-            <li
-              key={item}
-              className="flex items-start gap-2.5 rounded-lg border border-white/10 bg-ink-900/40 px-3 py-2.5 text-sm leading-6 text-ink-200"
-            >
-              <span className="mt-0.5 grid size-4 shrink-0 place-items-center rounded-full bg-brand-600 text-white">
-                <CheckIcon className="size-2.5" />
-              </span>
-              {item}
-            </li>
-          ))}
-        </ul>
+        {current.supportGroups ? (
+          <div className="mt-4 grid gap-5 sm:grid-cols-2">
+            {current.supportGroups.map((group) => (
+              <div key={group.label}>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-brand-300">
+                  {group.label}
+                </p>
+                <ul className="mt-2 grid gap-2">
+                  {group.items.map((item) => (
+                    <SupportItem key={item} item={item} />
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <ul className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+            {current.supports.map((item) => (
+              <SupportItem key={item} item={item} />
+            ))}
+          </ul>
+        )}
 
         <Link
           href={current.href}
@@ -100,19 +128,8 @@ export function IndustryTabs() {
       </div>
 
       <div className="mt-5 lg:mt-6">
-        <IndustryPanel current={current} />
+        <IndustryPanel current={current!} />
       </div>
-
-      <p className="mt-5 text-center text-sm text-ink-400">
-        Also supporting{" "}
-        <Link
-          href={LINKS.industries.stateGov}
-          className="font-semibold text-brand-300 underline decoration-brand-500/40 underline-offset-4 transition-colors hover:text-white"
-        >
-          state and federal government agencies
-        </Link>
-        .
-      </p>
     </div>
   );
 }

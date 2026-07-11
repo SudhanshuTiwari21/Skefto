@@ -1,6 +1,13 @@
 import type { CSSProperties, ReactNode } from "react";
 import Link from "next/link";
-import { HERO_TRUST_TOKENS, LINKS, MARKET_POSITIONING, SECONDARY_CTA_LABEL, SECTOR_PRELOADS } from "@/lib/content";
+import {
+  HERO_SUBHEAD,
+  HERO_TRUST_TOKENS,
+  LINKS,
+  MARKET_POSITIONING,
+  SECONDARY_CTA_LABEL,
+  SECTOR_PRELOADS,
+} from "@/lib/content";
 import { BeamButton } from "@/components/ui";
 import { Icon } from "@/components/icons";
 import { SkeftoGeoMark } from "@/components/skefto-geo-icons";
@@ -42,9 +49,7 @@ export function HeroCopy() {
 
       <CopyBlock index={2} className="mt-5">
         <p className="max-w-[32rem] text-pretty text-base leading-7 text-ink-600 sm:text-[1.0625rem] sm:leading-8">
-          One platform for obligations, regulatory change, audits, and evidence — for councils,
-          government, education, care, hospitals and regulated industries worldwide. Australian
-          sovereign hosting and sector clouds where your jurisdiction requires it.
+          {HERO_SUBHEAD}
         </p>
       </CopyBlock>
 
@@ -91,9 +96,6 @@ export function HeroCopy() {
             </li>
           ))}
         </ul>
-        <p className="mt-4 max-w-[32rem] text-sm leading-6 text-ink-500">
-          {MARKET_POSITIONING.heroInternationalNote}
-        </p>
       </CopyBlock>
     </div>
   );

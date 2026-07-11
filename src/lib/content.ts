@@ -4,10 +4,6 @@ const SITE = "https://skefto.com";
 
 /* ----------------------------------------------------------------------
  * Internal linking map
- * PageRank is passed through contextual, relevant links only. Every link
- * below points to a real Skefto destination and is placed where the
- * surrounding copy makes it genuinely useful for councils, government,
- * education and healthcare buyers.
  * -------------------------------------------------------------------- */
 export const LINKS = {
   demo: `${SITE}/book-a-demo/`,
@@ -35,80 +31,73 @@ export const LINKS = {
   partners: `${SITE}/partners/`,
 } as const;
 
+export const ISO_CERTIFIED_PHRASE = "ISO 27001 & 37301 certified" as const;
+
 /* ------------------------------ Hero -------------------------------- */
 export const TRUST_TOKENS = [
   "Sovereign cloud data hosting",
   "Government-certified centres",
-  "ISO 27001 certified controls",
-  "Built to ISO 37301",
-];
+  ISO_CERTIFIED_PHRASE,
+] as const;
 
-/** Hero - trust row beside CTA (stated once; not repeated in security section body) */
 export const HERO_TRUST_TOKENS = [
   "Region-specific data residency",
-  "ISO 27001 & 37301 aligned",
+  ISO_CERTIFIED_PHRASE,
   "Sector-ready compliance clouds",
 ] as const;
 
+export const HERO_SUBHEAD =
+  "One platform for obligations, regulatory change, audits, and evidence, for councils, government, education, care, hospitals and regulated industries. Built for organisations managing obligations across multiple teams, sites and entities, with sovereign hosting options including government-certified Australian data centres.";
+
 export const SECONDARY_CTA_LABEL = "Talk to a specialist" as const;
 
-/** International evolution — Australian proof retained in sectors, logos, and case study */
 export const MARKET_POSITIONING = {
-  heroBadge: "Compliance management · Global",
-  heroInternationalNote:
-    "Trusted by government, councils, education and care providers — with sovereign hosting options where regulations require it.",
+  heroBadge: "Compliance management",
   logoStripSecondary:
     "20+ years helping regulated organisations prove compliance with confidence.",
-  securityFootnote:
-    "Australian sovereign environments remain available for public sector buyers. Region-specific residency and GDPR-ready workflows support international operating footprints.",
 } as const;
 
 export const TRUST_BAR_STATS = [
   { v: "20+", k: "years in GRC & compliance" },
-  { v: "ISO", k: "27001 & 37301 aligned" },
+  { v: "85+", k: "average training NPS" },
+  { v: "1,000s", k: "of public sector staff trained" },
 ] as const;
 
 export const CLOSING_CTA_TRUST = [
   "Region-specific sovereign hosting",
   "Live in weeks, not months",
-  "ISO-aligned security controls",
+  ISO_CERTIFIED_PHRASE,
 ] as const;
 
-/** End-to-end compliance workflow — drives the How it works section */
+/** Thin How it works connector strip */
 export const COMPLIANCE_WORKFLOW: {
-  step: string;
   title: string;
   body: string;
   icon: IconName;
 }[] = [
   {
-    step: "01",
     title: "Map obligations",
-    body: "Configure sector registers, standards and regulatory sources in one library.",
+    body: "Start with your sector's obligations pre-loaded. Nothing built from scratch.",
     icon: "map",
   },
   {
-    step: "02",
     title: "Assign ownership",
-    body: "Set accountable officers, calendars, escalations and approval paths.",
+    body: "Every obligation gets a named owner, a deadline and an escalation path.",
     icon: "users",
   },
   {
-    step: "03",
     title: "Operate daily",
-    body: "Run tasks, policy reviews, attestations and regulatory change in one workflow.",
+    body: "Reminders, reviews and attestations run on schedule without manual chasing.",
     icon: "workflow",
   },
   {
-    step: "04",
     title: "Capture evidence",
-    body: "Link documents, sign-offs and audit findings to every obligation.",
+    body: "Documents and sign-offs attach to obligations as work happens, not in a scramble before the audit.",
     icon: "document",
   },
   {
-    step: "05",
     title: "Report & assure",
-    body: "Give boards, auditors and regulators defensible, real-time visibility.",
+    body: "When the board asks for compliance status, the answer is current, defensible and one click away.",
     icon: "chart",
   },
 ];
@@ -120,7 +109,7 @@ export const GETTING_STARTED: { title: string; body: string }[] = [
   },
   {
     title: "Sector configuration",
-    body: "GovCloud, CareCloud or EducationCloud templates aligned to your legislation.",
+    body: "GovCloud, CareCloud or EducationCloud templates mapped to your legislation.",
   },
   {
     title: "Rollout & training",
@@ -128,34 +117,39 @@ export const GETTING_STARTED: { title: string; body: string }[] = [
   },
   {
     title: "Go-live",
-    body: "Most organisations are live in weeks — not a multi-year GRC programme.",
+    body: "Most organisations are live in weeks, not a multi-year GRC programme.",
   },
 ];
 
-/** ISO certification marks (public/certifications/) */
+export const GO_LIVE_PULL_QUOTE =
+  "Most organisations are live in weeks, not a multi-year GRC programme.";
+
 export const ISO_CERTIFICATION_ASSETS = {
   iso27001: "/certifications/iso-27001.png",
   iso37301: "/certifications/iso-37301.webp",
 } as const;
 
-/** Product overview video (public/) */
 export const PRODUCT_OVERVIEW_VIDEO = "/Compliance%20Video.mp4";
 export const PRODUCT_OVERVIEW_POSTER = "/Compliance%20Dashboard.png";
 
-/** Product screenshots (public/) */
 export const PRODUCT_SCREENSHOTS = {
   register: "/Compliance%20Register.png",
   calendar: "/Compliance%20Calendar.png",
 } as const;
 
-/** Sector preloads - key Skefto differentiator vs generic GRC vendors */
+/** Live, demo-able integrations only */
+export const INTEGRATIONS = [
+  { name: "LexisNexis", label: "LexisNexis" },
+  { name: "Microsoft Teams", label: "Microsoft Teams" },
+  { name: "Power BI", label: "Power BI" },
+] as const;
+
 export const SECTOR_PRELOADS = [
   { name: "GovCloud", href: LINKS.industries.localGov, shape: "hexagon" as const },
   { name: "CareCloud", href: LINKS.industries.agedCare, shape: "circle" as const },
   { name: "EducationCloud", href: LINKS.industries.education, shape: "triangle" as const },
 ];
 
-/** Customer logos sorted by sector (local government → education → care) */
 export const CUSTOMER_LOGOS: {
   name: string;
   src: string;
@@ -177,36 +171,47 @@ export const CUSTOMER_LOGOS: {
   { name: "Merymead Catholic Care", src: "/logos/customers/header__logo_mcc_stacked.svg", sector: "care" },
 ];
 
-/* --------------------------- Capabilities --------------------------- */
-export const CAPABILITIES: { title: string; body: string; icon: IconName }[] = [
+/* --------------------------- Capabilities grid --------------------------- */
+export const CAPABILITIES: {
+  eyebrow: string;
+  title: string;
+  body: string;
+  icon: IconName;
+}[] = [
   {
-    title: "Obligations register",
-    body: "Capture every federal, state and sector obligation in one register, assign accountable owners, and track live status.",
+    eyebrow: "Obligations register",
+    title: "One source of truth for every obligation",
+    body: "Capture federal, state and sector obligations in a single register, each with a named owner and live status.",
     icon: "register",
   },
   {
-    title: "Compliance calendar & tracking",
-    body: "Turn recurring obligations into scheduled tasks. Automated reminders and escalations mean deadlines are never missed.",
+    eyebrow: "Compliance calendar & tracking",
+    title: "Never miss a compliance deadline",
+    body: "Recurring obligations become scheduled tasks with automated reminders and escalation when things slip.",
     icon: "calendar",
   },
   {
-    title: "Policy & document management",
-    body: "Store, version and approve policies and procedures with a full audit trail and timed review cycles.",
+    eyebrow: "Policy & document management",
+    title: "Policies that stay current",
+    body: "Version control, approval workflows and timed review cycles, so no one acts on a superseded document.",
     icon: "document",
   },
   {
-    title: "Audit & action management",
-    body: "Plan, run and close out compliance audits and corrective actions in one connected workflow.",
+    eyebrow: "Audit & action management",
+    title: "Audit prep in hours, not weeks",
+    body: "Evidence links to each obligation as work happens, so the audit trail builds itself. City of Belmont reports 90% less audit prep time.",
     icon: "audit",
   },
   {
-    title: "Attestations & workflows",
-    body: "Route reviews, sign-offs and attestations to the right officers automatically, with evidence captured at each step.",
+    eyebrow: "Attestations & workflows",
+    title: "Sign-offs without the follow-up chasing",
+    body: "Attestations route to the right officers automatically, with evidence captured at every step.",
     icon: "workflow",
   },
   {
-    title: "Compliance reporting",
-    body: "Real-time dashboards give boards, executives and councils instant visibility of compliance status and breaches.",
+    eyebrow: "Compliance reporting",
+    title: "Answer \"are we compliant?\" in one click",
+    body: "Real-time dashboards give boards and executives instant visibility of compliance status and breaches.",
     icon: "chart",
   },
 ];
@@ -236,7 +241,11 @@ export const AUDIT_ACTION_BULLETS = [
   "Traceability from audit findings to obligations, controls and policies",
 ];
 
-/* ----------------------- Regulatory & standards --------------------- */
+export const REGULATORY_EXTRA_BULLETS = [
+  "Authoritative regulatory content from LexisNexis feeds horizon scanning and obligation updates, traceable from source to register.",
+  "Compliance AI with human-in-the-loop guardrails: automated regulatory impact analysis, policy gap mapping and plain-language summaries.",
+] as const;
+
 export const REGULATORY_VALUES: { title: string; body: string; icon: IconName }[] =
   [
     {
@@ -246,7 +255,7 @@ export const REGULATORY_VALUES: { title: string; body: string; icon: IconName }[
     },
     {
       title: "Obligation mapping",
-      body: "Map each requirement to the policies, controls and evidence that demonstrate compliance - no orphaned obligations.",
+      body: "Map each requirement to the policies, controls and evidence that demonstrate compliance, with no orphaned obligations.",
       icon: "map",
     },
     {
@@ -268,7 +277,40 @@ export const STANDARDS = [
 
 /* --------------------------- Industries / sector clouds ----------------------------- */
 export const INDUSTRIES_INTRO =
-  "Built for highly regulated organisations — whether you're a government agency, council, care provider, or education institution, sector-specific configurations streamline compliance with local legislation, standards, and operational requirements.";
+  "Built for highly regulated organisations, whether you're a government agency, council, care provider, or education institution. Sector-specific configurations streamline compliance with local legislation, standards, and operational requirements.";
+
+export const GOVCLOUD_SUPPORT_GROUPS: { label: string; items: string[] }[] = [
+  {
+    label: "Registers & calendar",
+    items: ["Compliance calendar", "Contracts register", "Delegations"],
+  },
+  {
+    label: "Audit",
+    items: [
+      "Internal & external audit",
+      "Audit schedules",
+      "Audit actions",
+      "Audit self-assessments",
+    ],
+  },
+  {
+    label: "Declarations & conduct",
+    items: [
+      "Declarations (gifts, conflicts)",
+      "Conflicts of interest",
+      "Breaches",
+      "Whistleblower reporting",
+      "Primary & annual returns",
+    ],
+  },
+  {
+    label: "Regulatory change",
+    items: ["Legal and regulatory change management"],
+  },
+];
+
+export const GOVERNANCE_PORTAL_HIGHLIGHT =
+  "Governance Portal (Australian first): board, committee and elected-member compliance in one portal, including councillor declarations, gifts and conflicts. Built in partnership with the City of Belmont.";
 
 export const INDUSTRIES: {
   id: string;
@@ -278,6 +320,8 @@ export const INDUSTRIES: {
   geoShape: "hexagon" | "circle" | "triangle";
   body: string;
   supports: string[];
+  supportGroups?: { label: string; items: string[] }[];
+  highlight?: string;
   href: string;
   linkLabel: string;
 }[] = [
@@ -287,22 +331,10 @@ export const INDUSTRIES: {
     sector: "Councils, state and federal government",
     icon: "building",
     geoShape: "hexagon",
-    body: "Preconfigured compliance registers, obligations, audits and reporting for councils, state and federal government — mapped to relevant legislation and operational requirements.",
-    supports: [
-      "Compliance calendar",
-      "Contracts register",
-      "Internal & external audit",
-      "Delegations",
-      "Breaches",
-      "Primary & annual returns",
-      "Declarations (gifts, conflicts)",
-      "Audit schedules",
-      "Audit actions",
-      "Conflicts of interest",
-      "Audit self-assessments",
-      "Whistleblower reporting",
-      "Legal and regulatory change management",
-    ],
+    body: "Preconfigured compliance registers, obligations, audits and reporting for councils, state and federal government, mapped to relevant legislation and operational requirements.",
+    supports: [],
+    supportGroups: GOVCLOUD_SUPPORT_GROUPS,
+    highlight: GOVERNANCE_PORTAL_HIGHLIGHT,
     href: LINKS.industries.localGov,
     linkLabel: "Explore GovCloud",
   },
@@ -312,7 +344,7 @@ export const INDUSTRIES: {
     sector: "Aged care, disability & health",
     icon: "heart",
     geoShape: "circle",
-    body: "Compliance management aligned to aged care, disability and healthcare requirements — including Aged Care Quality Standards and NDIS Practice Standards.",
+    body: "Compliance management mapped to aged care, disability and healthcare requirements, including Aged Care Quality Standards and NDIS Practice Standards.",
     supports: [
       "Regulatory & legislative compliance",
       "Audit schedules",
@@ -358,20 +390,6 @@ export const INDUSTRIES: {
   },
 ];
 
-export const OTHER_COMPLIANCE_FUNCTIONS = [
-  "contracts accreditations & standards",
-  "delegations",
-  "breaches",
-  "primary & annual returns",
-  "declarations",
-  "audit schedules",
-  "conflicts of interest",
-  "breach reporting",
-  "audit self-assessments",
-  "whistleblower reporting",
-  "legal and regulatory change management",
-] as const;
-
 /* --------------------------- Ecosystem ------------------------------ */
 export const ECOSYSTEM: {
   title: string;
@@ -405,36 +423,34 @@ export const ECOSYSTEM: {
   },
 ];
 
-/* --------------------------- Why Skefto ----------------------------- */
+/* --------------------------- More than software ----------------------------- */
 export const WHY_SKEFTO: {
   title: string;
   body: string;
   icon: IconName;
-  proof: string;
-  featured?: boolean;
+  badge: string;
   href?: string;
   linkLabel?: string;
 }[] = [
   {
     title: "All-in-one software",
-    body: "A single compliance platform that is quick to implement and easy to scale, with ready-made templates for Australian sectors.",
+    body: "A single compliance platform, quick to implement and easy to scale, with ready-made templates for regulated sectors.",
     icon: "sliders",
-    proof: "Platform",
+    badge: "Live in weeks",
   },
   {
     title: "Expert advisory",
     body: "Independent guidance from specialists with 20+ years strengthening compliance frameworks for the public sector.",
     icon: "users",
-    proof: "Advisory",
-    featured: true,
+    badge: "20+ years in GRC",
     href: LINKS.services.advisory,
     linkLabel: "Explore risk advisory",
   },
   {
     title: "Practical training",
-    body: "Role-based programs that build compliance capability at every level - from frontline staff to boards.",
+    body: "Role-based programs that build compliance capability at every level, from frontline staff to boards.",
     icon: "cap",
-    proof: "Training",
+    badge: "85+ training NPS",
     href: LINKS.services.training,
     linkLabel: "Explore training",
   },
@@ -443,7 +459,6 @@ export const WHY_SKEFTO: {
 export const SECTOR_DIFFERENTIATOR =
   "Start with industry-specific registers, obligations, controls and frameworks already mapped to your sector.";
 
-/** Top reasons customers choose Skefto over generic compliance vendors */
 export const WHY_CHOOSE_SKEFTO: {
   title: string;
   body: string;
@@ -452,51 +467,27 @@ export const WHY_CHOOSE_SKEFTO: {
 }[] = [
   {
     title: "Sector-specific templates & registers",
-    body: "Industry-specific registers for councils, state and federal government, education, aged care and NDIS — obligations, controls and frameworks pre-mapped to your sector, not a blank offshore template.",
+    body: "Industry-specific registers for councils, state and federal government, education, aged care and NDIS: obligations, controls and frameworks pre-mapped to your sector, not a blank one-size-fits-all template.",
     icon: "building",
     featured: true,
   },
   {
     title: "All-in-one GRC ecosystem",
-    body: "Compliance connects natively to risk management, incident & safety, business continuity and strategic planning — one Australian platform, not bolted-on modules.",
+    body: "Compliance connects natively to risk management, incident & safety, business continuity and strategic planning: one Australian platform, not bolted-on modules.",
     icon: "risk",
   },
   {
     title: "Audit-ready automation & visibility",
-    body: "Automated workflows, role-based access and immutable change logs replace manual chasing — real-time visibility when boards and auditors ask.",
+    body: "Automated workflows, role-based access and immutable change logs replace manual chasing, with real-time visibility when boards and auditors ask.",
     icon: "audit",
   },
 ];
 
-/** Recurring benefits customers report after go-live */
-export const CLIENT_OUTCOMES: {
-  title: string;
-  body: string;
-  icon: IconName;
-  metric: string;
-  metricLabel: string;
-}[] = [
-  {
-    title: "End the spreadsheet nightmare",
-    body: "One centralised source of truth. Clear ownership of every task — no more emailing department heads for status updates.",
-    icon: "register",
-    metric: "1",
-    metricLabel: "source of truth",
-  },
-  {
-    title: "Reactive to proactive",
-    body: "Compliance becomes continuous and visible in daily operations — not a once-a-year scramble before attestation or external audit.",
-    icon: "chart",
-    metric: "90%",
-    metricLabel: "less audit prep time reported",
-  },
-  {
-    title: "High adoption, gentle learning curve",
-    body: "A clean interface anyone can use — log in, see your obligations and complete tasks without extensive retraining.",
-    icon: "workflow",
-    metric: "85+",
-    metricLabel: "average training NPS",
-  },
+/** Belmont case study chips: 90% appears here (authoritative) and on the audit capability card only */
+export const BELMONT_OUTCOME_CHIPS: { metric: string; metricLabel: string }[] = [
+  { metric: "90%", metricLabel: "less audit prep time (City of Belmont)" },
+  { metric: "1", metricLabel: "source of truth for obligations" },
+  { metric: "Live", metricLabel: "board-ready compliance status" },
 ];
 
 /* --------------------------- Social proof --------------------------- */
@@ -505,7 +496,7 @@ export const TESTIMONIALS = [
     quote:
       "For the first time we have a single, defensible view of our obligations. Audit preparation that used to take weeks now takes hours.",
     name: "Governance & Risk Lead",
-    org: "Regional Council, VIC",
+    org: "City of Belmont",
   },
   {
     quote:
@@ -521,7 +512,7 @@ export const CASE_STUDY = {
   challenge:
     "Compliance obligations and governance workflows were spread across registers and manual processes, limiting visibility for audit preparation and elected-member governance.",
   solution:
-    "GovCloud registers, a single obligations library, and automated compliance calendar — alongside the Governance Portal programme co-built with City of Belmont for councillor obligations.",
+    "GovCloud registers, a single obligations library, and automated compliance calendar, alongside the Governance Portal programme co-built with City of Belmont for councillor obligations.",
   result: "Clearer ownership and faster audit preparation",
   href: LINKS.industries.localGov,
 };
@@ -534,13 +525,13 @@ export const SECURITY: { title: string; body: string; icon: IconName }[] = [
     icon: "globe",
   },
   {
-    title: "ISO 27001 certified security",
-    body: "Information security controls certified to ISO 27001, with role-based access, encryption and full audit logging.",
+    title: ISO_CERTIFIED_PHRASE,
+    body: "Information security and compliance management systems certified to ISO 27001 and ISO 37301, with role-based access, encryption and full audit logging.",
     icon: "lock",
   },
   {
     title: "Privacy compliant by design",
-    body: "Built to support evolving privacy obligations across jurisdictions, including Privacy Act requirements and GDPR-ready policy mapping workflows.",
+    body: "Supports evolving privacy obligations across jurisdictions, including Privacy Act requirements and GDPR-ready policy mapping workflows.",
     icon: "shield",
   },
 ];
@@ -553,11 +544,11 @@ export const FAQS = [
   },
   {
     q: "Why should I choose Skefto instead of other compliance software vendors?",
-    a: "Generic vendors give you empty registers and offshore templates. Skefto starts with sector-specific registers, obligations, controls and frameworks already mapped to councils, state and federal government, education, aged care and NDIS. Compliance connects natively to risk, incident & safety, business continuity and strategic planning — not disconnected modules. Automated workflows, role-based access and immutable audit logs replace spreadsheet chasing, giving boards and auditors real-time visibility. Customers consistently report one source of truth, a shift from reactive to proactive compliance, and high adoption because the interface is intuitive for non-specialists.",
+    a: "Generic vendors give you empty registers and one-size-fits-all templates. Skefto starts with sector-specific registers, obligations, controls and frameworks already mapped to councils, state and federal government, education, aged care and NDIS. Compliance connects natively to risk, incident & safety, business continuity and strategic planning, not disconnected modules. Automated workflows, role-based access and immutable audit logs replace spreadsheet chasing, giving boards and auditors real-time visibility. Customers consistently report one source of truth, a shift from reactive to proactive compliance, and high adoption because the interface is intuitive for non-specialists.",
   },
   {
     q: "Is Skefto built for Australian regulations?",
-    a: "Yes. Skefto is an Australian platform aligned to ISO 37301 and built around Australian obligations including APRA CPS 230, the Privacy Act and Notifiable Data Breaches scheme, NDIS Practice Standards, Aged Care Quality Standards, and requirements relevant to councils, state and federal government organisations.",
+    a: "Yes. Skefto is an Australian platform, ISO 27001 & 37301 certified, and built around Australian obligations including APRA CPS 230, the Privacy Act and Notifiable Data Breaches scheme, NDIS Practice Standards, Aged Care Quality Standards, and requirements relevant to councils, state and federal government organisations.",
   },
   {
     q: "Can it track compliance deadlines automatically?",
@@ -569,60 +560,24 @@ export const FAQS = [
   },
   {
     q: "How does Skefto manage regulatory change?",
-    a: "Skefto helps you monitor changes to laws and standards, assess their impact on your obligations and controls, and route the resulting actions to accountable owners - so regulatory change never catches you off guard.",
+    a: "Skefto helps you monitor changes to laws and standards, assess their impact on your obligations and controls, and route the resulting actions to accountable owners, so regulatory change never catches you off guard. Authoritative regulatory content from LexisNexis feeds horizon scanning and obligation updates, traceable from source to register.",
   },
   {
     q: "Where is our compliance data stored?",
-    a: "Australian customer data is hosted in government-certified Australian data centres by default, with information security aligned to ISO 27001 and built for Australian data sovereignty and privacy obligations. Region-specific residency options and GDPR-ready governance workflows are available for organisations with cross-border requirements.",
+    a: "Australian customer data is hosted in government-certified Australian data centres by default, with ISO 27001 & 37301 certified information security and built for Australian data sovereignty and privacy obligations. Region-specific residency options and GDPR-ready governance workflows are available for organisations with cross-border requirements. Teams can work in the tools they already use, including Microsoft Teams and Power BI.",
   },
   {
     q: "How long does implementation take?",
-    a: "Skefto is quick to implement and easy to scale. Ready-made industry templates for councils, government, education and care providers accelerate time to value, with most organisations live in weeks rather than months.",
+    a: "Skefto is quick to implement and easy to scale. Ready-made industry templates for councils, state and federal government, education and care providers accelerate time to value, with most organisations live in weeks rather than months.",
+  },
+  {
+    q: "How is Skefto priced?",
+    a: "Skefto is licensed as a platform subscription, priced on the modules you need and the size of your organisation. Most organisations are live in weeks. Book a demo for a quote tailored to your obligations, sector and team structure.",
   },
 ];
 
-export const FUTURE_INITIATIVES: {
-  title: string;
-  body: string;
-  icon: IconName;
-  tag: string;
-  bullets: string[];
-  featured?: boolean;
-}[] = [
-  {
-    title: "Governance Portal partnership",
-    body: "Compliance and Governance Portal for councils, boards and committees — built with the City of Belmont to manage elected-member and director obligations in one place.",
-    icon: "building",
-    tag: "Australian first",
-    featured: true,
-    bullets: [
-      "Board and committee compliance in one portal",
-      "Councillor declarations, gifts and conflicts",
-      "Partnership with City of Belmont",
-      "First-of-its-kind for Australian councils and government",
-    ],
-  },
-  {
-    title: "LexisNexis regulatory integration",
-    body: "Connect authoritative regulatory content to Skefto workflows so horizon scanning and obligation updates stay traceable from source to action.",
-    icon: "refresh",
-    tag: "Integration",
-    bullets: [
-      "Regulatory horizon scanning and change alerts",
-      "Obligation traceability from source to register",
-      "Faster impact assessment on legislative updates",
-    ],
-  },
-  {
-    title: "Compliance AI roadmap",
-    body: "Practical AI automation with human-in-the-loop guardrails — built for compliance teams, not generic chatbot demos.",
-    icon: "sparkles",
-    tag: "AI · HITL",
-    bullets: [
-      "Automated regulatory impact analysis",
-      "Policy gap mapping and plain-language summaries",
-      "Smart audit questionnaire responses",
-      "Conversational policy guidance with citations",
-    ],
-  },
-];
+export const FOOTER_DESCRIPTION =
+  "Governance, risk and compliance software for regulated organisations. ISO 27001 & 37301 certified, with sovereign hosting options including government-certified Australian data centres.";
+
+export const FOOTER_HOSTING_LINE =
+  "Sovereign hosting options, including government-certified Australian data centres.";

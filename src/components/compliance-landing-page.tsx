@@ -1,8 +1,7 @@
-import Link from "next/link";
 import {
   INDUSTRIES_INTRO,
+  ISO_CERTIFIED_PHRASE,
   LINKS,
-  OTHER_COMPLIANCE_FUNCTIONS,
   TRUST_BAR_STATS,
 } from "@/lib/content";
 import { Button, Container, SectionHeading } from "@/components/ui";
@@ -13,9 +12,11 @@ import { HeroSection } from "@/components/hero-section";
 import { ClosingCta } from "@/components/closing-cta";
 import { TrustPartnerSection } from "@/components/trust-partner-section";
 import { SecuritySection } from "@/components/security-section";
+import { CapabilitiesBento } from "@/components/capabilities-bento";
 import { ComplianceDeepDiveSection } from "@/components/compliance-deep-dive-section";
 import { ProductOverviewSection } from "@/components/product-overview-section";
 import { PlatformSection } from "@/components/platform-section";
+import { MoreThanSoftwareSection } from "@/components/more-than-software-section";
 import { GettingStartedSection } from "@/components/getting-started-section";
 import { FaqSection } from "@/components/faq-section";
 import { Reveal, RevealStagger } from "@/components/scroll-reveal";
@@ -30,6 +31,9 @@ export function ComplianceLandingPage() {
           <HeroSection />
           <Reveal>
             <TrustBar />
+          </Reveal>
+          <Reveal>
+            <CapabilitiesBento />
           </Reveal>
           <Reveal>
             <ComplianceDeepDiveSection />
@@ -48,6 +52,9 @@ export function ComplianceLandingPage() {
           </Reveal>
           <Reveal>
             <TrustPartnerSection />
+          </Reveal>
+          <Reveal>
+            <MoreThanSoftwareSection />
           </Reveal>
           <Reveal>
             <GettingStartedSection />
@@ -71,21 +78,26 @@ function TrustBar() {
   return (
     <section className="border-y border-ink-900/6 bg-white">
       <Container className="py-8">
-        <RevealStagger className="grid items-center gap-y-8 sm:grid-cols-2">
-          <div className="flex flex-col items-center text-center sm:border-r sm:border-ink-100">
-            <p className="font-display text-3xl font-extrabold tracking-tight text-ink-900 sm:text-4xl">
-              <span className="bg-gradient-to-r from-brand-600 to-accent-600 bg-clip-text text-transparent">
-                {TRUST_BAR_STATS[0]!.v}
-              </span>
-            </p>
-            <p className="mt-1.5 max-w-[14rem] text-sm font-medium text-ink-500">
-              {TRUST_BAR_STATS[0]!.k}
-            </p>
-          </div>
+        <RevealStagger className="grid items-center gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
+          {TRUST_BAR_STATS.map((stat) => (
+            <div
+              key={stat.k}
+              className="flex flex-col items-center text-center lg:border-r lg:border-ink-100"
+            >
+              <p className="font-display text-3xl font-extrabold tracking-tight text-ink-900 sm:text-4xl">
+                <span className="bg-gradient-to-r from-brand-600 to-accent-600 bg-clip-text text-transparent">
+                  {stat.v}
+                </span>
+              </p>
+              <p className="mt-1.5 max-w-[14rem] text-sm font-medium text-ink-500">
+                {stat.k}
+              </p>
+            </div>
+          ))}
           <div className="flex flex-col items-center text-center">
             <IsoCertificationMarks size="sm" />
             <p className="mt-3 text-sm font-medium text-ink-500">
-              {TRUST_BAR_STATS[1]!.k}
+              {ISO_CERTIFIED_PHRASE}
             </p>
           </div>
         </RevealStagger>
@@ -107,9 +119,6 @@ function Industries() {
         <div className="mt-8 sm:mt-10">
           <IndustryTabs />
         </div>
-        <p className="mx-auto mt-6 max-w-3xl text-center text-sm leading-6 text-ink-400">
-          Plus many other compliance solutions including {OTHER_COMPLIANCE_FUNCTIONS.join(", ")}.
-        </p>
         <div className="mt-8 flex justify-center">
           <Button href={LINKS.demo} variant="white" size="lg" showArrow>
             Book a demo

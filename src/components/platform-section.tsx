@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { ECOSYSTEM, LINKS, WHY_CHOOSE_SKEFTO } from "@/lib/content";
-import { Container, SectionHeading } from "@/components/ui";
+import { ECOSYSTEM, INTEGRATIONS, LINKS, WHY_CHOOSE_SKEFTO } from "@/lib/content";
+import { Container, InlineLink, SectionHeading } from "@/components/ui";
 import { Icon } from "@/components/icons";
 import { EcosystemDiagram } from "@/components/visuals";
 
@@ -19,7 +19,7 @@ export function PlatformSection() {
             <SectionHeading
               eyebrow="Connected GRC platform"
               title="Compliance linked to risk, incidents, and assurance"
-              subtitle="One platform — not a point solution. Compliance data flows to risk registers, incident management, safety, and strategic reporting without duplicate entry."
+              subtitle="One platform, not a point solution. Compliance data flows to risk registers, incident management, safety, and strategic reporting without duplicate entry."
               align="left"
             />
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
@@ -61,6 +61,25 @@ export function PlatformSection() {
               </Link>
             </p>
           </div>
+        </div>
+
+        <div className="mt-12 border-t border-ink-900/6 pt-8">
+          <p className="text-center text-[11px] font-semibold uppercase tracking-[0.18em] text-ink-500">
+            Works with the tools you already use
+          </p>
+          <ul className="mt-4 flex flex-wrap items-center justify-center gap-x-10 gap-y-3">
+            {INTEGRATIONS.map((item) => (
+              <li
+                key={item.name}
+                className="text-sm font-semibold tracking-tight text-ink-400 grayscale"
+              >
+                {item.label}
+              </li>
+            ))}
+          </ul>
+          <p className="mt-4 text-center text-sm text-ink-600">
+            <InlineLink href={LINKS.partners}>View Skefto technology partners</InlineLink>
+          </p>
         </div>
       </Container>
     </section>

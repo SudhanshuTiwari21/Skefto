@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { LINKS } from "@/lib/content";
+import { FOOTER_DESCRIPTION, FOOTER_HOSTING_LINE, LINKS } from "@/lib/content";
 
 const COLS: { heading: string; links: { label: string; href: string }[] }[] = [
   {
@@ -49,9 +49,7 @@ export function SiteFooter() {
               className="h-7 w-auto"
             />
             <p className="mt-5 max-w-xs text-sm leading-7 text-ink-400">
-              Governance, risk and compliance software for regulated Australian
-              organisations. Australian-hosted, government-certified, built to
-              ISO 37301.
+              {FOOTER_DESCRIPTION}
             </p>
           </div>
 
@@ -82,7 +80,7 @@ export function SiteFooter() {
           <p>© {new Date().getFullYear()} Skefto. All rights reserved.</p>
           <p className="inline-flex items-center gap-2">
             <span className="size-1.5 rounded-full bg-brand-400" />
-            Data hosted in government-certified Australian data centres
+            {FOOTER_HOSTING_LINE}
           </p>
         </div>
       </div>

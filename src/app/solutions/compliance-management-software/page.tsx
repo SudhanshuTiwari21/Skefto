@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     template: "%s | Skefto",
   },
   description:
-    "Track obligations, manage regulatory change, and prove compliance on a sovereign-ready platform. Built for government, education, healthcare and regulated industries worldwide. ISO 37301 aligned.",
+    "Track obligations, manage regulatory change, and prove compliance on a sovereign-ready platform. Built for government, education, healthcare and regulated industries. ISO 27001 & 37301 certified.",
   applicationName: "Skefto",
   authors: [{ name: "Skefto" }],
   keywords: [
@@ -35,13 +35,13 @@ export const metadata: Metadata = {
     url: COMPLIANCE_CANONICAL_PATH,
     title: "Compliance Management Software for Regulated Organisations",
     description:
-      "One sovereign-ready platform to track obligations, manage regulatory change, and prove compliance. Built for government, education, healthcare and regulated industries worldwide.",
+      "One sovereign-ready platform to track obligations, manage regulatory change, and prove compliance. Built for government, education, healthcare and regulated industries.",
   },
   twitter: {
     card: "summary_large_image",
     title: "Compliance Management Software for Regulated Organisations | Skefto",
     description:
-      "Track obligations, manage regulatory change, and prove compliance on a sovereign-ready platform aligned to ISO 37301.",
+      "Track obligations, manage regulatory change, and prove compliance on a sovereign-ready platform. ISO 27001 & 37301 certified.",
   },
   robots: {
     index: true,
@@ -74,10 +74,10 @@ function jsonLd() {
         operatingSystem: "Web",
         url: PAGE,
         description:
-          "Compliance management software for regulated organisations. Track obligations, regulatory change, audits and evidence on a sovereign-ready platform aligned to ISO 37301 — trusted by government, education and care providers worldwide.",
+          "Compliance management software for regulated organisations. Track obligations, regulatory change, audits and evidence on a sovereign-ready platform. ISO 27001 & 37301 certified. Trusted by government, education and care providers.",
         offers: { "@type": "Offer", price: "0", priceCurrency: "USD", availability: "https://schema.org/InStock" },
         provider: { "@id": `${SITE}/#organization` },
-        featureList: CAPABILITIES.map((c) => c.title),
+        featureList: CAPABILITIES.map((c) => c.eyebrow),
       },
       {
         "@type": "BreadcrumbList",
