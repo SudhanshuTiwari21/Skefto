@@ -18,8 +18,8 @@ export function RiskTrustSection() {
       <Container>
         <SectionHeading
           eyebrow="Why Skefto"
-          title="Practitioner-led risk management — not another generic GRC tool"
-          subtitle="Software, advisory and training from the team that built the platform — with sector templates Australian regulated organisations actually need."
+          title="Practitioner-led risk management - not another generic GRC tool"
+          subtitle="Software, advisory and training from the team that built the platform - with sector templates Australian regulated organisations actually need."
         />
 
         <div className="mt-12 grid gap-4 md:grid-cols-3">

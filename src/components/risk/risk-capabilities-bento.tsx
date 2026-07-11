@@ -170,7 +170,7 @@ export function RiskCapabilitiesBento() {
       <Container className="relative">
         <SectionHeading
           eyebrow="Platform capabilities"
-          title="One platform for enterprise risk — not another spreadsheet"
+          title="One platform for enterprise risk - not another spreadsheet"
           subtitle="Risk register, assessment, treatment, assurance and board reporting in a single Australian-hosted system."
         />
         <div className="mt-14 grid auto-rows-min gap-4 sm:grid-cols-2 lg:grid-cols-12 lg:grid-rows-[auto_auto]">

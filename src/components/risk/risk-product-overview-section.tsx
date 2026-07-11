@@ -8,7 +8,7 @@ export function RiskProductOverviewSection() {
         <SectionHeading
           eyebrow="Product overview"
           title="See how Australian organisations manage risk in Skefto"
-          subtitle="A short walkthrough of risk registers, heat maps, treatment workflows and board reporting — built for regulated teams."
+          subtitle="A short walkthrough of risk registers, heat maps, treatment workflows and board reporting - built for regulated teams."
         />
         <div className="mx-auto mt-10 max-w-4xl">
           <ProductVideoInline />

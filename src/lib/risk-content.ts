@@ -35,7 +35,7 @@ export const PAIN_POINTS = [
   {
     n: "02",
     title: "No single source of truth",
-    body: "Risk data lives across shared drives, inboxes and disconnected tools. Boards and executives cannot see exposure in real time — so decisions rely on outdated information.",
+    body: "Risk data lives across shared drives, inboxes and disconnected tools. Boards and executives cannot see exposure in real time - so decisions rely on outdated information.",
   },
   {
     n: "03",
@@ -57,7 +57,7 @@ export const CAPABILITIES: { title: string; body: string; icon: IconName }[] = [
   },
   {
     title: "Treatment & control assurance",
-    body: "Track treatment plans, control effectiveness and overdue actions with automated workflow triggers — not email chasing.",
+    body: "Track treatment plans, control effectiveness and overdue actions with automated workflow triggers - not email chasing.",
     icon: "workflow",
   },
   {
@@ -72,7 +72,7 @@ export const CAPABILITIES: { title: string; body: string; icon: IconName }[] = [
   },
   {
     title: "Business continuity",
-    body: "BIA, recovery objectives and crisis workflows connected to your risk environment — aligned to AS/ISO 22301.",
+    body: "BIA, recovery objectives and crisis workflows connected to your risk environment - aligned to AS/ISO 22301.",
     icon: "shield",
   },
 ];
@@ -98,7 +98,7 @@ export const REPORTING_BULLETS = [
   "Trend analysis across categories and business units",
   "Automated reporting packs for audit committees",
   "Exportable registers for regulators and assurance teams",
-  "Real-time posture — not quarterly spreadsheet snapshots",
+  "Real-time posture - not quarterly spreadsheet snapshots",
 ];
 
 export const GENAI_CAPABILITIES: {
@@ -159,7 +159,7 @@ export const FRAMEWORKS = [
 ];
 
 export const SECTORS_INTRO =
-  "Pre-built risk templates and framework alignments for the regulated sectors Skefto knows best — so your team moves from spreadsheets to a live register faster.";
+  "Pre-built risk templates and framework alignments for the regulated sectors Skefto knows best - so your team moves from spreadsheets to a live register faster.";
 
 export const SECTORS: {
   id: string;
@@ -210,7 +210,7 @@ export const SECTORS: {
     title: "Education",
     icon: "cap",
     geoShape: "triangle",
-    body: "Risk management for schools, TAFEs and universities — child safety, governance and regulatory compliance in one view.",
+    body: "Risk management for schools, TAFEs and universities - child safety, governance and regulatory compliance in one view.",
     supports: [
       "Strategic & operational risks",
       "Child safe standards",
@@ -288,18 +288,18 @@ export const ECOSYSTEM = [
 export const WHY_CHOOSE = [
   {
     title: "Practitioner-led, not software-first",
-    body: "Built by Australian risk experts with decades inside regulated sectors — not technologists configuring a generic GRC template.",
+    body: "Built by Australian risk experts with decades inside regulated sectors - not technologists configuring a generic GRC template.",
     icon: "users" as IconName,
     featured: true,
   },
   {
     title: "Software, advisory & training",
-    body: "One team delivers the platform, independent risk advisory, and practical training — the uplift is not outsourced to partners.",
+    body: "One team delivers the platform, independent risk advisory, and practical training - the uplift is not outsourced to partners.",
     icon: "cap" as IconName,
   },
   {
     title: "Sector-ready from day one",
-    body: "Templates for councils, agencies, education, aged care and NDIS — aligned to AS/ISO 31000 and Australian regulatory frameworks.",
+    body: "Templates for councils, agencies, education, aged care and NDIS - aligned to AS/ISO 31000 and Australian regulatory frameworks.",
     icon: "building" as IconName,
   },
 ];
@@ -307,7 +307,7 @@ export const WHY_CHOOSE = [
 export const COMPARISON = {
   generic: [
     "Software-first vendors with advisory through partners",
-    "Generic frameworks — buyer configures to local standards",
+    "Generic frameworks - buyer configures to local standards",
     "Module sprawl across disconnected registers",
     "Global hosting with unclear data sovereignty",
   ],
@@ -322,7 +322,7 @@ export const COMPARISON = {
 export const PILLARS = [
   {
     title: "Risk management software",
-    body: "One integrated platform for risk, compliance, audit, policies and business continuity — scaling as maturity grows without migrating systems.",
+    body: "One integrated platform for risk, compliance, audit, policies and business continuity - scaling as maturity grows without migrating systems.",
     icon: "sliders" as IconName,
     proof: "Platform",
   },
@@ -337,7 +337,7 @@ export const PILLARS = [
   },
   {
     title: "Risk management training",
-    body: "Fundamentals, practitioner and leadership pathways — delivered with LG Pro Victoria and IPAA-ACT to thousands of public sector staff.",
+    body: "Fundamentals, practitioner and leadership pathways - delivered with LG Pro Victoria and IPAA-ACT to thousands of public sector staff.",
     icon: "cap" as IconName,
     proof: "Training",
     href: LINKS.services.training,
@@ -349,7 +349,7 @@ export const EXPERT = {
   name: "Pete Gervasoni, F.ISRM",
   role: "Chief Risk Officer, Skefto",
   quote:
-    "Skefto was designed by risk experts for everyone in your organisation — not just the risk team. It reflects how risk management actually works in Australian regulated sectors.",
+    "Skefto was designed by risk experts for everyone in your organisation - not just the risk team. It reflects how risk management actually works in Australian regulated sectors.",
   credentials: [
     "Australia's nominated expert to ISO for security and resilience",
     "Contributor to ISO 22336 Organisational Resilience (2024)",
@@ -361,17 +361,17 @@ export const EXPERT = {
 export const OUTCOMES = [
   {
     title: "End the spreadsheet nightmare",
-    body: "One centralised risk register with clear ownership — no more emailing department heads for status before the board meeting.",
+    body: "One centralised risk register with clear ownership - no more emailing department heads for status before the board meeting.",
     icon: "register" as IconName,
   },
   {
     title: "Board-ready in hours, not weeks",
-    body: "Automated dashboards and reporting replace manual pack assembly — leadership sees exposure when it matters.",
+    body: "Automated dashboards and reporting replace manual pack assembly - leadership sees exposure when it matters.",
     icon: "chart" as IconName,
   },
   {
     title: "Adoption across the organisation",
-    body: "A clean interface risk owners actually use — from frontline managers to executives, without extensive retraining.",
+    body: "A clean interface risk owners actually use - from frontline managers to executives, without extensive retraining.",
     icon: "workflow" as IconName,
   },
 ];
@@ -386,7 +386,7 @@ export const TESTIMONIAL = {
 export const FAQS = [
   {
     q: "What is risk management software?",
-    a: "Risk management software is a centralised platform that helps organisations identify, assess, treat and monitor risks across operational, strategic, safety, cyber and compliance areas. It replaces spreadsheets with a single source of truth — risk registers, controls, treatment plans, audit trails and board-ready reporting — aligned to standards like AS/ISO 31000.",
+    a: "Risk management software is a centralised platform that helps organisations identify, assess, treat and monitor risks across operational, strategic, safety, cyber and compliance areas. It replaces spreadsheets with a single source of truth - risk registers, controls, treatment plans, audit trails and board-ready reporting - aligned to standards like AS/ISO 31000.",
   },
   {
     q: "Is Skefto aligned with AS/ISO 31000?",
@@ -402,11 +402,11 @@ export const FAQS = [
   },
   {
     q: "Does risk management software help with APRA CPS 230?",
-    a: "Yes. APRA CPS 230 requires entities to identify critical operations, manage material service providers, test business continuity and report operational risk to the board. Skefto maintains operational risk registers, maps service providers, supports scenario testing and produces assurance reports — with pre-built CPS 230 templates.",
+    a: "Yes. APRA CPS 230 requires entities to identify critical operations, manage material service providers, test business continuity and report operational risk to the board. Skefto maintains operational risk registers, maps service providers, supports scenario testing and produces assurance reports - with pre-built CPS 230 templates.",
   },
   {
     q: "What is RiskMAT?",
-    a: "RiskMAT is Skefto's free online Risk Maturity Assessment. It benchmarks your organisation against AS/ISO 31000, identifies gaps and produces a personalised improvement roadmap in under 20 minutes — a practical starting point before a product demo.",
+    a: "RiskMAT is Skefto's free online Risk Maturity Assessment. It benchmarks your organisation against AS/ISO 31000, identifies gaps and produces a personalised improvement roadmap in under 20 minutes - a practical starting point before a product demo.",
   },
   {
     q: "How long does implementation take?",

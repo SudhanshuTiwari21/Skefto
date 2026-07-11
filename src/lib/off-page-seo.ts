@@ -1,5 +1,5 @@
 /**
- * Tier 3.3 — off-page SEO tasks for the marketing team.
+ * Tier 3.3 - off-page SEO tasks for the marketing team.
  * Skefto is not currently listed on major AU software directories; claim profiles
  * before adding public footer badges or review-count claims on-page.
  */
@@ -14,7 +14,7 @@ export const REVIEW_PLATFORM_OUTREACH = {
   },
 } as const;
 
-/** Tier 3.6 — international expansion hypothesis (validate with SERP research before build) */
+/** Tier 3.6 - international expansion hypothesis (validate with SERP research before build) */
 export const INTERNATIONAL_EXPANSION_HYPOTHESES = {
   nz: {
     status: "hypothesis" as const,

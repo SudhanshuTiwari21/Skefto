@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE),
   title: "Risk Management Software for Australian Organisations",
   description:
-    "Enterprise risk management software for regulated Australian organisations. AS/ISO 31000 aligned risk register, heat maps, treatment workflows and board reporting — hosted in Australia.",
+    "Enterprise risk management software for regulated Australian organisations. AS/ISO 31000 aligned risk register, heat maps, treatment workflows and board reporting - hosted in Australia.",
   alternates: {
     canonical: PAGE,
   },

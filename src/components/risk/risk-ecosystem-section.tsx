@@ -13,7 +13,7 @@ export function RiskEcosystemSection() {
             <SectionHeading
               eyebrow="One integrated platform"
               title="Risk connected to compliance, incidents and safety"
-              subtitle="Enterprise risk is not an island. Skefto links your risk register to obligations, incidents and WHS — one platform, one source of truth."
+              subtitle="Enterprise risk is not an island. Skefto links your risk register to obligations, incidents and WHS - one platform, one source of truth."
               align="left"
             />
             <div className="mt-8 grid gap-3 sm:grid-cols-2">

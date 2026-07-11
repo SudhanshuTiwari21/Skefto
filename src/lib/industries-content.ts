@@ -34,7 +34,7 @@ export const INDUSTRY_PAGES: IndustryPageContent[] = [
     eyebrow: "Local government",
     headline: "Council compliance management software built for Australian LGAs",
     intro:
-      "Councils juggle hundreds of statutory obligations across delegations, returns, audits, declarations and regulatory change. Skefto GovCloud gives you preconfigured registers and workflows mapped to local government legislation — not a blank enterprise template.",
+      "Councils juggle hundreds of statutory obligations across delegations, returns, audits, declarations and regulatory change. Skefto GovCloud gives you preconfigured registers and workflows mapped to local government legislation - not a blank enterprise template.",
     highlights: [
       "GovCloud registers for delegations, returns, declarations and breaches",
       "Compliance calendar with automated reminders and escalations",
@@ -97,7 +97,7 @@ export const INDUSTRY_PAGES: IndustryPageContent[] = [
     eyebrow: "Aged care",
     headline: "Aged care compliance management software aligned to Quality Standards",
     intro:
-      "Aged care providers must demonstrate continuous compliance with Quality Standards, accreditation cycles and executive attestations. CareCloud maps obligations, audits and evidence to the standards regulators expect — with Australian hosting for sensitive resident and workforce data.",
+      "Aged care providers must demonstrate continuous compliance with Quality Standards, accreditation cycles and executive attestations. CareCloud maps obligations, audits and evidence to the standards regulators expect - with Australian hosting for sensitive resident and workforce data.",
     highlights: [
       "Registers mapped to Aged Care Quality Standards requirements",
       "Executive attestations and compliance statements with evidence",

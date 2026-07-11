@@ -1,4 +1,4 @@
-# Skefto Compliance Page — IA Audit & Implementation Decisions
+# Skefto Compliance Page - IA Audit & Implementation Decisions
 
 **Page audited:** Development build (`skefto.vercel.app`)  
 **Goal:** International SaaS positioning · shorter scroll · less repetition · keep SEO/GEO entities  
@@ -10,12 +10,12 @@
 
 | Claude audit recommendation | Skefto decision | Why |
 |---|---|---|
-| Remove Product Roadmap entirely | **Keep — compressed** | Client feedback (Items 15–17) requires LexisNexis, Compliance AI, Governance Portal on-page for GEO/entity SEO. Now 3 equal compact cards, not a giant featured panel. |
+| Remove Product Roadmap entirely | **Keep - compressed** | Client feedback (Items 15–17) requires LexisNexis, Compliance AI, Governance Portal on-page for GEO/entity SEO. Now 3 equal compact cards, not a giant featured panel. |
 | Australia-only hero | **Go international** | Strategic shift to global SaaS; Australian proof kept via logos, GovCloud, case study, sovereign security. |
 | Merge capabilities + how it works | **Done** | Removed 6-card bento. Single section with **workflow strip** (Map → Assign → Operate → Evidence → Report) + capability tabs. |
 | Remove duplicate logo wall | **Done** | Logos only in hero marquee. |
 | Merge outcomes into case study | **Done** | Outcome metrics are chips on case study card. |
-| Merge ecosystem + why Skefto | **Done** | `PlatformSection` — diagram + GRC links + audit-ready differentiator. |
+| Merge ecosystem + why Skefto | **Done** | `PlatformSection` - diagram + GRC links + audit-ready differentiator. |
 | Add getting started | **Done** | 4-step implementation strip before FAQ. |
 | Remove stats bar training NPS | **Done** | Bar reduced to 2 compliance-relevant stats. |
 
@@ -28,7 +28,7 @@
 | 1 | **Hero** | Global value prop + CTA + logo marquee (credibility once) |
 | 2 | **Trust bar** | 20+ years · ISO aligned (brief, no repetition) |
 | 3 | **How it works** (`#capabilities`) | 5-step workflow + tabbed capability deep-dive (screenshots) |
-| 4 | **Security** (`#security`) | Sovereign/global residency — said once, ISO logos in banner |
+| 4 | **Security** (`#security`) | Sovereign/global residency - said once, ISO logos in banner |
 | 5 | **Sector clouds** (`#industries`) | GovCloud / CareCloud / EducationCloud + compliance functions list once |
 | 6 | **Connected platform** (`#platform`) | GRC ecosystem + audit-ready differentiator |
 | 7 | **Product video** (`#overview`) | Self-serve walkthrough |
@@ -76,8 +76,8 @@ Tabs below = explore obligations, regulatory change, policy, audit (with screens
 
 Enterprise compliance buyers compare Skefto to:
 
-- **AU:** RiskWare, SurePact, CouncilFirst — sector templates + sovereign hosting  
-- **Global GRC:** Hyperproof, LogicGate, SureCloud — connected platform, audit workflows  
+- **AU:** RiskWare, SurePact, CouncilFirst - sector templates + sovereign hosting  
+- **Global GRC:** Hyperproof, LogicGate, SureCloud - connected platform, audit workflows  
 
 They expect: hero → product proof → security → sector fit → platform → social proof → FAQ → CTA.  
 They do **not** need: the same ISO claim five times or two logo walls.

@@ -9,7 +9,7 @@ export function RiskFaqSection() {
       <Container className="relative">
         <SectionHeading
           eyebrow="FAQ"
-          title="Risk management software — common questions"
+          title="Risk management software - common questions"
           subtitle="Answers on AS/ISO 31000 alignment, Australian hosting, APRA CPS 230, implementation and how Skefto compares to other vendors."
         />
         <div className="mx-auto mt-10 max-w-3xl">

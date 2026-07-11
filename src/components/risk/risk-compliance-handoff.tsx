@@ -22,7 +22,7 @@ export function RiskComplianceHandoff() {
             <p className="mt-4 max-w-2xl text-pretty text-sm leading-7 text-ink-600 sm:text-base">
               Enterprise risk does not sit in isolation. Skefto links your risk
               register to obligations registers, regulatory change, policy
-              governance, audits and evidence — so boards see risk and compliance
+              governance, audits and evidence - so boards see risk and compliance
               posture in one connected workflow.
             </p>
             <Link

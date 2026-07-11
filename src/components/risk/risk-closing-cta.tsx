@@ -28,7 +28,7 @@ export function RiskClosingCta() {
               </h2>
               <p className="mt-4 text-pretty text-base leading-7 text-ink-300 sm:text-lg">
                 Join Australian government, education and regulated organisations using Skefto to
-                build a risk-aware culture — designed by practitioners, for practitioners.
+                build a risk-aware culture - designed by practitioners, for practitioners.
               </p>
               <ul className="mt-6 flex flex-wrap gap-x-5 gap-y-2">
                 {TRUST.map((t) => (

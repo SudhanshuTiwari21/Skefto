@@ -91,7 +91,7 @@ export function RiskHeroSection() {
             <CopyBlock index={2} className="mt-5">
               <p className="max-w-[32rem] text-pretty text-base leading-7 text-ink-600 sm:text-[1.0625rem] sm:leading-8">
                 From spreadsheets to a single source of truth. Identify, assess, treat and report risk
-                in one Australian-hosted platform — designed by practitioners and aligned to AS/ISO 31000.
+                in one Australian-hosted platform - designed by practitioners and aligned to AS/ISO 31000.
               </p>
             </CopyBlock>
 

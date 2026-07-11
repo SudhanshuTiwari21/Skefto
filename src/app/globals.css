@@ -504,7 +504,7 @@ body {
 }
 .animate-badge-sweep { animation: badge-sweep 4.5s ease-in-out infinite; }
 
-/* Site header — shell unfurls from center, then content cascades in */
+/* Site header - shell unfurls from center, then content cascades in */
 @keyframes site-header-shell-unfurl {
   0% {
     opacity: 0;

@@ -129,13 +129,13 @@ function Panel({ tab }: Readonly<{ tab: TabId }>) {
     },
     treatment: {
       title: "Treatment plans with control assurance",
-      body: "Track what is being done about each risk — treatment owners, due dates, control effectiveness and automated escalations when ratings exceed appetite.",
+      body: "Track what is being done about each risk - treatment owners, due dates, control effectiveness and automated escalations when ratings exceed appetite.",
       mockup: <TreatmentMockup />,
       bullets: TREATMENT_BULLETS,
     },
     reporting: {
       title: "Board-ready reporting without the spreadsheet grind",
-      body: "Live dashboards and automated packs give leadership and audit committees defensible visibility — trend analysis, category breakdowns and exportable registers.",
+      body: "Live dashboards and automated packs give leadership and audit committees defensible visibility - trend analysis, category breakdowns and exportable registers.",
       mockup: <ReportingMockup />,
       bullets: REPORTING_BULLETS,
     },
@@ -173,7 +173,7 @@ export function RiskDeepDiveSection() {
         <SectionHeading
           eyebrow="How it works"
           title="From identification to board assurance"
-          subtitle="Three connected workflows — register and assess, treat and assure, then report with confidence."
+          subtitle="Three connected workflows - register and assess, treat and assure, then report with confidence."
         />
 
         <div className="mt-8 flex flex-wrap gap-2" role="tablist">

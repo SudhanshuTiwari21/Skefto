@@ -68,7 +68,7 @@ export function SiteHeader({ nav = [...NAV] }: Readonly<{ nav?: NavItem[] }>) {
           open && "z-50",
         )}
       >
-        {/* Glass pill — shell unfurls from center, then content appears */}
+        {/* Glass pill - shell unfurls from center, then content appears */}
         <div
           className={cx(
             "site-header-shell relative overflow-hidden rounded-full border",
