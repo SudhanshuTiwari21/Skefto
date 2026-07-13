@@ -5,9 +5,9 @@ const PAGE = "/solutions/risk-management-software/";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
-  title: "Risk Management Software for Australian Organisations",
+  title: "Risk Management Software for Modern Regulated Organisations",
   description:
-    "Enterprise risk management software for regulated Australian organisations. AS/ISO 31000 aligned risk register, heat maps, treatment workflows and board reporting - hosted in Australia.",
+    "Risk management software for modern regulated organisations. ISO 31000 (AS/ISO 31000 in Australia) risk register, heat maps, treatment workflows and board reporting with regional government-certified onshore hosting.",
   alternates: {
     canonical: PAGE,
   },
@@ -16,15 +16,15 @@ export const metadata: Metadata = {
     locale: "en_AU",
     siteName: "Skefto",
     url: PAGE,
-    title: "Risk Management Software for Regulated Australian Organisations",
+    title: "Risk Management Software for Modern Regulated Organisations",
     description:
-      "From spreadsheets to a single source of truth. Risk register, assessment, treatment and board reporting in one Australian-hosted platform.",
+      "From spreadsheets to a single source of truth. Risk register, assessment, treatment and board reporting in one onshore-hosted platform.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Risk Management Software for Australian Organisations | Skefto",
+    title: "Risk Management Software for Modern Regulated Organisations | Skefto",
     description:
-      "AS/ISO 31000 aligned risk management software with Australian data residency. Built by practitioners for councils, government, education and care.",
+      "ISO 31000 risk management software with regional government-certified onshore hosting. Built by practitioners for regulated organisations.",
   },
   robots: {
     index: true,
@@ -34,10 +34,11 @@ export const metadata: Metadata = {
   keywords: [
     "risk management software",
     "risk management software australia",
-    "enterprise risk management software",
-    "AS ISO 31000",
     "risk register software",
-    "GRC software australia",
+    "ISO 31000",
+    "AS ISO 31000",
+    "operational risk management",
+    "GRC software",
   ],
 };
 

@@ -10,6 +10,7 @@ const LAYOUT = [
   { className: "lg:col-span-3 lg:row-start-2", variant: "default" as const, index: "04" },
   { className: "lg:col-span-3 lg:row-start-2", variant: "default" as const, index: "05" },
   { className: "sm:col-span-2 lg:col-span-6 lg:row-start-2", variant: "dark" as const, index: "06" },
+  { className: "sm:col-span-2 lg:col-span-12 lg:row-start-3", variant: "ai" as const, index: "07" },
 ];
 
 function HeatMapPreview() {
@@ -32,7 +33,7 @@ function TreatmentPreview() {
     <div className="mt-5 space-y-2">
       {[
         { t: "Vendor assurance review", s: "Due 7d" },
-        { t: "Control testing – finance", s: "On track" },
+        { t: "Control testing, finance", s: "On track" },
       ].map((r) => (
         <div
           key={r.t}
@@ -72,6 +73,42 @@ function CapabilityCard({
 }>) {
   const I = Icon[cap.icon as IconName];
   const { variant, index, className } = layout;
+
+  if (variant === "ai") {
+    return (
+      <article
+        className={`group relative overflow-hidden rounded-2xl border border-ink-900/8 bg-white p-5 sm:p-6 ${className}`}
+      >
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+          <div className="max-w-xl">
+            <div className="flex items-center gap-3">
+              <span className="font-mono text-[11px] font-medium tracking-[0.2em] text-ink-400">
+                {index}
+              </span>
+              <span className="inline-flex size-9 items-center justify-center rounded-xl border border-brand-100 bg-brand-50 text-brand-700">
+                <I className="size-4" />
+              </span>
+            </div>
+            <h3 className="mt-3 font-display text-lg font-bold text-ink-900">{cap.title}</h3>
+            <p className="mt-2 text-sm leading-6 text-ink-600">{cap.body}</p>
+            {cap.note ? (
+              <p className="mt-3 text-xs font-medium text-ink-500">{cap.note}</p>
+            ) : null}
+          </div>
+          {cap.bullets ? (
+            <ul className="grid gap-2 sm:max-w-md">
+              {cap.bullets.map((b) => (
+                <li key={b} className="flex items-start gap-2 text-sm leading-6 text-ink-700">
+                  <Icon.check className="mt-0.5 size-4 shrink-0 text-brand-600" />
+                  {b}
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </div>
+      </article>
+    );
+  }
 
   if (variant === "featured") {
     return (
@@ -163,22 +200,22 @@ function CapabilityCard({
 
 export function RiskCapabilitiesBento() {
   return (
-    <section id="capabilities" className="relative scroll-mt-20 overflow-hidden py-20 sm:py-28">
+    <section id="capabilities" className="relative scroll-mt-20 overflow-hidden py-16 sm:py-20">
       <div aria-hidden className="pointer-events-none absolute inset-0 bg-sand-50" />
       <div aria-hidden className="pointer-events-none absolute inset-0 bg-blueprint opacity-40" />
 
       <Container className="relative">
         <SectionHeading
           eyebrow="Platform capabilities"
-          title="One platform for enterprise risk - not another spreadsheet"
-          subtitle="Risk register, assessment, treatment, assurance and board reporting in a single Australian-hosted system."
+          title="One platform for operational risk, not another spreadsheet"
+          subtitle="Risk register, assessment, treatment, audit management, policy links and board reporting in a single onshore-hosted system."
         />
-        <div className="mt-14 grid auto-rows-min gap-4 sm:grid-cols-2 lg:grid-cols-12 lg:grid-rows-[auto_auto]">
+        <div className="mt-12 grid auto-rows-min gap-4 sm:grid-cols-2 lg:grid-cols-12">
           {CAPABILITIES.map((cap, i) => (
             <CapabilityCard key={cap.title} cap={cap} layout={LAYOUT[i]!} />
           ))}
         </div>
-        <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
+        <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
           <ShimmerButton href={LINKS.demo} className="!h-11 !px-6 !text-sm">
             Book a demo
           </ShimmerButton>

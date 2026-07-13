@@ -30,7 +30,7 @@ function LogoStrip() {
   return (
     <div className="mt-14 border-t border-ink-900/8 pt-8 sm:mt-16">
       <p className="text-center text-[11px] font-semibold uppercase tracking-[0.18em] text-ink-500">
-        Trusted by Australian councils, agencies &amp; regulated organisations
+        Trusted by councils, agencies &amp; regulated organisations
       </p>
       <div className="mt-5 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
         <div className="flex w-max animate-marquee items-center gap-10 sm:gap-14">
@@ -78,20 +78,21 @@ export function RiskHeroSection() {
             <CopyBlock index={0}>
               <span className="inline-flex items-center gap-2 rounded-full border border-ink-200/80 bg-white px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-ink-700 shadow-soft">
                 <SkeftoGeoMark shape="hexagon" />
-                Risk management · Australia
+                Risk management software
               </span>
             </CopyBlock>
 
             <CopyBlock index={1} className="mt-4">
               <h1 className="font-display text-[2.05rem] font-extrabold leading-[1.08] tracking-[-0.035em] text-ink-900 sm:text-[2.75rem] lg:text-[3.05rem]">
-                Risk management software for regulated Australian organisations
+                Risk management software for modern regulated organisations
               </h1>
             </CopyBlock>
 
             <CopyBlock index={2} className="mt-5">
               <p className="max-w-[32rem] text-pretty text-base leading-7 text-ink-600 sm:text-[1.0625rem] sm:leading-8">
-                From spreadsheets to a single source of truth. Identify, assess, treat and report risk
-                in one Australian-hosted platform - designed by practitioners and aligned to AS/ISO 31000.
+                From spreadsheets to a single source of truth. Identify, assess, treat and monitor
+                risk in one platform, designed by practitioners and built around{" "}
+                ISO 31000 (AS/ISO 31000 in Australia).
               </p>
             </CopyBlock>
 

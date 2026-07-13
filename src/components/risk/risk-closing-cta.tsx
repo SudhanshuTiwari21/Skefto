@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { LINKS, RISKMAT_URL } from "@/lib/risk-content";
+import { ISO_31000_SHORT, LINKS, RISKMAT_URL } from "@/lib/risk-content";
 import { BeamButton, Container } from "@/components/ui";
 import { Icon } from "@/components/icons";
 import { HeroBeams } from "@/components/hero/hero-beams";
 
 const TRUST = [
-  "AS/ISO 31000 aligned",
-  "Australian-hosted data",
+  ISO_31000_SHORT,
+  "Regional government-certified hosting",
   "Live in weeks, not months",
 ];
 
@@ -27,8 +27,8 @@ export function RiskClosingCta() {
                 Stop managing risk in spreadsheets
               </h2>
               <p className="mt-4 text-pretty text-base leading-7 text-ink-300 sm:text-lg">
-                Join Australian government, education and regulated organisations using Skefto to
-                build a risk-aware culture - designed by practitioners, for practitioners.
+                Join government, education and regulated organisations using Skefto to
+                build a risk-aware culture, designed by practitioners, for practitioners.
               </p>
               <ul className="mt-6 flex flex-wrap gap-x-5 gap-y-2">
                 {TRUST.map((t) => (

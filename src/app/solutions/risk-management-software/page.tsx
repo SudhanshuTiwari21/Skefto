@@ -5,9 +5,10 @@ import { SiteHeader } from "@/components/site-header";
 import { Reveal, RevealStagger } from "@/components/scroll-reveal";
 import { RiskHeroSection } from "@/components/risk/risk-hero-section";
 import { RiskPainSection } from "@/components/risk/risk-pain-section";
+import { RiskEarlyTestimonial } from "@/components/risk/risk-early-testimonial";
 import { RiskCapabilitiesBento } from "@/components/risk/risk-capabilities-bento";
+import { RiskTypesSection } from "@/components/risk/risk-types-section";
 import { RiskDeepDiveSection } from "@/components/risk/risk-deep-dive-section";
-import { RiskGenAiSection } from "@/components/risk/risk-genai-section";
 import { RiskProductOverviewSection } from "@/components/risk/risk-product-overview-section";
 import { RiskSectorTabs } from "@/components/risk/risk-sector-tabs";
 import { RiskEcosystemSection } from "@/components/risk/risk-ecosystem-section";
@@ -23,7 +24,6 @@ const PAGE = `${SITE}/solutions/risk-management-software/`;
 const RISK_NAV = [
   { label: "Capabilities", href: "#capabilities" },
   { label: "Workflow", href: "#risk-workflow" },
-  { label: "AI", href: "#ai-compliance" },
   { label: "Sectors", href: "#sectors" },
   { label: "Why Skefto", href: "#why-skefto" },
   { label: "FAQ", href: "#faq" },
@@ -40,7 +40,7 @@ function jsonLd() {
         operatingSystem: "Web",
         url: PAGE,
         description:
-          "Risk management software for regulated Australian organisations. Enterprise risk register, heat maps, treatment workflows and board reporting in one Australian-hosted platform aligned to AS/ISO 31000.",
+          "Risk management software for modern regulated organisations. Enterprise risk register, heat maps, treatment workflows and board reporting on an onshore-hosted platform built around ISO 31000 (AS/ISO 31000 in Australia).",
         offers: {
           "@type": "Offer",
           price: "0",
@@ -51,7 +51,7 @@ function jsonLd() {
           "@type": "Organization",
           name: "Skefto",
           url: SITE,
-          areaServed: "AU",
+          areaServed: ["AU", "Worldwide"],
         },
         featureList: CAPABILITIES.map((c) => c.title),
       },
@@ -99,6 +99,11 @@ function TrustBar() {
   );
 }
 
+/**
+ * Messaging hierarchy:
+ * What is Skefto → Can I trust it → Can it solve my problem →
+ * Why Skefto → Will it work for my org → How do I buy
+ */
 export default function RiskManagementPage() {
   return (
     <>
@@ -117,16 +122,22 @@ export default function RiskManagementPage() {
             <RiskPainSection />
           </Reveal>
           <Reveal>
+            <RiskEarlyTestimonial />
+          </Reveal>
+          <Reveal>
             <RiskCapabilitiesBento />
+          </Reveal>
+          <Reveal>
+            <RiskTypesSection />
           </Reveal>
           <Reveal>
             <RiskDeepDiveSection />
           </Reveal>
           <Reveal>
-            <RiskGenAiSection />
+            <RiskProductOverviewSection />
           </Reveal>
           <Reveal>
-            <RiskProductOverviewSection />
+            <RiskTrustSection />
           </Reveal>
           <Reveal>
             <RiskSectorTabs />
@@ -136,9 +147,6 @@ export default function RiskManagementPage() {
           </Reveal>
           <Reveal>
             <RiskComplianceHandoff />
-          </Reveal>
-          <Reveal>
-            <RiskTrustSection />
           </Reveal>
           <Reveal>
             <RiskMatSection />

@@ -17,12 +17,12 @@ export function RiskComplianceHandoff() {
               Connected compliance
             </p>
             <h2 className="mt-3 font-display text-2xl font-bold tracking-tight text-ink-900 sm:text-3xl">
-              Risk and compliance on one Australian platform
+              Risk and compliance on one connected platform
             </h2>
             <p className="mt-4 max-w-2xl text-pretty text-sm leading-7 text-ink-600 sm:text-base">
               Enterprise risk does not sit in isolation. Skefto links your risk
               register to obligations registers, regulatory change, policy
-              governance, audits and evidence - so boards see risk and compliance
+              governance, audits and evidence, so boards see risk and compliance
               posture in one connected workflow.
             </p>
             <Link

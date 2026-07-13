@@ -8,7 +8,7 @@ export function RiskPainSection() {
         <SectionHeading
           eyebrow="Why teams switch"
           title="Three problems every risk team faces. One platform that solves them."
-          subtitle="Australian risk teams outgrow spreadsheets long before boards outgrow their expectations. Skefto closes that gap."
+          subtitle="Risk teams outgrow spreadsheets long before boards outgrow their expectations. Skefto closes that gap."
         />
         <div className="mt-12 grid gap-5 md:grid-cols-3">
           {PAIN_POINTS.map((p) => (
