@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="280" height="72" viewBox="0 0 280 72" fill="none" aria-hidden="true">
+  <text x="0" y="14" font-family="system-ui,sans-serif" font-size="9" font-weight="600" letter-spacing="1.4" fill="#6B7280">SIGN-OFF PATH</text>
+  <rect x="0" y="28" width="72" height="32" rx="8" fill="#8D3D97"/>
+  <text x="36" y="48" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#FFFFFF">Owner</text>
+  <path d="M80 44h20" stroke="#9CA3AF" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M94 38l6 6-6 6" stroke="#9CA3AF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <rect x="108" y="28" width="80" height="32" rx="8" fill="#F3E8F5"/>
+  <text x="148" y="48" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#8D3D97">Reviewer</text>
+  <path d="M196 44h20" stroke="#9CA3AF" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M210 38l6 6-6 6" stroke="#9CA3AF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <rect x="224" y="28" width="56" height="32" rx="8" fill="#FFFFFF" stroke="#E5E7EB"/>
+  <text x="252" y="48" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#6B7280">Exec</text>
+</svg>

@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { COMPLIANCE_CANONICAL_PATH, INDUSTRY_PAGES } from "@/lib/industries-content";
+import { SAFETY_CANONICAL_PATH } from "@/lib/safety-content";
 
 const SITE = "https://skefto.com";
 
@@ -15,6 +16,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${SITE}/solutions/risk-management-software/`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${SITE}${SAFETY_CANONICAL_PATH}`,
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
