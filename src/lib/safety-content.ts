@@ -32,21 +32,33 @@ export const TRUST_STATS = [
   { v: "100%", k: "onshore data hosting" },
 ];
 
-export const PAIN_POINTS = [
+export const PAIN_POINTS: {
+  n: string;
+  title: string;
+  body: string;
+  solved: string;
+  icon: IconName;
+}[] = [
   {
     n: "01",
     title: "Hazards trapped in paperwork",
     body: "Hazard forms sit in inboxes and shared drives. Controls are not linked to owners, and leadership cannot see open risks before an incident happens.",
+    solved: "A live hazard register with owned controls and board-level visibility.",
+    icon: "document",
   },
   {
     n: "02",
     title: "Inspections without follow-through",
     body: "Checklists get completed, but corrective actions stall. Audit readiness depends on last-minute chasing instead of a live action trail.",
+    solved: "Findings become owned actions with escalations and an evidence trail.",
+    icon: "audit",
   },
   {
     n: "03",
     title: "Injuries disconnected from risk",
     body: "Injury reports, claims and return-to-work plans live apart from the risk register, so the same hazard can recur without anyone seeing the pattern.",
+    solved: "Injuries link back to hazards and risk, so patterns surface early.",
+    icon: "heart",
   },
 ];
 

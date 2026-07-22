@@ -1,7 +1,9 @@
 import Link from "next/link";
+import type { CSSProperties } from "react";
 import { CAPABILITIES, LINKS } from "@/lib/safety-content";
 import { Icon, type IconName } from "@/components/icons";
 import { Container, SectionHeading, ShimmerButton } from "@/components/ui";
+import { InViewStagger, SpotlightCard } from "@/components/safety/safety-motion";
 
 const LAYOUT = [
   { className: "sm:col-span-2 lg:col-span-6 lg:row-start-1", variant: "featured" as const, index: "01" },
@@ -72,16 +74,21 @@ function ReportingPreview() {
 function CapabilityCard({
   cap,
   layout,
+  i,
 }: Readonly<{
   cap: (typeof CAPABILITIES)[number];
   layout: (typeof LAYOUT)[number];
+  i: number;
 }>) {
   const I = Icon[cap.icon as IconName];
   const { variant, index, className } = layout;
+  const idxStyle = { ["--i" as string]: i } as CSSProperties;
 
   if (variant === "featured") {
     return (
-      <article
+      <SpotlightCard
+        as="article"
+        style={idxStyle}
         className={`group relative flex flex-col overflow-hidden rounded-3xl border border-ink-900/8 bg-white p-6 sm:p-7 ${className}`}
       >
         <div className="relative flex items-start justify-between gap-4">
@@ -115,13 +122,16 @@ function CapabilityCard({
             ))}
           </div>
         </div>
-      </article>
+      </SpotlightCard>
     );
   }
 
   if (variant === "dark") {
     return (
-      <article
+      <SpotlightCard
+        as="article"
+        spotClassName="tilt-card--dark"
+        style={idxStyle}
         className={`group relative overflow-hidden rounded-3xl border border-ink-800 bg-ink-900 p-6 text-white sm:p-7 ${className}`}
       >
         <div className="relative flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
@@ -142,7 +152,7 @@ function CapabilityCard({
             </p>
           </div>
         </div>
-      </article>
+      </SpotlightCard>
     );
   }
 
@@ -150,12 +160,14 @@ function CapabilityCard({
   const showActions = cap.icon === "workflow";
 
   return (
-    <article
-      className={`group relative flex flex-col overflow-hidden rounded-3xl border border-ink-900/8 bg-white/90 p-5 backdrop-blur-sm transition-[box-shadow,border-color] duration-300 hover:border-brand-200/80 hover:shadow-card sm:p-6 ${className}`}
+    <SpotlightCard
+      as="article"
+      style={idxStyle}
+      className={`group relative flex flex-col overflow-hidden rounded-3xl border border-ink-900/8 bg-white/90 p-5 backdrop-blur-sm hover:border-brand-200/80 sm:p-6 ${className}`}
     >
       <div className="flex items-start justify-between gap-3">
         <span className="font-mono text-[11px] font-medium tracking-[0.2em] text-ink-400">{index}</span>
-        <span className="inline-flex size-10 items-center justify-center rounded-xl border border-ink-900/10 bg-white/80 text-ink-800">
+        <span className="inline-flex size-10 items-center justify-center rounded-xl border border-ink-900/10 bg-white/80 text-ink-800 transition-colors duration-300 group-hover:border-brand-200 group-hover:bg-brand-50 group-hover:text-brand-700">
           <I className="size-[1.15rem]" />
         </span>
       </div>
@@ -163,7 +175,7 @@ function CapabilityCard({
       <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-600">{cap.body}</p>
       {showInspection ? <InspectionPreview /> : null}
       {showActions ? <ActionPreview /> : null}
-    </article>
+    </SpotlightCard>
   );
 }
 
@@ -179,11 +191,15 @@ export function SafetyCapabilitiesBento() {
           title="WHS software connected to risk, not another checklist app"
           subtitle="Hazard reporting, inspections, injuries, registers and corrective actions in one onshore-hosted system."
         />
-        <div className="mt-12 grid auto-rows-min gap-4 sm:grid-cols-2 lg:grid-cols-12">
+        <InViewStagger
+          as="div"
+          step={90}
+          className="mt-12 grid auto-rows-min gap-4 sm:grid-cols-2 lg:grid-cols-12"
+        >
           {CAPABILITIES.map((cap, i) => (
-            <CapabilityCard key={cap.title} cap={cap} layout={LAYOUT[i]!} />
+            <CapabilityCard key={cap.title} cap={cap} layout={LAYOUT[i]!} i={i} />
           ))}
-        </div>
+        </InViewStagger>
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
           <ShimmerButton href={LINKS.demo} className="!h-11 !px-6 !text-sm">
             Book a demo

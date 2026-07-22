@@ -3,6 +3,7 @@ import { Container } from "@/components/ui";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { Reveal, RevealStagger } from "@/components/scroll-reveal";
+import { CountUp } from "@/components/safety/safety-motion";
 import { SafetyHeroSection } from "@/components/safety/safety-hero-section";
 import { SafetyPainSection } from "@/components/safety/safety-pain-section";
 import { SafetyEarlyTestimonial } from "@/components/safety/safety-early-testimonial";
@@ -79,19 +80,24 @@ function TrustBar() {
     <section className="border-y border-ink-900/6 bg-white">
       <Container className="py-10">
         <RevealStagger className="grid gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
-          {TRUST_STATS.map((s) => (
-            <div
-              key={s.k}
-              className="flex flex-col items-center text-center lg:border-r lg:border-ink-100 lg:last:border-r-0"
-            >
-              <p className="font-display text-3xl font-extrabold tracking-tight text-ink-900 sm:text-4xl">
-                <span className="bg-gradient-to-r from-brand-600 to-accent-600 bg-clip-text text-transparent">
-                  {s.v}
-                </span>
-              </p>
-              <p className="mt-1.5 max-w-[12rem] text-sm font-medium text-ink-500">{s.k}</p>
-            </div>
-          ))}
+          {TRUST_STATS.map((s) => {
+            const leading = /^\d+/.exec(s.v);
+            const num = leading ? Number(leading[0]) : null;
+            const suffix = leading ? s.v.slice(leading[0].length) : "";
+            return (
+              <div
+                key={s.k}
+                className="group flex flex-col items-center text-center lg:border-r lg:border-ink-100 lg:last:border-r-0"
+              >
+                <p className="font-display text-3xl font-extrabold tracking-tight text-ink-900 sm:text-4xl">
+                  <span className="bg-gradient-to-r from-brand-600 to-accent-600 bg-clip-text text-transparent">
+                    {num !== null ? <CountUp value={num} suffix={suffix} /> : s.v}
+                  </span>
+                </p>
+                <p className="mt-1.5 max-w-[12rem] text-sm font-medium text-ink-500">{s.k}</p>
+              </div>
+            );
+          })}
         </RevealStagger>
       </Container>
     </section>

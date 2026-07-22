@@ -8,10 +8,19 @@ import {
 } from "@/lib/safety-content";
 import { BeamButton, Container, SectionHeading } from "@/components/ui";
 import { Icon, type IconName } from "@/components/icons";
+import { InViewStagger, SpotlightCard } from "@/components/safety/safety-motion";
+
+function CrossMark({ className }: Readonly<{ className?: string }>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" className={className} aria-hidden>
+      <path d="M6 6l12 12M18 6L6 18" />
+    </svg>
+  );
+}
 
 /**
  * Consolidated Why Skefto:
- * comparison table + compact Pete proof (no redundant mini-cards).
+ * before/after comparison + compact Pete proof + outcome cards.
  */
 export function SafetyTrustSection() {
   return (
@@ -23,33 +32,78 @@ export function SafetyTrustSection() {
           subtitle="Practitioner-led WHS software with advisory and training in-house, built for regulated organisations."
         />
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-2">
-          <div className="rounded-3xl border border-ink-900/8 bg-white p-6 sm:p-8">
-            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-ink-500">
-              Generic vendors
-            </p>
-            <ul className="mt-4 space-y-3">
-              {COMPARISON.generic.map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm text-ink-600">
-                  <span className="mt-1 size-1.5 shrink-0 rounded-full bg-ink-300" />
-                  {item}
-                </li>
-              ))}
-            </ul>
+        {/* Before / after comparison */}
+        <div className="relative mt-10">
+          <div className="grid gap-6 lg:grid-cols-2">
+            {/* Generic vendors */}
+            <div className="relative rounded-3xl border border-ink-900/8 bg-white/70 p-6 sm:p-8">
+              <div className="flex items-center gap-2.5">
+                <span className="grid size-8 place-items-center rounded-lg bg-ink-100 text-ink-400">
+                  <CrossMark className="size-4" />
+                </span>
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-ink-500">
+                  Generic vendors
+                </p>
+              </div>
+              <InViewStagger as="ul" step={80} className="mt-5 space-y-3">
+                {COMPARISON.generic.map((item, i) => (
+                  <li
+                    key={item}
+                    style={{ ["--i" as string]: i }}
+                    className="flex items-start gap-2.5 text-sm leading-6 text-ink-500"
+                  >
+                    <span className="mt-0.5 grid size-4 shrink-0 place-items-center rounded-full bg-ink-200/70 text-ink-500">
+                      <CrossMark className="size-2.5" />
+                    </span>
+                    <span className="line-through decoration-ink-300/70">{item}</span>
+                  </li>
+                ))}
+              </InViewStagger>
+            </div>
+
+            {/* Skefto */}
+            <SpotlightCard className="relative overflow-hidden rounded-3xl border border-brand-200/80 bg-gradient-to-br from-brand-50 via-white to-accent-50/40 p-6 sm:p-8">
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -right-16 -top-16 size-48 rounded-full bg-[radial-gradient(circle,rgba(141,61,151,0.12),transparent_70%)]"
+              />
+              <div className="relative flex items-center gap-2.5">
+                <span className="grid size-8 place-items-center rounded-lg bg-brand-600 text-white shadow-soft">
+                  <Icon.check className="size-4" />
+                </span>
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-700">
+                  With Skefto
+                </p>
+              </div>
+              <InViewStagger as="ul" step={80} className="relative mt-5 space-y-3">
+                {COMPARISON.skefto.map((item, i) => (
+                  <li
+                    key={item}
+                    style={{ ["--i" as string]: i }}
+                    className="flex items-start gap-2.5 text-sm font-medium leading-6 text-ink-800"
+                  >
+                    <span className="check-pop mt-0.5 grid size-4 shrink-0 place-items-center rounded-full bg-brand-600 text-white">
+                      <Icon.check className="size-2.5" />
+                    </span>
+                    {item}
+                  </li>
+                ))}
+              </InViewStagger>
+            </SpotlightCard>
           </div>
-          <div className="rounded-3xl border border-brand-200/80 bg-gradient-to-br from-brand-50/50 to-white p-6 sm:p-8">
-            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-700">Skefto</p>
-            <ul className="mt-4 space-y-3">
-              {COMPARISON.skefto.map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm text-ink-700">
-                  <Icon.check className="mt-0.5 size-4 shrink-0 text-brand-600" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
+
+          {/* center VS badge */}
+          <span
+            aria-hidden
+            className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 lg:grid"
+          >
+            <span className="grid size-11 place-items-center rounded-full border border-ink-900/10 bg-white font-display text-xs font-extrabold uppercase tracking-wide text-ink-500 shadow-card">
+              vs
+            </span>
+          </span>
         </div>
 
+        {/* Credibility proof - Pete */}
         <div className="mt-8 overflow-hidden rounded-2xl border border-ink-800 bg-ink-950 p-5 text-white sm:p-6">
           <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
             <div>
@@ -60,14 +114,14 @@ export function SafetyTrustSection() {
                 {EXPERT.name}
               </p>
               <p className="text-sm text-ink-400">{EXPERT.role}</p>
-              <blockquote className="mt-3 text-sm leading-6 text-ink-300">
+              <blockquote className="mt-3 border-l-2 border-accent-400/60 pl-4 text-sm leading-6 text-ink-300">
                 &ldquo;{EXPERT.quote}&rdquo;
               </blockquote>
               <div className="mt-4 flex flex-wrap gap-2">
                 {EXPERT.badges.map((badge) => (
                   <span
                     key={badge}
-                    className="rounded-full border border-white/15 bg-white/5 px-2.5 py-1 text-[10px] font-semibold text-ink-200"
+                    className="rounded-full border border-white/15 bg-white/5 px-2.5 py-1 text-[10px] font-semibold text-ink-200 transition-colors hover:border-accent-400/40 hover:text-white"
                   >
                     {badge}
                   </span>
@@ -82,13 +136,16 @@ export function SafetyTrustSection() {
                 </Link>
               </p>
             </div>
-            <div className="grid gap-3">
-              {PILLARS.map((p) => {
+            <InViewStagger as="div" step={110} className="grid gap-3">
+              {PILLARS.map((p, i) => {
                 const I = Icon[p.icon as IconName];
                 return (
-                  <article
+                  <SpotlightCard
                     key={p.title}
+                    spotClassName="tilt-card--dark"
+                    tilt={false}
                     className="rounded-xl border border-white/10 bg-white/5 p-4"
+                    style={{ ["--i" as string]: i }}
                   >
                     <div className="flex items-start gap-3">
                       <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-white/10 text-accent-300">
@@ -114,27 +171,32 @@ export function SafetyTrustSection() {
                         ) : null}
                       </div>
                     </div>
-                  </article>
+                  </SpotlightCard>
                 );
               })}
-            </div>
+            </InViewStagger>
           </div>
         </div>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-3">
-          {OUTCOMES.map((o) => {
+        {/* Outcomes */}
+        <InViewStagger as="div" step={110} className="mt-10 grid gap-4 sm:grid-cols-3">
+          {OUTCOMES.map((o, i) => {
             const I = Icon[o.icon as IconName];
             return (
-              <article key={o.title} className="rounded-xl border border-ink-900/8 bg-white p-5">
-                <span className="grid size-9 place-items-center rounded-lg bg-brand-50 text-brand-700">
-                  <I className="size-4" />
+              <SpotlightCard
+                key={o.title}
+                className="group rounded-2xl border border-ink-900/8 bg-white p-5"
+                style={{ ["--i" as string]: i }}
+              >
+                <span className="grid size-10 place-items-center rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 text-white shadow-soft transition-transform duration-300 group-hover:scale-110">
+                  <I className="size-[1.125rem]" />
                 </span>
                 <h4 className="mt-4 font-display text-sm font-bold text-ink-900">{o.title}</h4>
                 <p className="mt-2 text-sm leading-6 text-ink-600">{o.body}</p>
-              </article>
+              </SpotlightCard>
             );
           })}
-        </div>
+        </InViewStagger>
 
         <div className="mt-10 flex justify-center">
           <BeamButton href={LINKS.demo} fill="brand" size="lg">
