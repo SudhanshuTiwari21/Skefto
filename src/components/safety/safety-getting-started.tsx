@@ -1,7 +1,7 @@
-import { GETTING_STARTED, GO_LIVE_PULL_QUOTE, LINKS } from "@/lib/safety-content";
+import { GETTING_STARTED, GO_LIVE_PULL_QUOTE, GO_LIVE_TIMELINE, LINKS } from "@/lib/safety-content";
 import { BeamButton, Container, SectionHeading } from "@/components/ui";
 import { Icon } from "@/components/icons";
-import { CountUp, InViewStagger, SpotlightCard } from "@/components/safety/safety-motion";
+import { InViewStagger, SpotlightCard } from "@/components/safety/safety-motion";
 
 export function SafetyGettingStarted() {
   return (
@@ -16,7 +16,6 @@ export function SafetyGettingStarted() {
               align="left"
             />
             <InViewStagger as="ol" step={120} className="relative mt-8">
-              {/* animated progress rail */}
               <span
                 aria-hidden
                 className="absolute left-[13px] top-2 bottom-2 w-px bg-ink-200"
@@ -56,9 +55,7 @@ export function SafetyGettingStarted() {
               Typical timeline
             </p>
             <p className="mt-4 font-display text-4xl font-extrabold tracking-tight text-brand-600">
-              <CountUp value={4} />
-              <span className="text-ink-300">-</span>
-              <CountUp value={8} /> weeks
+              {GO_LIVE_TIMELINE}
             </p>
             <p className="mt-2 text-sm leading-6 text-ink-600">{GO_LIVE_PULL_QUOTE}</p>
             <ul className="mt-6 space-y-2">

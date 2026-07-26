@@ -126,13 +126,13 @@ function Panel({ tab }: Readonly<{ tab: TabId }>) {
     },
     inspections: {
       title: "Inspections and audits that close the loop",
-      body: "Schedule mobile-ready inspections, capture evidence and turn findings into owned corrective actions with escalations.",
+      body: "Schedule mobile and offline inspections, capture photo evidence, and turn contractor or site findings into owned corrective actions with escalations.",
       mockup: <InspectionMockup />,
       bullets: INSPECTION_BULLETS,
     },
     injuries: {
-      title: "Injuries, claims and return to work in one workflow",
-      body: "Record injuries and illness, manage claims documentation and track return-to-work plans with privacy-aware access controls.",
+      title: "Injuries, claims, RTW and notifiable pathways",
+      body: "Record injuries and illness, escalate notifiable incidents for PCBU due diligence, manage claims documentation and track return-to-work with privacy-aware access.",
       mockup: <InjuryMockup />,
       bullets: INJURY_BULLETS,
     },

@@ -5,6 +5,8 @@ import { COMPLIANCE_CANONICAL_PATH } from "@/lib/industries-content";
 export { CUSTOMER_LOGOS } from "@/lib/content";
 export { LINKS };
 
+const SITE = "https://skefto.com";
+
 export const SAFETY_CANONICAL_PATH = "/solutions/safety-software/" as const;
 export const RISK_CANONICAL_PATH = "/solutions/risk-management-software/" as const;
 
@@ -12,10 +14,14 @@ export const RISK_CANONICAL_PATH = "/solutions/risk-management-software/" as con
 export const ISO_45001_FIRST = "ISO 45001 (AS/NZS ISO 45001 in Australia)" as const;
 export const ISO_45001_SHORT = "ISO 45001" as const;
 
+export const HOSTING_AU = "Australian government-certified data centres" as const;
+export const HOSTING_FAQ_NOTE =
+  "Primary hosting is in Australian government-certified data centres with onshore options for regulated buyers. Regional hosting options are available for organisations outside Australia.";
+
 export const HERO_TRUST_TOKENS = [
   ISO_45001_FIRST,
-  "Regional government-certified hosting",
-  "Connected to risk & incidents",
+  HOSTING_AU,
+  "Mobile & offline field capture",
 ] as const;
 
 export const SECTOR_PRELOADS = [
@@ -70,12 +76,12 @@ export const CAPABILITIES: {
 }[] = [
   {
     title: "Hazard reporting & risk assessments",
-    body: "Capture hazards early, run configurable risk assessments, and assign controls with owners and due dates.",
+    body: "Capture physical and psychosocial hazards early, run configurable risk assessments, and assign controls with owners and due dates.",
     icon: "risk",
   },
   {
     title: "Audits & inspections",
-    body: "Plan mobile-ready inspections and safety audits with checklists, reminders and corrective action tracking.",
+    body: "Mobile and offline-ready inspections and safety audits with checklists, reminders and corrective action tracking.",
     icon: "audit",
   },
   {
@@ -85,7 +91,7 @@ export const CAPABILITIES: {
   },
   {
     title: "Safety registers & records",
-    body: "Centralise policies, training logs, certifications and WHS documents with version history and role-based access.",
+    body: "Centralise policies, training logs, certifications, contractor SWMS and WHS documents with version history.",
     icon: "register",
   },
   {
@@ -95,22 +101,32 @@ export const CAPABILITIES: {
   },
   {
     title: "WHS reporting & visibility",
-    body: "Give boards and WHS committees live posture: open hazards, overdue actions, injury trends and audit status.",
+    body: "Give boards, HSRs and WHS committees live posture: open hazards, overdue actions, injury trends and audit status.",
     icon: "chart",
   },
 ];
 
-export const SAFETY_TYPES: { title: string; icon: IconName }[] = [
-  { title: "Physical hazards", icon: "incident" },
-  { title: "Psychosocial hazards", icon: "users" },
-  { title: "Plant & equipment", icon: "sliders" },
-  { title: "Chemical & environmental", icon: "globe" },
-  { title: "Contractor & third-party", icon: "building" },
-  { title: "Site inspections", icon: "audit" },
-  { title: "Injury & illness", icon: "heart" },
-  { title: "Training & competency", icon: "cap" },
-  { title: "Policies & procedures", icon: "document" },
-  { title: "Corrective actions", icon: "workflow" },
+export const FIELD_FEATURES: { title: string; body: string; icon: IconName }[] = [
+  {
+    title: "Offline field capture",
+    body: "Depot and remote crews keep reporting when signal drops. Records sync when connectivity returns.",
+    icon: "bolt",
+  },
+  {
+    title: "Photo, location and GPS",
+    body: "Attach evidence at the worksite so hazards and inspections are specific, not vague.",
+    icon: "globe",
+  },
+  {
+    title: "Supervisor sign-off",
+    body: "Route findings to the right owner with clear due dates and escalation when actions stall.",
+    icon: "users",
+  },
+  {
+    title: "Contractor & SWMS visibility",
+    body: "Keep contractor checks and SWMS evidence in the same action trail as your own workforce.",
+    icon: "building",
+  },
 ];
 
 export const SAFETY_WORKFLOW: {
@@ -154,19 +170,19 @@ export const HAZARD_BULLETS = [
 ];
 
 export const INSPECTION_BULLETS = [
-  "Mobile-ready inspection and audit forms",
+  "Mobile and offline inspection and audit forms",
   "Pre-built and custom checklists by site or role",
   "Automated reminders for scheduled inspections",
-  "Findings linked to corrective actions",
-  "Evidence trail for regulators and insurers",
+  "Findings linked to corrective actions and evidence",
+  "Contractor and SWMS audit trails for councils and sites",
 ];
 
 export const INJURY_BULLETS = [
   "Injury and illness reporting workflows",
+  "Notifiable incident escalation pathways for PCBUs",
   "Claims documentation and status tracking",
   "Return-to-work plans with accountable owners",
-  "Privacy-aware access controls for sensitive records",
-  "Trend reporting for WHS committees and boards",
+  "Privacy-aware access for sensitive records",
 ];
 
 export const FRAMEWORKS = [
@@ -179,7 +195,7 @@ export const FRAMEWORKS = [
 ];
 
 export const SECTORS_INTRO =
-  "Sector-ready WHS workflows for regulated organisations that need more than a checklist app.";
+  "Sector-ready WHS workflows for Australian councils, agencies, schools and care providers that need more than a checklist app.";
 
 export const SECTORS: {
   id: string;
@@ -283,7 +299,7 @@ export const ECOSYSTEM = [
     title: "Risk management software",
     body: "Link WHS hazards and controls into your enterprise risk register.",
     icon: "risk" as IconName,
-    href: RISK_CANONICAL_PATH,
+    href: `${SITE}${RISK_CANONICAL_PATH}`,
   },
   {
     title: "Incident management",
@@ -295,7 +311,7 @@ export const ECOSYSTEM = [
     title: "Compliance management software",
     body: "Tie safety obligations, audits and evidence into your compliance programme.",
     icon: "register" as IconName,
-    href: COMPLIANCE_CANONICAL_PATH,
+    href: `${SITE}${COMPLIANCE_CANONICAL_PATH}`,
   },
   {
     title: "Strategy & planning",
@@ -305,20 +321,34 @@ export const ECOSYSTEM = [
   },
 ];
 
-export const COMPARISON = {
-  generic: [
-    "Checklist apps that stop at the inspection form",
-    "Safety data siloed from risk, incidents and compliance",
-    "Spreadsheet injury and claims tracking",
-    "Unclear data residency for regulated buyers",
-  ],
-  skefto: [
-    "End-to-end WHS: hazards, audits, injuries and registers",
-    "Native links to risk, incidents and compliance",
-    "Owned corrective actions with live executive visibility",
-    "Regional government-certified onshore hosting",
-  ],
-};
+/** Procurement-friendly comparison matrix */
+export const COMPARISON_ROWS = [
+  {
+    criterion: "Scope",
+    checklist: "Stops at the inspection form",
+    skefto: "Hazards, audits, injuries, registers and corrective actions",
+  },
+  {
+    criterion: "Connected GRC",
+    checklist: "Safety data siloed from risk and compliance",
+    skefto: "Native links to risk, incidents and compliance",
+  },
+  {
+    criterion: "Field use",
+    checklist: "Often web-only or weak offline",
+    skefto: "Mobile and offline capture with photo and GPS evidence",
+  },
+  {
+    criterion: "Hosting",
+    checklist: "Unclear data residency",
+    skefto: HOSTING_AU,
+  },
+  {
+    criterion: "Expertise",
+    checklist: "Software-only vendors",
+    skefto: "Platform plus advisory and training in-house",
+  },
+];
 
 export const PILLARS = [
   {
@@ -358,23 +388,15 @@ export const EXPERT = {
   ],
 };
 
-export const OUTCOMES = [
-  {
-    title: "Close the hazard loop",
-    body: "Every hazard gets an owner, control and due date, so findings do not disappear into email threads.",
-    icon: "workflow" as IconName,
-  },
-  {
-    title: "Audit-ready without the scramble",
-    body: "Inspection evidence, corrective actions and registers stay current for regulators, insurers and boards.",
-    icon: "audit" as IconName,
-  },
-  {
-    title: "Adoption beyond the WHS team",
-    body: "Supervisors and frontline staff report and close actions in a system designed for non-specialists.",
-    icon: "users" as IconName,
-  },
-];
+export const NAMED_PROOF = {
+  org: "City of Belmont",
+  headline: "Australian councils already run Skefto for connected GRC",
+  body: "City of Belmont centralised council compliance on Skefto with measurable audit-prep gains. The same platform extends to WHS hazards, inspections and injuries for organisations that want one system.",
+  metrics: [
+    { v: "90%", l: "less audit prep time at City of Belmont" },
+    { v: "60+", l: "government organisations on Skefto" },
+  ],
+};
 
 export const GETTING_STARTED: { title: string; body: string }[] = [
   {
@@ -398,6 +420,8 @@ export const GETTING_STARTED: { title: string; body: string }[] = [
 export const GO_LIVE_PULL_QUOTE =
   "Most organisations are live in weeks, not a multi-year EHS programme.";
 
+export const GO_LIVE_TIMELINE = "4-8 weeks" as const;
+
 export const TESTIMONIAL = {
   quote:
     "We finally have one place for hazards, inspections and injuries. Corrective actions no longer disappear into email threads.",
@@ -405,41 +429,48 @@ export const TESTIMONIAL = {
   org: "Regional Council, VIC",
 };
 
+export const RELATED_ARTICLES = [
+  {
+    title: "Psychosocial hazards in the workplace",
+    href: `${SITE}/blog/psychosocial-hazards-in-the-workplace/`,
+  },
+  {
+    title: "Workplace hazards: types and examples",
+    href: `${SITE}/blog/workplace-hazards-types-examples/`,
+  },
+  {
+    title: "What is a safety management system?",
+    href: `${SITE}/blog/safety-management-system/`,
+  },
+];
+
 export const FAQS = [
   {
-    q: "What is health and safety software?",
-    a: "Health and safety software (also called WHS or OHS software) helps organisations identify hazards, assess risk, run inspections and audits, manage injuries and claims, and keep audit-ready records. Skefto centralises that work so teams can prove compliance and prevent incidents instead of chasing paperwork.",
+    q: "What is WHS software?",
+    a: "WHS software (also called health and safety or OHS software) helps organisations identify hazards, assess risk, run inspections and audits, manage injuries and claims, and keep audit-ready records. Skefto centralises that work so Australian regulated teams can prove due diligence and prevent incidents instead of chasing paperwork.",
   },
   {
     q: "How is Skefto different from inspection-only safety apps?",
-    a: "Inspection apps excel at checklists. Skefto is WHS inside a connected GRC platform: hazards link to risk and controls, findings become owned actions, injuries connect to return-to-work workflows, and safety data sits alongside compliance and incident management. That is the difference for regulated organisations comparing vendors.",
+    a: "Inspection apps excel at checklists. Skefto is WHS inside a connected GRC platform: hazards link to risk and controls, findings become owned actions, injuries connect to return-to-work workflows, and safety data sits alongside compliance and incident management.",
   },
   {
     q: `Does Skefto support ${ISO_45001_SHORT}?`,
-    a: `Yes. Skefto supports organisations operating to ${ISO_45001_FIRST}, including hazard identification, risk assessment, operational control, performance monitoring and continual improvement workflows. Teams apply their own WHS management system methods on a practical, scalable platform.`,
+    a: `Yes. Skefto supports organisations operating to ${ISO_45001_FIRST}, including hazard identification, risk assessment, operational control, performance monitoring and continual improvement workflows.`,
   },
   {
-    q: "What WHS laws and standards does Skefto support?",
-    a: "Skefto supports Work Health and Safety Acts and Regulations across Australian jurisdictions, Safe Work Australia codes of practice, state-based frameworks, and ISO 45001. Sector templates help councils, government agencies, education and care providers operationalise those duties.",
+    q: "Does it support notifiable incident reporting?",
+    a: "Yes. Skefto supports injury and incident workflows with escalation pathways so PCBUs and officers can meet notifiable incident duties under WHS Acts, with evidence retained for regulators and insurers. Exact notification to WorkSafe or SafeWork remains an organisational duty; Skefto provides the system of record and action trail.",
   },
   {
-    q: "Can it manage psychosocial hazards?",
-    a: "Yes. Psychosocial hazards can be captured in hazard registers, assessed with configurable templates, assigned controls and monitored alongside physical safety risks, so psychosocial due diligence is not stuck in a separate spreadsheet.",
+    q: "Can it manage psychosocial hazards and contractor SWMS?",
+    a: "Yes. Psychosocial hazards can be captured, assessed and controlled alongside physical hazards. Contractor checks and SWMS evidence can sit in the same registers and action trails used by your own workforce.",
   },
   {
-    q: "Does it handle injuries, claims and return to work?",
-    a: "Yes. Skefto supports injury and illness reporting, claims documentation, return-to-work tracking and privacy-aware access controls, with dashboards for WHS committees and executives.",
-  },
-  {
-    q: "How long does implementation take?",
-    a: "Many organisations go live in 4 to 8 weeks using sector templates and guided onboarding. Larger multi-site rollouts with integrations typically take 8 to 12 weeks, including training for WHS teams and supervisors.",
+    q: "How does pricing work?",
+    a: "Skefto is typically priced by organisation scope (sites, modules and user roles), not a one-size consumer subscription. Most buyers start with a scoped WHS or GRC package. Indicative bands are provided on request after a short discovery so quotes match your operating model.",
   },
   {
     q: "Where is our WHS data stored?",
-    a: "Data is hosted in regional government-certified data centres with onshore hosting options, supporting data sovereignty expectations for government, education and care buyers. Role-based access protects sensitive injury and claims records.",
-  },
-  {
-    q: "How does safety connect to risk and incident management?",
-    a: "Skefto links WHS hazards and controls to enterprise risk registers, and connects incidents and near-misses to the hazards and actions they affect. Safety is not an island: boards see operational risk and WHS posture together.",
+    a: HOSTING_FAQ_NOTE,
   },
 ];

@@ -77,13 +77,13 @@ export function SafetyHeroSection() {
             <CopyBlock index={0}>
               <span className="inline-flex items-center gap-2 rounded-full border border-ink-200/80 bg-white px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-ink-700 shadow-soft">
                 <SkeftoGeoMark shape="hexagon" />
-                Health &amp; safety software
+                WHS software · Australia
               </span>
             </CopyBlock>
 
             <CopyBlock index={1} className="mt-4">
               <h1 className="font-display text-[2.05rem] font-extrabold leading-[1.08] tracking-[-0.035em] text-ink-900 sm:text-[2.75rem] lg:text-[3.05rem]">
-                Safety software for modern regulated organisations
+                WHS software for Australian councils, schools and care providers
               </h1>
             </CopyBlock>
 

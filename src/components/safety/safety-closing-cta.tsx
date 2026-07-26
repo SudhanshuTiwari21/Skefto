@@ -1,11 +1,11 @@
-import { ISO_45001_SHORT, LINKS } from "@/lib/safety-content";
+import { HOSTING_AU, ISO_45001_SHORT, LINKS } from "@/lib/safety-content";
 import { BeamButton, Container } from "@/components/ui";
 import { Icon } from "@/components/icons";
 import { HeroBeams } from "@/components/hero/hero-beams";
 
 const TRUST = [
   ISO_45001_SHORT,
-  "Regional government-certified hosting",
+  HOSTING_AU,
   "Live in weeks, not months",
 ];
 
@@ -26,7 +26,7 @@ export function SafetyClosingCta() {
                 Stop managing WHS in checklists and shared drives
               </h2>
               <p className="mt-4 text-pretty text-base leading-7 text-ink-300 sm:text-lg">
-                Join government, education and care organisations using Skefto to connect
+                Join Australian councils, education and care organisations using Skefto to connect
                 hazards, inspections and injuries to organisational risk.
               </p>
               <ul className="mt-6 flex flex-wrap gap-x-5 gap-y-2">

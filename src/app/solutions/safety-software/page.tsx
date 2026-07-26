@@ -3,17 +3,15 @@ import { Container } from "@/components/ui";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { Reveal, RevealStagger } from "@/components/scroll-reveal";
-import { CountUp } from "@/components/safety/safety-motion";
 import { SafetyHeroSection } from "@/components/safety/safety-hero-section";
 import { SafetyPainSection } from "@/components/safety/safety-pain-section";
 import { SafetyEarlyTestimonial } from "@/components/safety/safety-early-testimonial";
 import { SafetyCapabilitiesBento } from "@/components/safety/safety-capabilities-bento";
-import { SafetyTypesSection } from "@/components/safety/safety-types-section";
 import { SafetyDeepDiveSection } from "@/components/safety/safety-deep-dive-section";
+import { SafetyFieldSection } from "@/components/safety/safety-field-section";
 import { SafetyTrustSection } from "@/components/safety/safety-trust-section";
 import { SafetySectorTabs } from "@/components/safety/safety-sector-tabs";
 import { SafetyEcosystemSection } from "@/components/safety/safety-ecosystem-section";
-import { SafetyGrcHandoff } from "@/components/safety/safety-grc-handoff";
 import { SafetyGettingStarted } from "@/components/safety/safety-getting-started";
 import { SafetyFaqSection } from "@/components/safety/safety-faq-section";
 import { SafetyClosingCta } from "@/components/safety/safety-closing-cta";
@@ -22,9 +20,9 @@ const SITE = "https://skefto.com";
 const PAGE = `${SITE}/solutions/safety-software/`;
 
 const SAFETY_NAV = [
-  { label: "Capabilities", href: "#capabilities" },
-  { label: "Workflow", href: "#safety-workflow" },
   { label: "Sectors", href: "#sectors" },
+  { label: "Capabilities", href: "#capabilities" },
+  { label: "Field", href: "#field" },
   { label: "Why Skefto", href: "#why-skefto" },
   { label: "FAQ", href: "#faq" },
 ];
@@ -35,12 +33,12 @@ function jsonLd() {
     "@graph": [
       {
         "@type": "SoftwareApplication",
-        name: "Skefto Health & Safety Software",
+        name: "Skefto WHS Software",
         applicationCategory: "BusinessApplication",
-        operatingSystem: "Web",
+        operatingSystem: "Web, iOS, Android",
         url: PAGE,
         description:
-          "Safety software for modern regulated organisations. Hazard reporting, inspections, injuries, WHS registers and corrective actions on an onshore-hosted platform built around ISO 45001 (AS/NZS ISO 45001 in Australia).",
+          "WHS software for Australian councils, schools and care providers. Hazard reporting, mobile inspections, injuries and safety registers on Australian government-certified data centres, built around ISO 45001 (AS/NZS ISO 45001 in Australia).",
         offers: {
           "@type": "Offer",
           price: "0",
@@ -60,7 +58,7 @@ function jsonLd() {
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Home", item: SITE + "/" },
           { "@type": "ListItem", position: 2, name: "Solutions", item: SITE + "/solutions/" },
-          { "@type": "ListItem", position: 3, name: "Safety Software", item: PAGE },
+          { "@type": "ListItem", position: 3, name: "WHS Software", item: PAGE },
         ],
       },
       {
@@ -75,29 +73,25 @@ function jsonLd() {
   };
 }
 
+/** Static stats: final numbers always in HTML (no crawler-facing zeros). */
 function TrustBar() {
   return (
     <section className="border-y border-ink-900/6 bg-white">
       <Container className="py-10">
         <RevealStagger className="grid gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
-          {TRUST_STATS.map((s) => {
-            const leading = /^\d+/.exec(s.v);
-            const num = leading ? Number(leading[0]) : null;
-            const suffix = leading ? s.v.slice(leading[0].length) : "";
-            return (
-              <div
-                key={s.k}
-                className="group flex flex-col items-center text-center lg:border-r lg:border-ink-100 lg:last:border-r-0"
-              >
-                <p className="font-display text-3xl font-extrabold tracking-tight text-ink-900 sm:text-4xl">
-                  <span className="bg-gradient-to-r from-brand-600 to-accent-600 bg-clip-text text-transparent">
-                    {num !== null ? <CountUp value={num} suffix={suffix} /> : s.v}
-                  </span>
-                </p>
-                <p className="mt-1.5 max-w-[12rem] text-sm font-medium text-ink-500">{s.k}</p>
-              </div>
-            );
-          })}
+          {TRUST_STATS.map((s) => (
+            <div
+              key={s.k}
+              className="flex flex-col items-center text-center lg:border-r lg:border-ink-100 lg:last:border-r-0"
+            >
+              <p className="font-display text-3xl font-extrabold tracking-tight text-ink-900 sm:text-4xl">
+                <span className="bg-gradient-to-r from-brand-600 to-accent-600 bg-clip-text text-transparent">
+                  {s.v}
+                </span>
+              </p>
+              <p className="mt-1.5 max-w-[12rem] text-sm font-medium text-ink-500">{s.k}</p>
+            </div>
+          ))}
         </RevealStagger>
       </Container>
     </section>
@@ -105,9 +99,9 @@ function TrustBar() {
 }
 
 /**
- * Messaging hierarchy:
- * What is Skefto → Can I trust it → Can it solve my problem →
- * Why Skefto → Will it work for my org → How do I buy
+ * Messaging hierarchy (audit v1.1):
+ * What is it → Trust → Is it for my sector → Problem fit → Capabilities →
+ * Field proof → Why Skefto → Buy → FAQ → Connected GRC exits
  */
 export default function SafetySoftwarePage() {
   return (
@@ -124,6 +118,9 @@ export default function SafetySoftwarePage() {
             <TrustBar />
           </Reveal>
           <Reveal>
+            <SafetySectorTabs />
+          </Reveal>
+          <Reveal>
             <SafetyPainSection />
           </Reveal>
           <Reveal>
@@ -133,28 +130,22 @@ export default function SafetySoftwarePage() {
             <SafetyCapabilitiesBento />
           </Reveal>
           <Reveal>
-            <SafetyTypesSection />
-          </Reveal>
-          <Reveal>
             <SafetyDeepDiveSection />
           </Reveal>
           <Reveal>
+            <SafetyFieldSection />
+          </Reveal>
+          <Reveal>
             <SafetyTrustSection />
-          </Reveal>
-          <Reveal>
-            <SafetySectorTabs />
-          </Reveal>
-          <Reveal>
-            <SafetyEcosystemSection />
-          </Reveal>
-          <Reveal>
-            <SafetyGrcHandoff />
           </Reveal>
           <Reveal>
             <SafetyGettingStarted />
           </Reveal>
           <Reveal>
             <SafetyFaqSection />
+          </Reveal>
+          <Reveal>
+            <SafetyEcosystemSection />
           </Reveal>
           <Reveal>
             <SafetyClosingCta />

@@ -142,7 +142,10 @@ export function InViewStagger({
   );
 }
 
-/** Count-up number that animates once when scrolled into view. */
+/**
+ * Count-up that always SSR/hydrates the final value (never "0+" for crawlers).
+ * Animation is progressive enhancement after the element is in view.
+ */
 export function CountUp({
   value,
   className,
@@ -157,20 +160,25 @@ export function CountUp({
   duration?: number;
 }>) {
   const ref = useRef<HTMLSpanElement>(null);
-  const [display, setDisplay] = useState(0);
+  const [display, setDisplay] = useState(value);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
+    setReady(true);
+  }, []);
+
+  useEffect(() => {
+    if (!ready) return;
     const el = ref.current;
     if (!el) return;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced) {
-      setDisplay(value);
-      return;
-    }
+    if (reduced) return;
+
     const io = new IntersectionObserver(
       ([entry]) => {
         if (!entry?.isIntersecting) return;
         io.disconnect();
+        setDisplay(0);
         const start = performance.now();
         function tick(now: number) {
           const t = Math.min(1, (now - start) / duration);
@@ -184,7 +192,7 @@ export function CountUp({
     );
     io.observe(el);
     return () => io.disconnect();
-  }, [value, duration]);
+  }, [ready, value, duration]);
 
   return (
     <span ref={ref} className={className}>
