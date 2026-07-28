@@ -13,8 +13,13 @@ export function SafetySectorTabs() {
   const I = Icon[sector.icon as IconName];
 
   return (
-    <section id="sectors" className="scroll-mt-20 bg-ink-950 py-16 text-white sm:py-20">
-      <Container>
+    <section id="sectors" className="safety-cut-inv relative scroll-mt-20 overflow-hidden bg-ink-950 py-20 text-white sm:py-24">
+      <div aria-hidden className="pointer-events-none absolute inset-0 safety-hatch opacity-[0.35]" />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -left-20 top-1/4 size-[28rem] rounded-full bg-[radial-gradient(circle,rgba(0,145,174,0.22),transparent_65%)]"
+      />
+      <Container className="relative">
         <SectionHeading
           eyebrow="Built for your sector"
           title="Safety software that understands your regulatory environment"

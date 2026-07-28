@@ -27,8 +27,8 @@ function CopyBlock({
 function LogoStrip() {
   const logos = [...CUSTOMER_LOGOS, ...CUSTOMER_LOGOS];
   return (
-    <div className="mt-14 border-t border-ink-900/8 pt-8 sm:mt-16">
-      <p className="text-center text-[11px] font-semibold uppercase tracking-[0.18em] text-ink-500">
+    <div className="mt-12 border-t border-accent-200/40 pt-8 sm:mt-14">
+      <p className="text-center text-[11px] font-semibold uppercase tracking-[0.18em] text-accent-800/70">
         Trusted by councils, agencies &amp; regulated organisations
       </p>
       <div className="mt-5 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
@@ -58,31 +58,32 @@ export function SafetyHeroSection() {
     <section
       id="hero"
       data-theme="light"
-      className="hero--light relative isolate overflow-hidden bg-white pb-6 text-ink-900 sm:pb-8"
+      className="safety-cut relative isolate overflow-hidden pb-10 text-ink-900 sm:pb-14"
     >
-      <div aria-hidden className="pointer-events-none absolute inset-0 bg-sand-50" />
-      <div aria-hidden className="pointer-events-none absolute inset-0 bg-blueprint opacity-[0.32]" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 safety-mesh" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 safety-hatch opacity-80" />
       <div
         aria-hidden
-        className="pointer-events-none absolute -left-32 top-24 size-[28rem] rounded-full bg-[radial-gradient(circle,rgba(141,61,151,0.10),transparent_65%)]"
+        className="pointer-events-none absolute -right-24 top-0 h-full w-[42%] bg-gradient-to-l from-accent-100/50 to-transparent"
       />
+      {/* accent safety stripe */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-40 top-10 size-[34rem] rounded-full bg-[radial-gradient(circle,rgba(0,145,174,0.10),transparent_65%)]"
+        className="pointer-events-none absolute left-0 top-0 h-1.5 w-full bg-gradient-to-r from-accent-600 via-accent-400 to-brand-500"
       />
 
       <Container className="relative pt-[5.5rem] sm:pt-32 lg:pt-36">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-12 xl:gap-16">
-          <div className="relative flex flex-col justify-center lg:py-4 xl:max-w-[32rem]">
+        <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10 xl:gap-14">
+          <div className="relative flex flex-col justify-center lg:py-2 xl:max-w-[34rem]">
             <CopyBlock index={0}>
-              <span className="inline-flex items-center gap-2 rounded-full border border-ink-200/80 bg-white px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-ink-700 shadow-soft">
-                <SkeftoGeoMark shape="hexagon" />
+              <span className="inline-flex items-center gap-2 rounded-md border border-accent-200 bg-white/90 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-accent-800 shadow-sm">
+                <span className="size-1.5 rounded-full bg-accent-500 animate-soft-pulse" />
                 WHS software · Australia
               </span>
             </CopyBlock>
 
-            <CopyBlock index={1} className="mt-4">
-              <h1 className="font-display text-[2.05rem] font-extrabold leading-[1.08] tracking-[-0.035em] text-ink-900 sm:text-[2.75rem] lg:text-[3.05rem]">
+            <CopyBlock index={1} className="mt-5">
+              <h1 className="font-display text-[2.05rem] font-extrabold leading-[1.08] tracking-[-0.035em] text-ink-900 sm:text-[2.7rem] lg:text-[3rem]">
                 WHS software for Australian councils, schools and care providers
               </h1>
             </CopyBlock>
@@ -101,7 +102,7 @@ export function SafetyHeroSection() {
                   <Link
                     key={s.name}
                     href={s.href}
-                    className="inline-flex items-center gap-2 rounded-full border border-ink-200 bg-white px-3 py-1.5 text-xs font-semibold text-ink-800 shadow-sm transition-colors hover:border-brand-300 hover:text-brand-700"
+                    className="inline-flex items-center gap-2 rounded-md border border-accent-200/80 bg-white/80 px-3 py-1.5 text-xs font-semibold text-ink-800 shadow-sm transition-colors hover:border-accent-400 hover:text-accent-800"
                   >
                     <SkeftoGeoMark shape={s.shape} />
                     {s.name}
@@ -116,10 +117,10 @@ export function SafetyHeroSection() {
                   Book a demo
                 </BeamButton>
                 <Link
-                  href="#safety-workflow"
-                  className="inline-flex h-12 items-center justify-center rounded-full border border-ink-200 bg-white px-7 text-sm font-semibold text-ink-800 shadow-sm transition-colors hover:border-brand-300 hover:text-brand-700"
+                  href="#field"
+                  className="inline-flex h-12 items-center justify-center rounded-full border border-accent-300 bg-white px-7 text-sm font-semibold text-accent-900 shadow-sm transition-colors hover:border-accent-500 hover:bg-accent-50"
                 >
-                  See how it works
+                  See field capture
                 </Link>
               </div>
             </CopyBlock>
@@ -128,7 +129,7 @@ export function SafetyHeroSection() {
               <ul className="flex flex-wrap gap-x-5 gap-y-2.5">
                 {HERO_TRUST_TOKENS.map((token) => (
                   <li key={token} className="inline-flex items-center gap-2 text-sm font-medium text-ink-600">
-                    <span className="grid size-5 shrink-0 place-items-center rounded-full bg-brand-50 text-brand-700">
+                    <span className="grid size-5 shrink-0 place-items-center rounded-md bg-accent-100 text-accent-700">
                       <Icon.check className="size-3.5" />
                     </span>
                     {token}

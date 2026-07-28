@@ -158,21 +158,25 @@ function Panel({ tab }: Readonly<{ tab: TabId }>) {
 
 function WorkflowStrip() {
   return (
-    <ol className="mt-10 grid gap-3 sm:grid-cols-5">
+    <ol className="relative mt-10 grid gap-0 sm:grid-cols-5">
+      <span
+        aria-hidden
+        className="pointer-events-none absolute left-[10%] right-[10%] top-[1.85rem] hidden h-px bg-gradient-to-r from-accent-300 via-brand-300 to-accent-300 sm:block"
+      />
       {SAFETY_WORKFLOW.map((step, i) => {
         const I = Icon[step.icon as IconName];
         return (
           <li
             key={step.title}
-            className="relative rounded-2xl border border-ink-900/8 bg-white p-4"
+            className="relative flex flex-col items-start rounded-2xl border border-accent-200/50 bg-gradient-to-b from-accent-50/80 to-white p-4 sm:border-0 sm:bg-transparent sm:from-transparent sm:to-transparent sm:p-3"
           >
-            <span className="font-mono text-[10px] font-semibold tracking-[0.18em] text-brand-600">
-              {String(i + 1).padStart(2, "0")}
-            </span>
-            <span className="mt-3 grid size-9 place-items-center rounded-lg bg-brand-50 text-brand-700">
+            <span className="relative z-10 grid size-10 place-items-center rounded-full border-2 border-accent-400 bg-white text-accent-700 shadow-sm">
               <I className="size-4" />
             </span>
-            <h3 className="mt-3 font-display text-sm font-bold text-ink-900">{step.title}</h3>
+            <span className="mt-3 font-mono text-[10px] font-semibold tracking-[0.18em] text-accent-700">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <h3 className="mt-1.5 font-display text-sm font-bold text-ink-900">{step.title}</h3>
             <p className="mt-1.5 text-xs leading-5 text-ink-600">{step.body}</p>
           </li>
         );
@@ -208,10 +212,10 @@ export function SafetyDeepDiveSection() {
               role="tab"
               aria-selected={tab === t.id}
               onClick={() => setTab(t.id)}
-              className={`rounded-full px-4 py-2.5 text-sm font-semibold transition-colors ${
+              className={`rounded-md px-4 py-2.5 text-sm font-semibold transition-colors ${
                 tab === t.id
-                  ? "bg-ink-900 text-white shadow-sm"
-                  : "border border-ink-200 bg-white text-ink-700 hover:border-brand-200"
+                  ? "bg-accent-700 text-white shadow-sm"
+                  : "border border-accent-200 bg-white text-ink-700 hover:border-accent-400"
               }`}
             >
               {t.label}
@@ -219,7 +223,7 @@ export function SafetyDeepDiveSection() {
           ))}
         </div>
 
-        <div className="mt-8 rounded-3xl border border-ink-900/8 bg-sand-50/40 p-6 sm:p-8">
+        <div className="mt-8 rounded-3xl border border-accent-200/70 bg-gradient-to-br from-accent-50/50 via-white to-sand-50/40 p-6 sm:p-8">
           <Panel tab={tab} />
         </div>
 
@@ -227,7 +231,7 @@ export function SafetyDeepDiveSection() {
           {FRAMEWORKS.map((f) => (
             <span
               key={f}
-              className="rounded-full border border-ink-200 bg-white px-3.5 py-1.5 text-xs font-semibold text-ink-700"
+              className="rounded-md border border-accent-200 bg-white px-3.5 py-1.5 text-xs font-semibold text-ink-700"
             >
               {f}
             </span>

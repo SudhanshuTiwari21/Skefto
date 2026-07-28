@@ -73,26 +73,29 @@ function jsonLd() {
   };
 }
 
-/** Static stats: final numbers always in HTML (no crawler-facing zeros). */
+/** Static stats in a dark accent module — different from compliance light divider bar */
 function TrustBar() {
   return (
-    <section className="border-y border-ink-900/6 bg-white">
-      <Container className="py-10">
-        <RevealStagger className="grid gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
-          {TRUST_STATS.map((s) => (
-            <div
-              key={s.k}
-              className="flex flex-col items-center text-center lg:border-r lg:border-ink-100 lg:last:border-r-0"
-            >
-              <p className="font-display text-3xl font-extrabold tracking-tight text-ink-900 sm:text-4xl">
-                <span className="bg-gradient-to-r from-brand-600 to-accent-600 bg-clip-text text-transparent">
-                  {s.v}
-                </span>
-              </p>
-              <p className="mt-1.5 max-w-[12rem] text-sm font-medium text-ink-500">{s.k}</p>
-            </div>
-          ))}
-        </RevealStagger>
+    <section className="relative -mt-2 pb-2">
+      <Container>
+        <div className="overflow-hidden rounded-2xl border border-ink-800 bg-ink-950 shadow-[0_20px_60px_-36px_rgba(20,24,31,0.55)]">
+          <div className="h-1 bg-gradient-to-r from-accent-500 via-accent-300 to-brand-400" />
+          <RevealStagger className="grid gap-y-8 px-6 py-8 sm:grid-cols-2 sm:px-8 lg:grid-cols-4 lg:gap-0">
+            {TRUST_STATS.map((s) => (
+              <div
+                key={s.k}
+                className="flex flex-col items-center text-center lg:border-r lg:border-white/10 lg:last:border-r-0"
+              >
+                <p className="font-display text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+                  <span className="bg-gradient-to-r from-accent-300 to-brand-300 bg-clip-text text-transparent">
+                    {s.v}
+                  </span>
+                </p>
+                <p className="mt-1.5 max-w-[12rem] text-sm font-medium text-ink-400">{s.k}</p>
+              </div>
+            ))}
+          </RevealStagger>
+        </div>
       </Container>
     </section>
   );
@@ -111,7 +114,7 @@ export default function SafetySoftwarePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd()) }}
       />
       <SiteHeader nav={SAFETY_NAV} />
-      <div className="animate-page-in min-h-full">
+      <div className="animate-page-in safety-page min-h-full">
         <main className="overflow-x-clip">
           <SafetyHeroSection />
           <Reveal>

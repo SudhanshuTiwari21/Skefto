@@ -16,7 +16,7 @@ import { InViewStagger, SpotlightCard } from "@/components/safety/safety-motion"
  */
 export function SafetyTrustSection() {
   return (
-    <section id="why-skefto" className="scroll-mt-20 bg-sand-50 py-16 sm:py-20">
+    <section id="why-skefto" className="scroll-mt-20 bg-gradient-to-b from-white via-accent-50/30 to-sand-50 py-16 sm:py-20">
       <Container>
         <SectionHeading
           eyebrow="Why Skefto"

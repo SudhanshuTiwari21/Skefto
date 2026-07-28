@@ -58,8 +58,9 @@ function PhoneMock() {
 /** Split layout: phone mock left, field capability bullets right */
 export function SafetyFieldSection() {
   return (
-    <section id="field" className="scroll-mt-20 border-y border-ink-900/6 bg-white py-16 sm:py-20">
-      <Container>
+    <section id="field" className="relative scroll-mt-20 overflow-hidden border-y border-accent-200/50 bg-gradient-to-br from-accent-50 via-white to-sand-50 py-16 sm:py-20">
+      <div aria-hidden className="pointer-events-none absolute inset-0 safety-hatch opacity-60" />
+      <Container className="relative">
         <div className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           <PhoneMock />
           <div>

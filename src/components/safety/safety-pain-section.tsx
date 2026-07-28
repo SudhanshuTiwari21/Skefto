@@ -5,8 +5,8 @@ import { InViewStagger, SpotlightCard } from "@/components/safety/safety-motion"
 
 export function SafetyPainSection() {
   return (
-    <section className="relative overflow-hidden border-y border-ink-900/6 bg-white py-16 sm:py-20">
-      <div aria-hidden className="pointer-events-none absolute inset-0 bg-blueprint opacity-[0.14]" />
+    <section className="relative overflow-hidden border-y border-accent-100 bg-gradient-to-b from-accent-50/40 to-white py-16 sm:py-20">
+      <div aria-hidden className="pointer-events-none absolute inset-0 safety-hatch opacity-40" />
       <Container className="relative">
         <SectionHeading
           eyebrow="Why teams switch"

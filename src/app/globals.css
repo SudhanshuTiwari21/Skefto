@@ -865,6 +865,41 @@ body {
   animation: soft-pulse 2.4s ease-in-out infinite;
 }
 
+/* ---------- Safety page: field-first visual language ---------- */
+/* Distinct from compliance/risk (sand + purple blueprint + twin windows) */
+.safety-page {
+  --safety-stripe: repeating-linear-gradient(
+    -45deg,
+    rgba(0, 145, 174, 0.07) 0 6px,
+    transparent 6px 14px
+  );
+}
+.safety-hatch {
+  background-image: var(--safety-stripe);
+}
+.safety-mesh {
+  background-image:
+    radial-gradient(ellipse 70% 55% at 12% 18%, rgba(0, 145, 174, 0.14), transparent 60%),
+    radial-gradient(ellipse 55% 45% at 88% 8%, rgba(141, 61, 151, 0.08), transparent 55%),
+    linear-gradient(180deg, #f3fafc 0%, #f8f8fb 42%, #ffffff 100%);
+}
+.safety-cut {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 2.5rem), 0 100%);
+}
+.safety-cut-inv {
+  clip-path: polygon(0 2.5rem, 100% 0, 100% 100%, 0 100%);
+}
+@keyframes safety-float {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-10px) rotate(-1deg); }
+}
+.safety-phone-float {
+  animation: safety-float 6.5s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .safety-phone-float { animation: none; }
+}
+
 /* ---------- Sheen sweep across a surface on hover ---------- */
 .sheen {
   position: relative;
