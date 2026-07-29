@@ -75,11 +75,11 @@ export function SiteHeader({ nav = [...NAV] }: Readonly<{ nav?: NavItem[] }>) {
             "backdrop-blur-xl backdrop-saturate-150",
             onDark
               ? "border-white/20 bg-white/[0.12] shadow-[0_8px_32px_-8px_rgba(0,0,0,0.45)] ring-1 ring-inset ring-white/10"
-              : "border-ink-200/70 bg-white/85 shadow-[0_4px_24px_-8px_rgba(20,24,31,0.1)] ring-1 ring-inset ring-white/80",
+              : "border-ink-200/80 bg-white/95 shadow-[0_8px_28px_-10px_rgba(20,24,31,0.18)] ring-1 ring-inset ring-white",
             scrolled &&
               (onDark
                 ? "border-white/25 bg-white/[0.16]"
-                : "border-ink-200/80 bg-white/95"),
+                : "border-ink-200 bg-white shadow-[0_10px_32px_-12px_rgba(20,24,31,0.22)]"),
           )}
         >
           <div

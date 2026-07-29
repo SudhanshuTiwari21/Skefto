@@ -58,21 +58,29 @@ export function SafetyHeroSection() {
     <section
       id="hero"
       data-theme="light"
-      className="safety-cut relative isolate overflow-hidden pb-10 text-ink-900 sm:pb-14"
+      className="hero--light safety-cut relative isolate overflow-hidden pb-10 text-ink-900 sm:pb-14"
     >
       <div aria-hidden className="pointer-events-none absolute inset-0 safety-mesh" />
-      <div aria-hidden className="pointer-events-none absolute inset-0 safety-hatch opacity-80" />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 safety-hatch opacity-80 [mask-image:linear-gradient(to_bottom,transparent_0,transparent_5.5rem,black_9rem)]"
+      />
       <div
         aria-hidden
         className="pointer-events-none absolute -right-24 top-0 h-full w-[42%] bg-gradient-to-l from-accent-100/50 to-transparent"
       />
+      {/* Solid top band so the fixed glass header sits on a clear surface */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 z-[1] h-28 bg-gradient-to-b from-white via-white/95 to-transparent sm:h-32"
+      />
       {/* accent safety stripe */}
       <div
         aria-hidden
-        className="pointer-events-none absolute left-0 top-0 h-1.5 w-full bg-gradient-to-r from-accent-600 via-accent-400 to-brand-500"
+        className="pointer-events-none absolute left-0 top-0 z-[1] h-1.5 w-full bg-gradient-to-r from-accent-600 via-accent-400 to-brand-500"
       />
 
-      <Container className="relative pt-[5.5rem] sm:pt-32 lg:pt-36">
+      <Container className="relative z-[2] pt-[5.5rem] sm:pt-32 lg:pt-36">
         <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10 xl:gap-14">
           <div className="relative flex flex-col justify-center lg:py-2 xl:max-w-[34rem]">
             <CopyBlock index={0}>
